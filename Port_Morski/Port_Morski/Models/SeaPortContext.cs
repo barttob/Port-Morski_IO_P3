@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Port_Morski.Models;
 
 public partial class SeaPortContext : DbContext
-{\
+{
     public SeaPortContext()
     {
     }
