@@ -22,10 +22,41 @@ namespace Port_Morski
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private string? UserRole { get; }
+        public MainWindow(string userRole)
         {
             InitializeComponent();
+            UserRole = userRole;
             this.WindowState = WindowState.Maximized;
+
+
+
+            // Sprawdź, czy Tag nie jest pusty
+            if (!string.IsNullOrEmpty(UserRole))
+            {
+                
+
+                // Ustaw widoczność przycisków w zależności od roli
+                if (UserRole == "User")
+                {
+                    Administracja.Visibility = Visibility.Collapsed;
+                    
+                }
+                else if (UserRole == null)
+                {
+                    MessageBox.Show("Niepoprawnie przesłano Tag roli dla użytkownika");
+                }
+                else if (UserRole == "Admin")
+                {
+                    Administracja.Visibility = Visibility.Visible;
+                    
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show("Niepoprawnie przesłano Tag roli dla użytkownika"); 
+            }
         }
 
         
