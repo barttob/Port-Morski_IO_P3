@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Port_Morski"
         xmlns:Pages="clr-namespace:Port_Morski.Pages" x:Class="Port_Morski.MainWindow"
         mc:Ignorable="d"
-        Title="Port Morski" Height="981" Width="1429">
+        Title="Port Morski" Height="981" Width="1429" SizeToContent="WidthAndHeight">
 
 
 
@@ -55,83 +55,85 @@
                 <Image Source="\Images\logo.png" Height="211" Width="249" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10"/>
             </StackPanel>
             <!-- Przyciski w panelu menu -->
-            <StackPanel Grid.Row="1" Background="#FF2B4162" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                <StackPanel Grid.Row="1" Background="#FF2B4162" HorizontalAlignment="Center" VerticalAlignment="Top">
                 <Button x:Name="StatystykiButton" Width="330" Height="89.2" Margin="0,0,0,22" Background="#D7B377" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Anek Tamil" FontSize="29" Content="Statystyki" Click="StatystykiButton_Click">
-                    <Button.Template>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="0,14,14,0">
-                                <Grid>
-                                    <Border Background="{TemplateBinding Background}" CornerRadius="0,14,14,0"/>
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Grid>
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <Button x:Name="MonitorowanieStatkow" Width="330" Height="89.2" Margin="0,0,0,22" Background="#D7B377" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Anek Tamil" FontSize="29" Content="Monitorowanie Statków" Click="MonitorowanieStatkow_Click">
-                    <Button.Template>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="0,14,14,0">
-                                <Grid>
-                                    <Border Background="{TemplateBinding Background}" CornerRadius="0,14,14,0"/>
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Grid>
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <!-- Pozostałe przyciski -->
-                <Button x:Name="ZarzadzanieLadunkami" Width="330" Height="89.2" Margin="0,0,0,22" Background="#D7B377" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Anek Tamil" FontSize="29" Content="Zarządzanie Ładunkami" Click="ZarzadzanieLadunkami_Click">
-                    <Button.Template>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="0,14,14,0">
-                                <Grid>
-                                    <Border Background="{TemplateBinding Background}" CornerRadius="0,14,14,0"/>
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Grid>
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <Button x:Name="PlanowanieOperacjiPortowych" Width="330" Height="89.2" Margin="0,0,0,22" Background="#D7B377" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Anek Tamil" FontSize="29" Content="Planowanie Operacji &#xA;Portowych" Click="PlanowanieOperacjiPortowych_Click">
-                    <Button.Template>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="0,14,14,0">
-                                <Grid>
-                                    <Border Background="{TemplateBinding Background}" CornerRadius="0,14,14,0"/>
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Grid>
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="Black" BorderThickness="1" CornerRadius="14,14,14,14">
+                                    <Grid>
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="14,14,14,14"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button x:Name="MonitorowanieStatkow" Width="330" Height="89.2" Margin="0,0,0,22" Background="#D7B377" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Anek Tamil" FontSize="29" Content="Monitorowanie Statków" Click="MonitorowanieStatkow_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="Black" BorderThickness="1" CornerRadius="14,14,14,14">
+                                    <Grid>
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="14,14,14,14"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <!-- Pozostałe przyciski -->
+                    <Button x:Name="ZarzadzanieLadunkami" Width="330" Height="89.2" Margin="0,0,0,22" Background="#D7B377" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Anek Tamil" FontSize="29" Content="Zarządzanie Ładunkami" Click="ZarzadzanieLadunkami_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="Black" BorderThickness="1" CornerRadius="14,14,14,14">
+                                    <Grid>
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="14,14,14,14"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button x:Name="PlanowanieOperacjiPortowych" Width="330" Height="89.2" Margin="0,0,0,22" Background="#D7B377" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Anek Tamil" FontSize="29" Content="Planowanie Operacji &#xA;Portowych" Click="PlanowanieOperacjiPortowych_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="Black" BorderThickness="1" CornerRadius="0,14,14,0">
+                                    <Grid>
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="14,14,14,14"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
 
-                </Button>
+                    </Button>
 
-                <Button x:Name="GenerowanieRaportow" Width="330" Height="89.2" Margin="0,0,0,22" Background="#D7B377" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Anek Tamil" FontSize="29" Content="Generowanie Raportów &#xA;i Dokumentów" Click="GenerowanieRaportow_Click">
-                    <Button.Template>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="0,14,14,0">
-                                <Grid>
-                                    <Border Background="{TemplateBinding Background}" CornerRadius="0,14,14,0"/>
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Grid>
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <Button x:Name="Administracja" Width="330" Height="89.2" Margin="0,0,0,22" Background="#D7B377" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Anek Tamil" FontSize="29" Content="Administracja" Click="Administracja_Click">
-                    <Button.Template>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="0,14,14,0">
-                                <Grid>
-                                    <Border Background="{TemplateBinding Background}" CornerRadius="0,14,14,0"/>
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Grid>
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-            </StackPanel>
+                    <Button x:Name="GenerowanieRaportow" Width="330" Height="89.2" Margin="0,0,0,22" Background="#D7B377" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Anek Tamil" FontSize="29" Content="Generowanie Raportów &#xA;i Dokumentów" Click="GenerowanieRaportow_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="Black" BorderThickness="1" CornerRadius="14,14,14,14">
+                                    <Grid>
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="14,14,14,14"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button x:Name="Administracja" Width="330" Height="89.2" Margin="0,0,0,22" Background="#D7B377" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Anek Tamil" FontSize="29" Content="Administracja" Click="Administracja_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="Black" BorderThickness="1" CornerRadius="14,14,14,14">
+                                    <Grid>
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="14,14,14,14"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </StackPanel>
+            </ScrollViewer>
         </Grid>
         <!-- Panel górny -->
         <Grid Background="White" Width="auto" Height="90" VerticalAlignment="Top" Margin="354,0,0,0">
@@ -166,7 +168,7 @@
                     </Button>
                     </StackPanel>
                     <!-- Przyciągany napis tytułu -->
-                    <TextBlock Grid.Column="0" Text="Dashboard" Foreground="#333333" FontSize="36" Margin="52,0,0,0" VerticalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="0" Text="Centrum Zarządzania Portem" Foreground="#333333" FontSize="36" Margin="52,0,0,0" VerticalAlignment="Center" FontWeight="Bold"/>
             </Grid>
         </Grid>
 
@@ -179,14 +181,4 @@
         </Grid>
 
     </Grid>
-
-
-
-
-
-
-
-
-
-
 </Window>
