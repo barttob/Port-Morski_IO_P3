@@ -37,10 +37,10 @@ namespace Port_Morski.Pages
             if (IsLoginValid(enteredLogin) && IsPasswordValid(enteredPassword))
             {
                 // Logowanie udane
-                LoginStatus.Text = "Logowanie udane!";
+                LoginStatus.Text = "Logowanie udane. Witamy!";
                 // Tutaj można nawigować do głównego interfejsu użytkownika lub innej strony
                 // Przykład nawigacji do innej strony:
-                // this.NavigationService.Navigate(new MainPage());
+                // this.NavigationService.Navigate(new MainPage());s
             }
             else
             {
