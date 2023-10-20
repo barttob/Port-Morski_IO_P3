@@ -105,7 +105,6 @@
                                 </Border>
                             </ControlTemplate>
                         </Button.Template>
-
                     </Button>
 
                     <Button x:Name="GenerowanieRaportow" Width="330" Height="89.2" Margin="0,0,0,22" Background="#D7B377" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Anek Tamil" FontSize="29" Content="Generowanie Raportów &#xA;i Dokumentów" Click="GenerowanieRaportow_Click">
@@ -150,7 +149,7 @@
                 </Grid.ColumnDefinitions>
                 <!-- Przyciągane przyciski po prawej stronie -->
                 <StackPanel Grid.Column="1" Width="auto" VerticalAlignment="Center" Orientation="Horizontal" Margin="0,0,26,0">
-                    <Button Width="54" Height="56"  BorderThickness="0,0,0,0" Style="{StaticResource EnlargeButton}">
+                    <Button x:Name="LoginButton" Width="54" Height="56"  BorderThickness="0,0,0,0" Style="{StaticResource EnlargeButton}" Click="LoginButton_Click">
                         <Button.Background>
                             <ImageBrush ImageSource="\Images\user.png" Stretch="Fill"/>
                         </Button.Background>
@@ -158,7 +157,7 @@
                             <ScaleTransform ScaleX="1" ScaleY="1"/>
                         </Button.LayoutTransform>
                     </Button>
-                    <Button Width="54" Height="56" Margin="26,0,0,0" BorderThickness="0,0,0,0" Style="{StaticResource EnlargeButton}">
+                    <Button x:Name="ExitButton" Width="54" Height="56" Margin="26,0,0,0" BorderThickness="0,0,0,0" Style="{StaticResource EnlargeButton}">
                         <Button.Background>
                             <ImageBrush ImageSource="\Images\wyjscie.png"/>
                         </Button.Background>
@@ -166,9 +165,9 @@
                             <ScaleTransform ScaleX="1" ScaleY="1"/>
                         </Button.LayoutTransform>
                     </Button>
-                    </StackPanel>
-                    <!-- Przyciągany napis tytułu -->
-                    <TextBlock Grid.Column="0" Text="Centrum Zarządzania Portem" Foreground="#333333" FontSize="36" Margin="52,0,0,0" VerticalAlignment="Center" FontWeight="Bold"/>
+                </StackPanel>
+                <!-- Przyciągany napis tytułu -->
+                <TextBlock Grid.Column="0" Text="Centrum Zarządzania Portem" Foreground="#333333" FontSize="36" Margin="52,0,0,0" VerticalAlignment="Center" FontWeight="Bold"/>
             </Grid>
         </Grid>
 
