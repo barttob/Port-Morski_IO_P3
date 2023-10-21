@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Port_Morski.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,20 @@ namespace Port_Morski.Pages
         public Administracja()
         {
             InitializeComponent();
+            LoadData();
+        }
+        public void LoadData()
+        {
+            using (var context = new SeaPortContext())
+            {
+                var users = context.Users.Select(u => new { u.Name, u.LastName, u.UserRole }).ToList();
+                datagridUzytkownicyFront.ItemsSource = users;
+            }
+        }
+
+        private void wiecejUzytkownicy_Click(object sender, RoutedEventArgs e)
+        {
+            admUzytkownicy.Visibility = Visibility.Visible;
         }
     }
 }
