@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Port_Morski"
         xmlns:Pages="clr-namespace:Port_Morski.Pages" x:Class="Port_Morski.MainWindow"
         mc:Ignorable="d"
-        Title="Port Morski" Height="981" Width="1429" SizeToContent="WidthAndHeight">
+        Title="Port Morski" Height="981" Width="1429"  WindowState="Maximized">
 
 
 
@@ -52,14 +52,14 @@
             </Grid.RowDefinitions>
             <!-- Logo w górnej części -->
             <StackPanel Grid.Row="0" Height="211" VerticalAlignment="Top">
-          
+
 
                 <Image Source="\Images\logo.png" Height="211" Width="249" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10"/>
             </StackPanel>
             <!-- Przyciski w panelu menu -->
             <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
                 <StackPanel Grid.Row="1" Background="#FF2B4162" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <Button x:Name="StatystykiButton" Width="330" Height="89.2" Margin="0,0,0,22" Background="#D7B377" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Anek Tamil" FontSize="29" Content="Statystyki" Click="StatystykiButton_Click">
+                    <Button x:Name="StatystykiButton" Width="330" Height="89.2" Margin="0,0,0,22" Background="#D7B377" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Anek Tamil" FontSize="29" Content="Statystyki" Click="StatystykiButton_Click" Foreground="#FF050505">
                         <Button.Template>
                             <ControlTemplate TargetType="{x:Type Button}">
                                 <Border BorderBrush="Black" BorderThickness="1" CornerRadius="14,14,14,14">
@@ -71,7 +71,7 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                    <Button x:Name="MonitorowanieStatkow" Width="330" Height="89.2" Margin="0,0,0,22" Background="#D7B377" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Anek Tamil" FontSize="29" Content="Monitorowanie Statków" Click="MonitorowanieStatkow_Click">
+                    <Button x:Name="MonitorowanieStatkow" Width="330" Height="89.2" Margin="0,0,0,22" Background="#D7B377" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Anek Tamil" FontSize="29" Content="Monitorowanie Statków" Click="MonitorowanieStatkow_Click" Foreground="#FF050505">
                         <Button.Template>
                             <ControlTemplate TargetType="{x:Type Button}">
                                 <Border BorderBrush="Black" BorderThickness="1" CornerRadius="14,14,14,14">
@@ -84,7 +84,7 @@
                         </Button.Template>
                     </Button>
                     <!-- Pozostałe przyciski -->
-                    <Button x:Name="ZarzadzanieLadunkami" Width="330" Height="89.2" Margin="0,0,0,22" Background="#D7B377" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Anek Tamil" FontSize="29" Content="Zarządzanie Ładunkami" Click="ZarzadzanieLadunkami_Click">
+                    <Button x:Name="ZarzadzanieLadunkami" Width="330" Height="89.2" Margin="0,0,0,22" Background="#D7B377" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Anek Tamil" FontSize="29" Content="Zarządzanie Ładunkami" Click="ZarzadzanieLadunkami_Click" Foreground="#FF050505">
                         <Button.Template>
                             <ControlTemplate TargetType="{x:Type Button}">
                                 <Border BorderBrush="Black" BorderThickness="1" CornerRadius="14,14,14,14">
@@ -96,7 +96,7 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                    <Button x:Name="PlanowanieOperacjiPortowych" Width="330" Height="89.2" Margin="0,0,0,22" Background="#D7B377" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Anek Tamil" FontSize="29" Content="Planowanie Operacji &#xA;Portowych" Click="PlanowanieOperacjiPortowych_Click">
+                    <Button x:Name="PlanowanieOperacjiPortowych" Width="330" Height="89.2" Margin="0,0,0,22" Background="#D7B377" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Anek Tamil" FontSize="29" Content="Planowanie Operacji &#xA;Portowych" Click="PlanowanieOperacjiPortowych_Click" Foreground="#FF050505">
                         <Button.Template>
                             <ControlTemplate TargetType="{x:Type Button}">
                                 <Border BorderBrush="Black" BorderThickness="1" CornerRadius="0,14,14,0">
@@ -109,7 +109,7 @@
                         </Button.Template>
                     </Button>
 
-                    <Button x:Name="GenerowanieRaportow" Width="330" Height="89.2" Margin="0,0,0,22" Background="#D7B377" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Anek Tamil" FontSize="29" Content="Generowanie Raportów &#xA;i Dokumentów" Click="GenerowanieRaportow_Click">
+                    <Button x:Name="GenerowanieRaportow" Width="330" Height="89.2" Margin="0,0,0,22" Background="#D7B377" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Anek Tamil" FontSize="29" Content="Generowanie Raportów &#xA;i Dokumentów" Click="GenerowanieRaportow_Click" Foreground="#FF050505">
                         <Button.Template>
                             <ControlTemplate TargetType="{x:Type Button}">
                                 <Border BorderBrush="Black" BorderThickness="1" CornerRadius="14,14,14,14">
@@ -121,7 +121,7 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                    <Button x:Name="Administracja" Width="330" Height="89.2" Margin="0,0,0,22" Background="#D7B377" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Anek Tamil" FontSize="29" Content="Administracja" Click="Administracja_Click">
+                    <Button x:Name="Administracja" Width="330" Height="89.2" Margin="0,0,0,22" Background="#D7B377" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Anek Tamil" FontSize="29" Content="Administracja" Click="Administracja_Click" Foreground="#FF050505">
                         <Button.Template>
                             <ControlTemplate TargetType="{x:Type Button}">
                                 <Border BorderBrush="Black" BorderThickness="1" CornerRadius="14,14,14,14">
@@ -173,7 +173,7 @@
                 </StackPanel>
                 <!-- Przyciągany napis tytułu -->
 
-                
+
 
                 <TextBlock Grid.Column="0" Text="Centrum Zarządzania Portem" Foreground="#333333" FontSize="36" Margin="52,0,0,0" VerticalAlignment="Center" FontWeight="Bold"/>
 

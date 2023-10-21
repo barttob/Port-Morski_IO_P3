@@ -43,10 +43,7 @@ namespace Port_Morski.Pages
         }
 
 
-        private void Zapisz_Click(object sender, RoutedEventArgs e)
-        {
-            SaveChanges();
-        }
+       
 
         private void datagridUsers_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
         {

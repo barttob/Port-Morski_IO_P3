@@ -14,10 +14,7 @@
     <Grid Background="#F5F0F6" >
 
 
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal">
-            <Button x:Name="Zapisz" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ButtonAssist.CornerRadius="10,10,0,0" FontSize="24" Content="Zapisz" Background="#FFD7B377" Foreground="Black" BorderBrush="Black" Padding="0,0,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="206" Height="50" FontWeight="Bold" Margin="10,0,0,0" Click="Zapisz_Click"/>
-
-        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal"/>
         <materialDesign:Card Margin="30,85,30,27" UniformCornerRadius="25">
 
             <StackPanel >
