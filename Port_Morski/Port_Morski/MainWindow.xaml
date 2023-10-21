@@ -52,6 +52,8 @@
             </Grid.RowDefinitions>
             <!-- Logo w górnej części -->
             <StackPanel Grid.Row="0" Height="211" VerticalAlignment="Top">
+          
+
                 <Image Source="\Images\logo.png" Height="211" Width="249" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10"/>
             </StackPanel>
             <!-- Przyciski w panelu menu -->
@@ -133,6 +135,7 @@
                     </Button>
                 </StackPanel>
             </ScrollViewer>
+
         </Grid>
         <!-- Panel górny -->
         <Grid Background="White" Width="auto" Height="90" VerticalAlignment="Top" Margin="354,0,0,0">
@@ -142,10 +145,10 @@
 
 
             <Grid Width="auto" Height="85" VerticalAlignment="Top">
-               
+
                 <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <!-- Przyciągane przyciski po prawej stronie -->
                 <StackPanel Grid.Column="1" Width="auto" VerticalAlignment="Center" Orientation="Horizontal" Margin="0,0,26,0">
@@ -159,7 +162,9 @@
                     </Button>
                     <Button x:Name="ExitButton" Width="54" Height="56" Margin="26,0,0,0" BorderThickness="0,0,0,0" Style="{StaticResource EnlargeButton}">
                         <Button.Background>
-                            <ImageBrush ImageSource="\Images\wyjscie.png"/>
+
+                            <ImageBrush ImageSource="/Images/wyjscie.png"/>
+
                         </Button.Background>
                         <Button.LayoutTransform>
                             <ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -167,16 +172,20 @@
                     </Button>
                 </StackPanel>
                 <!-- Przyciągany napis tytułu -->
+
+                
+
                 <TextBlock Grid.Column="0" Text="Centrum Zarządzania Portem" Foreground="#333333" FontSize="36" Margin="52,0,0,0" VerticalAlignment="Center" FontWeight="Bold"/>
+
             </Grid>
         </Grid>
 
 
         <Grid x:Name="MainGrid" Margin="354,95,0,0" Background="#F5F0F6">
-            
 
-            <Pages:Statystyki  /> 
-            
+
+            <Pages:Statystyki  />
+
         </Grid>
 
     </Grid>
