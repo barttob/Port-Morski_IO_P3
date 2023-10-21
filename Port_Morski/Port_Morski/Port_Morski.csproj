@@ -33,6 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
+
     <Content Include="Images\add.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -57,6 +58,7 @@
     <Content Include="Images\wyjscie.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+
   </ItemGroup>
 
 </Project>

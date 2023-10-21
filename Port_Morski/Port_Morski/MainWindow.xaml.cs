@@ -59,7 +59,13 @@ namespace Port_Morski
             }
         }
 
-        
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainGrid.Children.Clear();
+            Login login = new Login();
+            MainGrid.Children.Add(login);
+        }
+
 
         private void StatystykiButton_Click(object sender, RoutedEventArgs e)
         {
