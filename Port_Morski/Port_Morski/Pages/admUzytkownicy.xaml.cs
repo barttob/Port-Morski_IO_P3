@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace Port_Morski.Pages
 {
@@ -35,7 +36,7 @@ namespace Port_Morski.Pages
             var users = context.Users.ToList(); 
             datagridUsers.ItemsSource = users; 
         }
-        
+
         private void SaveChanges()
         {
             context.SaveChanges(); 
@@ -43,7 +44,7 @@ namespace Port_Morski.Pages
         }
 
 
-       
+
 
         private void datagridUsers_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
         {
@@ -75,8 +76,21 @@ namespace Port_Morski.Pages
 
         private void Modify_Click(object sender, RoutedEventArgs e)
         {
-            modifyUser.Visibility = Visibility.Visible;
+            Button? modifyButton = sender as Button;
+            if (modifyButton != null)
+            {
+                // Retrieve the user object associated with the clicked button.
+                User? user = modifyButton.Tag as User;
 
+                if (user != null)
+                {
+                    // Show the user data in the modifyUser component.
+                    modifyUser.Visibility = Visibility.Visible;
+
+                    // Set the DataContext of modifyUser to the user object.
+                    modifyUser.DataContext = user;
+                }
+            }
         }
     }
 }
