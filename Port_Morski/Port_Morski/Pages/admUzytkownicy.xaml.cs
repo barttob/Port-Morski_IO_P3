@@ -43,6 +43,13 @@ namespace Port_Morski.Pages
             
         }
 
+        internal void Refresh()
+        {
+            context.SaveChanges();
+            var users = context.Users.ToList();
+            datagridUsers.ItemsSource = users; ;
+        }
+
 
 
 
@@ -92,5 +99,7 @@ namespace Port_Morski.Pages
                 }
             }
         }
+
+
     }
 }

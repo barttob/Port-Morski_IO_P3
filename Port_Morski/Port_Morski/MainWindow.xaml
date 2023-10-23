@@ -160,7 +160,7 @@
                             <ScaleTransform ScaleX="1" ScaleY="1"/>
                         </Button.LayoutTransform>
                     </Button>
-                    <Button x:Name="ExitButton" Width="54" Height="56" Margin="26,0,0,0" BorderThickness="0,0,0,0" Style="{StaticResource EnlargeButton}">
+                    <Button x:Name="ExitButton" Width="54" Height="56" Margin="26,0,0,0" BorderThickness="0,0,0,0" Style="{StaticResource EnlargeButton}" Click="exitApp">
                         <Button.Background>
 
                             <ImageBrush ImageSource="/Images/wyjscie.png"/>

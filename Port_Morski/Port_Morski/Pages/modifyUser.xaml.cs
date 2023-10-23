@@ -64,8 +64,11 @@ namespace Port_Morski.Pages
 
                     context.SaveChanges();
 
+
                     MessageBox.Show("Pomyślnie zaktualizowano użytkownika w bazie danych.");
                     this.Visibility = Visibility.Collapsed;
+                    admUzytkownicy adm = new admUzytkownicy();
+                    adm.Refresh();
 
                 }
                 catch (Exception ex)

@@ -63,7 +63,13 @@ namespace Port_Morski
         {
             MainGrid.Children.Clear();
             Login login = new Login();
-            MainGrid.Children.Add(login);
+            login.Show();
+            this.Close();
+        }
+
+        private void exitApp(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
 
 

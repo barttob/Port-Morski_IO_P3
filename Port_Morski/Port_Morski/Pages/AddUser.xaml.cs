@@ -61,6 +61,10 @@ namespace Port_Morski.Pages
                     context.SaveChanges();
 
                     MessageBox.Show("Pomyślnie dodano nowego użytkownika do bazy danych.");
+
+                    this.Visibility = Visibility.Collapsed;
+                    admUzytkownicy adm = new admUzytkownicy();
+                    adm.Refresh();
                 }
                 catch (Exception ex)
                 {
