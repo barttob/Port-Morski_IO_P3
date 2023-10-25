@@ -14,6 +14,8 @@
     <None Remove="Images\edit.png" />
     <None Remove="Images\logo.png" />
     <None Remove="Images\logout.png" />
+    <None Remove="Images\port.png" />
+    <None Remove="Images\statek.png" />
     <None Remove="Images\user.png" />
     <None Remove="Images\wyjscie.png" />
   </ItemGroup>
@@ -47,6 +49,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\port.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\statek.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Resource Include="Images\logout.png">

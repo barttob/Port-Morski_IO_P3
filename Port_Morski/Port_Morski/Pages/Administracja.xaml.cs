@@ -32,12 +32,28 @@ namespace Port_Morski.Pages
             {
                 var users = context.Users.Select(u => new { u.Name, u.LastName, u.UserRole }).ToList();
                 datagridUzytkownicyFront.ItemsSource = users;
+
+                var ships = context.Ships.ToList();
+                datagridStatkiFront.ItemsSource = ships;
+
+                var docks = context.Docks.ToList();
+                datagridPortyFront.ItemsSource = docks;
             }
         }
 
         private void wiecejUzytkownicy_Click(object sender, RoutedEventArgs e)
         {
             admUzytkownicy.Visibility = Visibility.Visible;
+        }
+
+        private void wiecejStatki_Click(object sender, RoutedEventArgs e)
+        {
+            admStatki.Visibility = Visibility.Visible;
+        }
+
+        private void wiecejPorty_Click(object sender, RoutedEventArgs e)
+        {
+            admPorty.Visibility = Visibility.Visible;
         }
     }
 }

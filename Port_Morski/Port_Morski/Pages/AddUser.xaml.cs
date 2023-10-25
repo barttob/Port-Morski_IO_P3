@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static Port_Morski.Pages.admUzytkownicy;
 
 namespace Port_Morski.Pages
 {
@@ -36,7 +37,7 @@ namespace Port_Morski.Pages
             this.Visibility = Visibility.Collapsed;
         }
 
-        private void addUser_Click(object sender, RoutedEventArgs e)
+        public void addUser_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(Imie.Text) || string.IsNullOrWhiteSpace(Nazwisko.Text) || string.IsNullOrWhiteSpace(Login.Text) || string.IsNullOrWhiteSpace(ConvertToUnsecureString(haslo.SecurePassword)))
             {
@@ -62,9 +63,10 @@ namespace Port_Morski.Pages
 
                     MessageBox.Show("Pomyślnie dodano nowego użytkownika do bazy danych.");
 
-                    this.Visibility = Visibility.Collapsed;
+                    
                     admUzytkownicy adm = new admUzytkownicy();
-                    adm.Refresh();
+                    adm.LoadData();
+                    this.Visibility = Visibility.Collapsed;
                 }
                 catch (Exception ex)
                 {

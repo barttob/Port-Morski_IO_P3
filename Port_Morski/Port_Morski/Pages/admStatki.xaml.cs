@@ -13,93 +13,69 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Xml.Linq;
 
 namespace Port_Morski.Pages
 {
     /// <summary>
-    /// Logika interakcji dla klasy admUzytkownicy.xaml
+    /// Logika interakcji dla klasy admStatki.xaml
     /// </summary>
-    public partial class admUzytkownicy : UserControl
+    public partial class admStatki : UserControl
     {
-        private SeaPortContext context = new SeaPortContext(); 
-        public admUzytkownicy()
+        private SeaPortContext context = new SeaPortContext();
+
+        public admStatki()
         {
             InitializeComponent();
             LoadData();
         }
-
-       
-
-        public void LoadData()
+        private void LoadData()
         {
-            var users = context.Users.ToList(); 
-            datagridUsers.ItemsSource = users; 
+            var ships = context.Ships.ToList();
+            datagridStatki.ItemsSource = ships;
         }
-
-        private void SaveChanges()
-        {
-            context.SaveChanges(); 
-            
-        }
-
         internal void Refresh()
         {
             context.SaveChanges();
-            var users = context.Users.ToList();
-            datagridUsers.ItemsSource = users; ;
-        }
-
-
-
-
-        private void datagridUsers_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
-        {
-        }
-
-        private void datagridUsers_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
-        {
+            var ship = context.Ships.ToList();
+            datagridStatki.ItemsSource = ship; ;
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button button && button.DataContext is User user)
+            if (sender is Button button && button.DataContext is Ship ship)
             {
                 MessageBoxResult result = MessageBox.Show("Czy na pewno chcesz usunąć ten rekord?", "Potwierdź usunięcie", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
-                    context.Users.Remove(user); 
-                    context.SaveChanges(); 
-                    LoadData();                       
+                    context.Ships.Remove(ship);
+                    context.SaveChanges();
+                    LoadData();
                 }
             }
-            
-        }
 
-        private void DODAJ_Click(object sender, RoutedEventArgs e)
-        {
-            AddUser.Visibility = Visibility.Visible;
         }
-
         private void Modify_Click(object sender, RoutedEventArgs e)
         {
             Button? modifyButton = sender as Button;
             if (modifyButton != null)
             {
                 // Retrieve the user object associated with the clicked button.
-                User? user = modifyButton.Tag as User;
+                Ship? ship = modifyButton.Tag as Ship;
 
-                if (user != null)
+                if (ship != null)
                 {
                     // Show the user data in the modifyUser component.
-                    modifyUser.Visibility = Visibility.Visible;
+                    modyfikujStatek.Visibility = Visibility.Visible;
 
                     // Set the DataContext of modifyUser to the user object.
-                    modifyUser.DataContext = user;
+                    modyfikujStatek.DataContext = ship;
                 }
             }
         }
-
+        private void DODAJ_Click(object sender, RoutedEventArgs e)
+        {
+            dodajStatek.Visibility = Visibility.Visible;
+        }
 
     }
 }
