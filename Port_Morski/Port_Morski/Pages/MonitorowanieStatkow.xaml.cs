@@ -24,5 +24,18 @@ namespace Port_Morski.Pages
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // Tworzenie nowej instancji strony Wyszukiwanie_statków
+            Wyszukiwanie_statków wyszukiwanieStron = new Wyszukiwanie_statków();
+
+            // Wyświetlanie nowej strony
+            wyszukiwanieStron.Show();
+
+
+            
+
+        }
     }
 }

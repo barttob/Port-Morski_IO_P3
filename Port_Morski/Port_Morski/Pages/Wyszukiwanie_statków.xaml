@@ -1,0 +1,142 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Port_Morski.Pages"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:System="clr-namespace:System;assembly=System.Runtime" x:Name="okno" x:Class="Port_Morski.Pages.Wyszukiwanie_statków"
+        mc:Ignorable="d"
+        Title="Wyszukiwanie_statków" WindowStyle="None" Opacity="0.995" RenderTransformOrigin="0,0" AllowsTransparency="True" UseLayoutRounding="False"
+        WindowState="Maximized" Height="883" Width="1725">
+    <Window.RenderTransform>
+        <TransformGroup>
+            <ScaleTransform/>
+            <SkewTransform/>
+            <RotateTransform/>
+            <TranslateTransform X="0"/>
+        </TransformGroup>
+    </Window.RenderTransform>
+    <Grid Background="White" Margin="34,0,46,0" Height="NaN" VerticalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="233*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <ComboBox Name="combobox_typStatku" Margin="96,221,1116,0" VerticalAlignment="Top" Height="16">
+            <ComboBoxItem Foreground="#FF938E8E" FontSize="20">Tankowiec</ComboBoxItem>
+            <ComboBoxItem Foreground="#FF938E8E" FontSize="20">Kontenerowiec</ComboBoxItem>
+            <ComboBoxItem Foreground="#FF938E8E" FontSize="20">Towarowy</ComboBoxItem>
+            <ComboBoxItem Foreground="#FF938E8E" FontSize="20">Pasażerski</ComboBoxItem>
+            <ComboBoxItem Foreground="#FF938E8E" FontSize="20">Wycieczkowy</ComboBoxItem>
+            <ComboBoxItem Foreground="#FF938E8E" FontSize="20">Prom</ComboBoxItem>
+            <ComboBoxItem Foreground="#FF938E8E" FontSize="20">Plaforma wiertnicza</ComboBoxItem>
+            <ComboBoxItem Foreground="#FF938E8E" FontSize="20">Ratowniczy</ComboBoxItem>
+            <ComboBoxItem Foreground="#FF938E8E" FontSize="20"></ComboBoxItem>
+        </ComboBox>
+
+
+        <ComboBox Name="combobox_statusLadunku" Margin="96,518,1132,0" VerticalAlignment="Top" Height="16">
+            <ComboBoxItem Foreground="#FF938E8E" FontSize="20">Załadunek</ComboBoxItem>
+            <ComboBoxItem Foreground="#FF938E8E" FontSize="20">Rozładunek</ComboBoxItem>
+            <ComboBoxItem Foreground="#FF938E8E" FontSize="20">W trakcie transportu</ComboBoxItem>
+            <ComboBoxItem Foreground="#FF938E8E" FontSize="20">W oczekiwaniu na załadunek</ComboBoxItem>
+            <ComboBoxItem Foreground="#FF938E8E" FontSize="20">W oczekiwaniu na rozładunek</ComboBoxItem>
+            <ComboBoxItem Foreground="#FF938E8E" FontSize="20">Załadunek odroczone</ComboBoxItem>
+            <ComboBoxItem Foreground="#FF938E8E" FontSize="20">Rozładunek odroczony</ComboBoxItem>
+            <ComboBoxItem Foreground="#FF938E8E" FontSize="20">Wizyta w dokach</ComboBoxItem>
+            <ComboBoxItem Foreground="#FF938E8E" FontSize="20">Kontrola celna</ComboBoxItem>
+            <ComboBoxItem Foreground="#FF938E8E" FontSize="20">Zabezpieczony</ComboBoxItem>
+            <ComboBoxItem Foreground="#FF938E8E" FontSize="20">Skontrolowany</ComboBoxItem>
+            <ComboBoxItem Foreground="#FF938E8E" FontSize="20">Zgubiony</ComboBoxItem>
+            <ComboBoxItem Foreground="#FF938E8E" FontSize="20"></ComboBoxItem>
+        </ComboBox>
+
+
+
+        <TextBox x:Name="textbox_nazwaStatku" HorizontalAlignment="Left" Margin="96,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="209" Height="16" Cursor=""/>
+
+        <DatePicker x:Name="datepicker_dataPrzybycia" HorizontalAlignment="Left" Margin="96,572,0,0"  VerticalAlignment="Top" Width="209" Height="16"/>
+
+        <TextBox x:Name="textbox_pojemnoscStatku" HorizontalAlignment="Left" Margin="96,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="209" Height="16" TextChanged="textbox_pojemnoscStatku_TextChanged"/>
+        <DatePicker x:Name="datepicker_dataOdplywu" HorizontalAlignment="Left" Margin="96,633,0,0" VerticalAlignment="Top" Width="209" Height="16"/>
+        <TextBox x:Name="textbox_nazwaDoku" HorizontalAlignment="Left" Margin="96,695,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="209" Height="16"/>
+        <TextBox x:Name="textbox_wagaLadunku" HorizontalAlignment="Left" Margin="96,454,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="209" Height="16" TextChanged="textbox_wagaLadunku_TextChanged"/>
+        <TextBox x:Name="textbox_nazwaLadunku" HorizontalAlignment="Left" Margin="96,377,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="209" Height="16"/>
+        <Label Margin="0,8,0,792" Grid.ColumnSpan="5">
+            <Label Content="    Wyszukiwanie statku" Height="85" Width="715" RenderTransformOrigin="1,0.5" FontSize="60"/>
+        </Label>
+        <Button x:Name="Wyszukaj" Content="Wyszukaj" HorizontalAlignment="Left" Margin="690,819,0,0" VerticalAlignment="Top" Height="27" Width="132" Click="Wyszukaj_Click"/>
+        <Button x:Name="Anuluj" Content="Anuluj" HorizontalAlignment="Left" Margin="419,817,0,0" VerticalAlignment="Top" Width="133" Height="29" IsCancel="True" Click="Anuluj_Click"/>
+        <DataGrid x:Name="datagridWyszukaneStatki" AutoGenerateColumns="False" IsReadOnly="True" HorizontalContentAlignment="Stretch" FontSize="18" VerticalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" HeadersVisibility="None" Margin="351,124,0,116" AllowDrop="True" Grid.ColumnSpan="5">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="SizeToCells">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/Images/user.png" Width="36" Height="36" Margin="5"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Width="*" Binding="{Binding ShipName}" />
+                <DataGridTextColumn Width="*" Binding="{Binding ShipType}" />
+                <DataGridTextColumn Width="*" Binding="{Binding ShipCapacity}" />
+                <DataGridTextColumn Width="*" Binding="{Binding CargoName}" />
+                <DataGridTextColumn Width="*" Binding="{Binding CargoWeight}" />
+                <DataGridTextColumn Width="*" Binding="{Binding CargoStatus}" />
+                <DataGridTextColumn Width="*" Binding="{Binding ArrivalDate}" />
+                <DataGridTextColumn Width="*" Binding="{Binding FlowOutDate}" />
+                <DataGridTextColumn Width="*" Binding="{Binding DockName}" />
+
+
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+
+
+
+
+
+
+
+
+
+        <TextBlock HorizontalAlignment="Left" Margin="96,119,0,0" TextWrapping="Wrap" Text="Nazwa statku" VerticalAlignment="Top" Height="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="96,182,0,0" TextWrapping="Wrap" Text="Typ statku" VerticalAlignment="Top" Height="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="96,276,0,0" TextWrapping="Wrap" Text="Pojemność statku" VerticalAlignment="Top" Height="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="96,364,0,0" TextWrapping="Wrap" Text="Nazwa ładunku" VerticalAlignment="Top" Height="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="96,442,0,0" TextWrapping="Wrap" Text="Waga ładunku" VerticalAlignment="Top" Height="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="96,497,0,0" TextWrapping="Wrap" Text="Status ładunku" VerticalAlignment="Top" RenderTransformOrigin="0.039,0.113" Height="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="96,559,0,0" TextWrapping="Wrap" Text="Data przypływu" VerticalAlignment="Top" Height="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="96,620,0,0" TextWrapping="Wrap" Text="Data odpływu" VerticalAlignment="Top" Height="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="96,682,0,0" TextWrapping="Wrap" Text="Nazwa doku" VerticalAlignment="Top"/>
+    </Grid>
+</Window>

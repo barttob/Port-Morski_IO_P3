@@ -62,6 +62,9 @@ namespace Port_Morski.Pages
                     adm.LoadData();
                     this.Visibility = Visibility.Collapsed;
                 
+
+                
+
                 
             }
         }
