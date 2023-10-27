@@ -15,6 +15,7 @@
     <None Remove="Images\logo.png" />
     <None Remove="Images\logout.png" />
     <None Remove="Images\port.png" />
+    <None Remove="Images\search_icon.png" />
     <None Remove="Images\statek.png" />
     <None Remove="Images\user.png" />
     <None Remove="Images\wyjscie.png" />
@@ -52,6 +53,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\port.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\search_icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\statek.png">
