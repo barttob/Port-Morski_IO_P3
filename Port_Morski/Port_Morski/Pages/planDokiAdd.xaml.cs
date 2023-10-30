@@ -1,4 +1,5 @@
-﻿using Port_Morski.Models;
+﻿using MaterialDesignThemes.Wpf;
+using Port_Morski.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,22 @@ namespace Port_Morski.Pages
         {
             InitializeComponent();
             Btn_Exit.Click += Btn_Exit_Click;
+            InitializeComboBoxes();
+        }
+
+        private void InitializeComboBoxes()
+        {
+            // Your DbContext class, replace 'YourDbContext' with your actual class.
+            using (var context = new SeaPortContext())
+            {
+                // Retrieve ships and docks from the database.
+                List<Ship> ships = context.Ships.ToList();
+                List<Models.Dock> docks = context.Docks.ToList();
+
+                // Set the items source for the ComboBoxes.
+                shipComboBox.ItemsSource = ships;
+                dockComboBox.ItemsSource = docks;
+            }
         }
 
         private void Btn_Exit_Click(object sender, RoutedEventArgs e)
@@ -36,7 +53,7 @@ namespace Port_Morski.Pages
 
         public void addSS_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(ship.Text) || string.IsNullOrWhiteSpace(dock.Text))
+            if (string.IsNullOrWhiteSpace(shipComboBox.Text) || string.IsNullOrWhiteSpace(dockComboBox.Text))
             {
                 MessageBox.Show("Wszystkie pola muszą być wypełnione.");
                 return;
@@ -48,8 +65,8 @@ namespace Port_Morski.Pages
                 {
                     var newShipSchedule = new ShipSchedule
                     {
-                        ShipId = int.Parse(ship.Text),
-                        DockId = int.Parse(dock.Text),
+                        ShipId = GetSelectedShipId(),
+                        DockId = GetSelectedDockId(),
                         ArriveDate = arrive.SelectedDate,
                         FlowOutDate = flowout.SelectedDate,
                     };
@@ -67,6 +84,26 @@ namespace Port_Morski.Pages
                 }
             }
 
+        }
+
+        private int GetSelectedShipId()
+        {
+            if (shipComboBox.SelectedItem is Ship selectedShip)
+            {
+                return selectedShip.Id;
+            }
+
+            return -1;
+        }
+
+        private int GetSelectedDockId()
+        {
+            if (dockComboBox.SelectedItem is Models.Dock selectedDock)
+            {
+                return selectedDock.Id;
+            }
+
+            return -1;
         }
     }
 }
