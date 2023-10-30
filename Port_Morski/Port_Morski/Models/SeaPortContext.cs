@@ -39,7 +39,6 @@ public partial class SeaPortContext : DbContext
             entity.ToTable("Cargo");
 
             entity.Property(e => e.Id)
-                .ValueGeneratedNever()
                 .HasColumnName("id");
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
@@ -60,7 +59,6 @@ public partial class SeaPortContext : DbContext
         modelBuilder.Entity<Dock>(entity =>
         {
             entity.Property(e => e.Id)
-                .ValueGeneratedNever()
                 .HasColumnName("id");
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
@@ -73,7 +71,6 @@ public partial class SeaPortContext : DbContext
             entity.ToTable("EmpSchedule");
 
             entity.Property(e => e.Id)
-                .ValueGeneratedNever()
                 .HasColumnName("id");
             entity.Property(e => e.EndDate)
                 .HasColumnType("datetime")
@@ -95,7 +92,6 @@ public partial class SeaPortContext : DbContext
         modelBuilder.Entity<Ship>(entity =>
         {
             entity.Property(e => e.Id)
-                .ValueGeneratedNever()
                 .HasColumnName("id");
             entity.Property(e => e.Capacity).HasColumnName("capacity");
             entity.Property(e => e.Name)
@@ -113,7 +109,6 @@ public partial class SeaPortContext : DbContext
             entity.ToTable("ShipSchedule");
 
             entity.Property(e => e.Id)
-                .ValueGeneratedNever()
                 .HasColumnName("id");
             entity.Property(e => e.ArriveDate)
                 .HasColumnType("datetime")

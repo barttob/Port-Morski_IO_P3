@@ -3,11 +3,49 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:Port_Morski.Pages"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="#F5F0F6">
-        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="PLANOWANIE OPERACJI PORTOWYCH" VerticalAlignment="Center" FontSize="48"/>
+             d:DesignHeight="1007" d:DesignWidth="1186">
+    <Grid Background="#F5F0F6" Margin="0,0,0,0">
+        <materialDesign:Card Margin="75,95,0,0" Width="448" Height="340" UniformCornerRadius="25" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
+            <StackPanel VerticalAlignment="Stretch">
+                <Border Background="#E7E7E7" CornerRadius="25,25,0,0" Height="59" VerticalAlignment="Top">
+                    <StackPanel>
+                        <TextBlock Text="Plan Doków" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,15,0,0" FontSize="24" FontWeight="Bold"/>
+                    </StackPanel>
+                </Border>
+
+
+
+                <DataGrid Name="datagridPlanDokowFront" AutoGenerateColumns="False" IsReadOnly="True" HorizontalContentAlignment="Stretch" FontSize="18" VerticalContentAlignment="Stretch" Height="246" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" HeadersVisibility="None">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Width="SizeToCells">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="/Images/port.png" Width="36" Height="36" Margin="5"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTextColumn Width="*" Binding="{Binding Ship.Name}" />
+                        <DataGridTextColumn Width="*" Binding="{Binding Dock.Name}" />
+
+                    </DataGrid.Columns>
+                </DataGrid>
+
+
+
+                <Button x:Name="wiecejPlanDokow" Style="{StaticResource MaterialDesignFlatMidBgButton}"  Height="28" Width="144" materialDesign:ButtonAssist.CornerRadius="10,10,0,0" FontSize="18" Content="Więcej" Background="#FFD7B377" Foreground="Black" BorderBrush="Black" Padding="16,1,16,4" HorizontalAlignment="Right" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" Click="wiecejPlanDokow_Click" Margin="0,8,20,0"/>
+
+            </StackPanel>
+        </materialDesign:Card>
+
+
+        <local:planDoki x:Name="planDoki" Visibility="Collapsed" />
+
 
     </Grid>
 </UserControl>

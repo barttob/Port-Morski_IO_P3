@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Port_Morski.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,23 @@ namespace Port_Morski.Pages
         public PlanowanieOperacjiPortowych()
         {
             InitializeComponent();
+            LoadData();
+        }
+        public void LoadData()
+        {
+            using (var context = new SeaPortContext())
+            {
+                var shipSchedule = context.ShipSchedules
+        .Include(schedule => schedule.Ship)
+        .Include(schedule => schedule.Dock)
+        .ToList();
+                datagridPlanDokowFront.ItemsSource = shipSchedule;
+            }
+        }
+
+        private void wiecejPlanDokow_Click(object sender, RoutedEventArgs e)
+        {
+            planDoki.Visibility = Visibility.Visible;
         }
     }
 }

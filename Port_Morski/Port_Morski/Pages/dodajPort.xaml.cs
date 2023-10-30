@@ -45,7 +45,6 @@ namespace Port_Morski.Pages
 
             using (var context = new SeaPortContext())
             {
-               
                     var newdock = new Dock
                     {
                         Name = Nazwa.Text,
@@ -61,11 +60,11 @@ namespace Port_Morski.Pages
                     admPorty adm = new admPorty();
                     adm.LoadData();
                     this.Visibility = Visibility.Collapsed;
-                
 
                 
 
-                
+
+
             }
         }
     }

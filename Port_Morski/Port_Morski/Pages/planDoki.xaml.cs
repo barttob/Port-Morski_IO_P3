@@ -1,4 +1,5 @@
-﻿using Port_Morski.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Port_Morski.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,66 +14,68 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Dock = Port_Morski.Models.Dock;
 
 namespace Port_Morski.Pages
 {
     /// <summary>
-    /// Logika interakcji dla klasy admPorty.xaml
+    /// Interaction logic for planDoki.xaml
     /// </summary>
-    public partial class admPorty : UserControl
+    public partial class planDoki : UserControl
     {
-        private SeaPortContext context = new SeaPortContext();
-        public admPorty()
-        {
 
+        private SeaPortContext context = new SeaPortContext();
+        public planDoki()
+        {
             InitializeComponent();
             LoadData();
         }
+
         internal void LoadData()
         {
-            var docks = context.Docks.ToList();
-            datagridPorty.ItemsSource = docks;
+            var shipSchedule = context.ShipSchedules
+        .Include(schedule => schedule.Ship) 
+        .Include(schedule => schedule.Dock)  
+        .ToList();
+            datagridPorty.ItemsSource = shipSchedule;
         }
-
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button button && button.DataContext is Models.Dock docks)
+            if (sender is Button button && button.DataContext is Models.ShipSchedule shipSchedule)
             {
                 MessageBoxResult result = MessageBox.Show("Czy na pewno chcesz usunąć ten rekord?", "Potwierdź usunięcie", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
-                    context.Docks.Remove(docks);
+                    context.ShipSchedules.Remove(shipSchedule);
                     context.SaveChanges();
                     LoadData();
                 }
             }
+
         }
 
-       
         private void Modify_Click(object sender, RoutedEventArgs e)
+        {
+            Button? modifyButton = sender as Button;
+            if (modifyButton != null)
             {
-                Button? modifyButton = sender as Button;
-                if (modifyButton != null)
+                // Retrieve the user object associated with the clicked button.
+                ShipSchedule? shipSchedule = modifyButton.Tag as ShipSchedule;
+
+                if (shipSchedule != null)
                 {
-                    // Retrieve the user object associated with the clicked button.
-                    Dock? dock = modifyButton.Tag as Dock;
+                    // Show the user data in the modifyUser component.
+                    planDokiModify.Visibility = Visibility.Visible;
 
-                    if (dock != null)
-                    {
-                        // Show the user data in the modifyUser component.
-                        modyfikujPort.Visibility = Visibility.Visible;
-
-                        // Set the DataContext of modifyUser to the user object.
-                        modyfikujPort.DataContext = dock;
-                    }
+                    // Set the DataContext of modifyUser to the user object.
+                    planDokiModify.DataContext = shipSchedule;
                 }
             }
-
+        }
         private void DODAJ_Click(object sender, RoutedEventArgs e)
         {
-            dodajPort.Visibility = Visibility.Visible;
+            planDokiAdd.Visibility = Visibility.Visible;
         }
     }
+
 }

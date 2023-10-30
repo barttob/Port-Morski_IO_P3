@@ -24,7 +24,7 @@ namespace Port_Morski.Migrations
 
             modelBuilder.Entity("Port_Morski.Models.Cargo", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("Id").ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("id");
 
@@ -74,7 +74,7 @@ namespace Port_Morski.Migrations
 
             modelBuilder.Entity("Port_Morski.Models.EmpSchedule", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("Id").ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("id");
 
@@ -106,6 +106,7 @@ namespace Port_Morski.Migrations
             modelBuilder.Entity("Port_Morski.Models.Ship", b =>
                 {
                     b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("id");
 
@@ -133,6 +134,7 @@ namespace Port_Morski.Migrations
             modelBuilder.Entity("Port_Morski.Models.ShipSchedule", b =>
                 {
                     b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("id");
 

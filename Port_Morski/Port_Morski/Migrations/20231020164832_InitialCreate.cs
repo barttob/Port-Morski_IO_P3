@@ -15,7 +15,7 @@ namespace Port_Morski.Migrations
                 name: "Docks",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false),
+                    id = table.Column<int>(type: "int", nullable: false).Annotation("SqlServer:Identity", "1, 1"),
                     name = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: true)
                 },
                 constraints: table =>
@@ -27,7 +27,7 @@ namespace Port_Morski.Migrations
                 name: "Ships",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false),
+                    id = table.Column<int>(type: "int", nullable: false).Annotation("SqlServer:Identity", "1, 1"),
                     name = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: true),
                     type = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: true),
                     capacity = table.Column<int>(type: "int", nullable: true)
