@@ -39,14 +39,6 @@
                     </DataGrid.Columns>
                 </DataGrid>
 
-
-
-
-
-
-
-
-
                 <Button x:Name="wiecejUzytkownicy" Style="{StaticResource MaterialDesignFlatMidBgButton}"  Height="28" Width="144" materialDesign:ButtonAssist.CornerRadius="10,10,0,0" FontSize="18" Content="Więcej" Background="#FFD7B377" Foreground="Black" BorderBrush="Black" Padding="16,1,16,4" HorizontalAlignment="Right" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" Click="wiecejUzytkownicy_Click" Margin="0,8,20,0"/>
 
             </StackPanel>
@@ -79,15 +71,7 @@
                         <DataGridTextColumn Width="*" Binding="{Binding Capacity}" />
                     </DataGrid.Columns>
                 </DataGrid>
-
-
-
-
-
-
-
-
-
+                
                 <Button x:Name="wiecejStatki" Style="{StaticResource MaterialDesignFlatMidBgButton}"  Height="28" Width="144" materialDesign:ButtonAssist.CornerRadius="10,10,0,0" FontSize="18" Content="Więcej" Background="#FFD7B377" Foreground="Black" BorderBrush="Black" Padding="16,1,16,4" HorizontalAlignment="Right" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" Margin="0,8,20,0" Click="wiecejStatki_Click"/>
 
             </StackPanel>
@@ -100,8 +84,6 @@
                         <TextBlock Text="Porty" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,15,0,0" FontSize="24" FontWeight="Bold"/>
                     </StackPanel>
                 </Border>
-
-
 
                 <DataGrid Name="datagridPortyFront" AutoGenerateColumns="False" IsReadOnly="True" HorizontalContentAlignment="Stretch" FontSize="18" VerticalContentAlignment="Stretch" Height="246" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" HeadersVisibility="None">
                     <DataGrid.Columns>
@@ -119,14 +101,6 @@
                         
                     </DataGrid.Columns>
                 </DataGrid>
-
-
-
-
-
-
-
-
 
                 <Button x:Name="wiecejPorty" Style="{StaticResource MaterialDesignFlatMidBgButton}"  Height="28" Width="144" materialDesign:ButtonAssist.CornerRadius="10,10,0,0" FontSize="18" Content="Więcej" Background="#FFD7B377" Foreground="Black" BorderBrush="Black" Padding="16,1,16,4" HorizontalAlignment="Right" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" Margin="0,8,20,0" Click="wiecejPorty_Click"/>
 

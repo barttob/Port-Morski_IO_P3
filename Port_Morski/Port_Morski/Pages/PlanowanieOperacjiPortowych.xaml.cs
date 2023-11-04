@@ -44,6 +44,11 @@ namespace Port_Morski.Pages
             planDoki.Visibility = Visibility.Visible;
         }
 
+        private void wiecejPlanOperacji_Click(object sender, RoutedEventArgs e)
+        {
+            planOperacje.Visibility = Visibility.Visible;
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             // Tworzenie nowej instancji strony Wyszukiwanie_statków

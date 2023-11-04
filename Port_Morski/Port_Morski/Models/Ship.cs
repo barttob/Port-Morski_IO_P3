@@ -16,4 +16,6 @@ public partial class Ship
     public virtual ICollection<Cargo> Cargos { get; set; } = new List<Cargo>();
 
     public virtual ICollection<ShipSchedule> ShipSchedules { get; set; } = new List<ShipSchedule>();
+
+    public virtual ICollection<Operations> Operationss { get; set; } = new List<Operations>();
 }

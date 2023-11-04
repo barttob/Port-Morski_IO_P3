@@ -36,15 +36,49 @@
                     </DataGrid.Columns>
                 </DataGrid>
 
-
-
                 <Button x:Name="wiecejPlanDokow" Style="{StaticResource MaterialDesignFlatMidBgButton}"  Height="28" Width="144" materialDesign:ButtonAssist.CornerRadius="10,10,0,0" FontSize="18" Content="Więcej" Background="#FFD7B377" Foreground="Black" BorderBrush="Black" Padding="16,1,16,4" HorizontalAlignment="Right" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" Click="wiecejPlanDokow_Click" Margin="0,8,20,0"/>
+
+            </StackPanel>
+        </materialDesign:Card>
+
+        <materialDesign:Card Margin="0,95,75,0" Width="448" Height="340" UniformCornerRadius="25" HorizontalAlignment="Right" VerticalAlignment="Top" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
+            <StackPanel VerticalAlignment="Stretch">
+                <Border Background="#E7E7E7" CornerRadius="25,25,0,0" Height="59" VerticalAlignment="Top">
+                    <StackPanel>
+                        <TextBlock Text="Plan Operacji" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,15,0,0" FontSize="24" FontWeight="Bold"/>
+                    </StackPanel>
+                </Border>
+
+
+
+                <DataGrid Name="datagridOperacjeFront" AutoGenerateColumns="False" IsReadOnly="True" HorizontalContentAlignment="Stretch" FontSize="18" VerticalContentAlignment="Stretch" Height="246" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" HeadersVisibility="None">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Width="SizeToCells">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="/Images/statek.png" Width="36" Height="36" Margin="5"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTextColumn Width="*" Binding="{Binding Operacja}" />
+                        <DataGridTextColumn Width="*" Binding="{Binding Statek}" />
+                        <DataGridTextColumn Width="*" Binding="{Binding Dok}" />    
+                        <DataGridTextColumn Width="*" Binding="{Binding Approved}" />
+                        <DataGridTextColumn Width="*" Binding="{Binding Date}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <Button x:Name="wiecejOperacje" Style="{StaticResource MaterialDesignFlatMidBgButton}"  Height="28" Width="144" materialDesign:ButtonAssist.CornerRadius="10,10,0,0" FontSize="18" Content="Więcej" Background="#FFD7B377" Foreground="Black" BorderBrush="Black" Padding="16,1,16,4" HorizontalAlignment="Right" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" Click="wiecejPlanOperacji_Click" Margin="0,8,20,0"/>
 
             </StackPanel>
         </materialDesign:Card>
 
 
         <local:planDoki x:Name="planDoki" Visibility="Collapsed" />
+        <local:planOperacje x:Name="planOperacje" Visibility="Collapsed" />
         <Button Content="Wyszukaj operację portową" HorizontalAlignment="Left" Margin="36,805,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.588,0.981" Height="45" Width="210" Background="#FFD7B377" Click="Button_Click"/>
 
 
