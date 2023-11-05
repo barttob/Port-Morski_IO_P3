@@ -28,7 +28,7 @@ namespace Port_Morski.Pages
         public planOperacjeAdd()
         {
             InitializeComponent();
-            Btn_Exit.Click += Btn_Exit_Click;
+            Btn_Exit.Click += Btn_Exit_Click;            
             InitializeComboBoxes();
         }
 
@@ -40,6 +40,9 @@ namespace Port_Morski.Pages
                 // Retrieve ships and docks from the database.
                 List<Ship> ships = context.Ships.ToList();
                 List<Models.Dock> docks = context.Docks.ToList();
+
+                //var ships = context.Ships.ToList();
+                //var docks = context.Docks.ToList();
 
                 // Set the items source for the ComboBoxes.
                 shipComboBox.ItemsSource = ships;
@@ -66,11 +69,10 @@ namespace Port_Morski.Pages
                 try
                 {
                     var newOperation = new Operations
-                    {
+                    {           
                         Operation = Operacja.Text,
                         ShipId = GetSelectedShipId(),
                         DockId = GetSelectedDockId(),
-                        Approved = false,
                         Date = date.SelectedDate,
                     };
 

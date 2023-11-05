@@ -80,7 +80,7 @@ namespace Port_Morski.Pages
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Wystąpił błąd podczas dodawania przypłynięcia statku do bazy danych: {ex.Message}");
+                    MessageBox.Show($"Wystąpił błąd podczas dodawania przypłynięcia statku do bazy danych: {ex.InnerException.Message}");
                 }
             }
 

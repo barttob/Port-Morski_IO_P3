@@ -29,9 +29,12 @@ namespace Port_Morski.Pages
             LoadData();
         }
 
-        public void LoadData()
+        internal void LoadData()
         {
-            var operations = context.Operationss.ToList();
+            var operations = context.Operationss
+        .Include(operation => operation.Dock)
+        .Include(operation => operation.Ship)        
+        .ToList();
             datagridOperacje.ItemsSource = operations;
         }
 

@@ -13,12 +13,11 @@ public partial class Operations
 
     public int? DockId { get; set; }
 
-    public bool? Approved { get; set; }
+    public bool Approved { get; set; }
 
     public DateTime? Date { get; set; }
 
+    public virtual Ship? Ship { get; set; }
 
     public virtual Dock? Dock { get; set; }
-
-    public virtual Ship? Ship { get; set; }
 }

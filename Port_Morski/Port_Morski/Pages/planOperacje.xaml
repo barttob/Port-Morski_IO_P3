@@ -26,8 +26,8 @@ xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                         <DataGridTextColumn Header="Operacja" Binding="{Binding Operation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
-                        <DataGridTextColumn Header="Id statku" Binding="{Binding DockId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
-                        <DataGridTextColumn Header="Id doku" Binding="{Binding ShipId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                        <DataGridTextColumn Header="Nazwa statku" Binding="{Binding ShipId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                        <DataGridTextColumn Header="Nazwa doku" Binding="{Binding DockId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
                         <DataGridTextColumn Header="Zatwierdzono" Binding="{Binding Approved, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
 
                         <DataGridTextColumn Header="Data" Width="*" IsReadOnly="True">
@@ -74,8 +74,6 @@ xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 
         <local:planOperacjeAdd x:Name="planOperacjeAdd" Visibility="Collapsed" />
         <local:planOperacjeModify x:Name="planOperacjeModify" Visibility="Collapsed" />
-
-
 
     </Grid>
 </UserControl>
