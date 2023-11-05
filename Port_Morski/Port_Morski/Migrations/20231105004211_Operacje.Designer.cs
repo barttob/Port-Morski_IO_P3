@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Port_Morski.Models;
 
@@ -11,9 +12,11 @@ using Port_Morski.Models;
 namespace Port_Morski.Migrations
 {
     [DbContext(typeof(SeaPortContext))]
-    partial class SeaPortContextModelSnapshot : ModelSnapshot
+    [Migration("20231105004211_Operacje")]
+    partial class Operacje
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

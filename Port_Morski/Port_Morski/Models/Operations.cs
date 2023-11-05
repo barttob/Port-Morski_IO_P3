@@ -13,6 +13,8 @@ public partial class Operations
 
     public int? DockId { get; set; }
 
+    public bool? Approved { get; set; }
+
     public DateTime? Date { get; set; }
 
 

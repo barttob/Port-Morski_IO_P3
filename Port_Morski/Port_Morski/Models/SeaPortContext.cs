@@ -139,8 +139,9 @@ public partial class SeaPortContext : DbContext
             entity.Property(e => e.Date)
                 .HasColumnType("datetime")
                 .HasColumnName("date");
-            entity.Property(e => e.DockId).HasColumnName("dock_id");
-            entity.Property(e => e.ShipId).HasColumnName("ship_id");
+            entity.Property(e => e.ShipId).HasColumnName("dock_id");
+            entity.Property(e => e.DockId).HasColumnName("ship_id");
+            entity.Property(e => e.Approved).HasColumnName("approved");
 
             entity.HasOne(d => d.Dock).WithMany(p => p.Operationss)
                 .HasForeignKey(d => d.DockId)

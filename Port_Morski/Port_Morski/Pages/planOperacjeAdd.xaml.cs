@@ -1,4 +1,5 @@
 ﻿using MaterialDesignThemes.Wpf;
+using System.Runtime.InteropServices;
 using Port_Morski.Models;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static Port_Morski.Pages.planOperacje;
 
 namespace Port_Morski.Pages
 {
@@ -51,9 +53,9 @@ namespace Port_Morski.Pages
             this.Visibility = Visibility.Collapsed;
         }
 
-        public void addSS_Click(object sender, RoutedEventArgs e)
+        public void AddSS_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(shipComboBox.Text) || string.IsNullOrWhiteSpace(dockComboBox.Text))
+            if (string.IsNullOrWhiteSpace(shipComboBox.Text) || string.IsNullOrWhiteSpace(dockComboBox.Text) || string.IsNullOrWhiteSpace(Operacja.Text))
             {
                 MessageBox.Show("Wszystkie pola muszą być wypełnione.");
                 return;
@@ -63,24 +65,25 @@ namespace Port_Morski.Pages
             {
                 try
                 {
-                    var newShipSchedule = new ShipSchedule
+                    var newOperation = new Operations
                     {
+                        Operation = Operacja.Text,
                         ShipId = GetSelectedShipId(),
                         DockId = GetSelectedDockId(),
-                        ArriveDate = arrive.SelectedDate,
-                        FlowOutDate = flowout.SelectedDate,
+                        Approved = false,
+                        Date = date.SelectedDate,
                     };
 
-                    context.ShipSchedules.Add(newShipSchedule);
+                    context.Operationss.Add(newOperation);
                     context.SaveChanges();
 
-                    MessageBox.Show("Pomyślnie dodano nowego przypłynięcie statku do bazy danych.");
+                    MessageBox.Show("Pomyślnie zarejestrowano operację do bazy danych.");
 
                     this.Visibility = Visibility.Collapsed;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Wystąpił błąd podczas dodawania przypłynięcia statku do bazy danych: {ex.Message}");
+                    MessageBox.Show("Wystąpił błąd podczas rejestracji operacji do bazy danych: " + ex.InnerException.Message);
                 }
             }
 

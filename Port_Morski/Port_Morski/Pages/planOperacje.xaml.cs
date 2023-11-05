@@ -26,15 +26,13 @@ namespace Port_Morski.Pages
         public planOperacje()
         {
             InitializeComponent();
+            LoadData();
         }
 
-        internal void LoadData()
+        public void LoadData()
         {
-            var Operations = context.Operationss
-        .Include(operation => operation.Ship)
-        .Include(operation => operation.Dock)
-        .ToList();
-            datagridPorty.ItemsSource = Operations;
+            var operations = context.Operationss.ToList();
+            datagridOperacje.ItemsSource = operations;
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)

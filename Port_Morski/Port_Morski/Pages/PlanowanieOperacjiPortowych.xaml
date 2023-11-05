@@ -63,9 +63,9 @@
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
 
-                        <DataGridTextColumn Width="*" Binding="{Binding Operacja}" />
-                        <DataGridTextColumn Width="*" Binding="{Binding Statek}" />
-                        <DataGridTextColumn Width="*" Binding="{Binding Dok}" />    
+                        <DataGridTextColumn Width="*" Binding="{Binding Operation}" />
+                        <DataGridTextColumn Width="*" Binding="{Binding ShipId}" />
+                        <DataGridTextColumn Width="*" Binding="{Binding DockId}" />
                         <DataGridTextColumn Width="*" Binding="{Binding Approved}" />
                         <DataGridTextColumn Width="*" Binding="{Binding Date}" />
                     </DataGrid.Columns>

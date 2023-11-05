@@ -81,7 +81,7 @@
             <StackPanel VerticalAlignment="Stretch">
                 <Border Background="#E7E7E7" CornerRadius="25,25,0,0" Height="59" VerticalAlignment="Top">
                     <StackPanel>
-                        <TextBlock Text="Porty" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,15,0,0" FontSize="24" FontWeight="Bold"/>
+                        <TextBlock Text="Doki" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,15,0,0" FontSize="24" FontWeight="Bold"/>
                     </StackPanel>
                 </Border>
 
