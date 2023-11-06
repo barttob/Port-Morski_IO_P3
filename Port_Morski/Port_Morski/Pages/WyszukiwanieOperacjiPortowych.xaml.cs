@@ -28,6 +28,7 @@ namespace Port_Morski.Pages
         }
 
 
+
         public void LoadData()
         {
 
@@ -45,7 +46,7 @@ namespace Port_Morski.Pages
             using (var context = new SeaPortContext())
             {
                 var query = from o in context.Operationss
-                            where (string.IsNullOrEmpty(nazwa_operacji_z_textboxa) || o.Operation == nazwa_operacji_z_textboxa) &&
+                            where (string.IsNullOrEmpty(nazwa_operacji_z_textboxa) || o.Operation.StartsWith(nazwa_operacji_z_textboxa)) &&
                                   (string.IsNullOrEmpty(id_statku_z_textboxa) || o.ShipId == int.Parse(id_statku_z_textboxa)) &&
                                   (string.IsNullOrEmpty(id_doku_z_textboxa) || o.DockId == int.Parse(id_doku_z_textboxa)) &&
                                   (string.IsNullOrEmpty(czy_zatwierdzono_z_comboboxa) || o.Approved == bool.Parse(czy_zatwierdzono_z_comboboxa)) &&

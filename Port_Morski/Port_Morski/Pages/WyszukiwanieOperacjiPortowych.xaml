@@ -28,11 +28,11 @@ WindowState="Maximized" Height="1080" Width="1920" ScrollViewer.HorizontalScroll
         </Grid.ColumnDefinitions>
 
 
-        <TextBox x:Name="textbox_nazwaOperacji" HorizontalAlignment="Left" Margin="8,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="281" Height="28" Cursor=""/>
-        <TextBox x:Name="textbox_identyfikatorStatku" HorizontalAlignment="Left" Margin="8,273,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="281" Height="28" Cursor=""/>
-        <TextBox x:Name="textbox_identyfikatorDoku" HorizontalAlignment="Left" Margin="8,356,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="281" Height="28" Cursor=""/>
+        <TextBox x:Name="textbox_nazwaOperacji" HorizontalAlignment="Left" Margin="8,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="281" Height="28" Cursor="" Panel.ZIndex="10"/>
+        <TextBox x:Name="textbox_identyfikatorStatku" HorizontalAlignment="Left" Margin="8,273,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="281" Height="28" Cursor="" Panel.ZIndex="10"/>
+        <TextBox x:Name="textbox_identyfikatorDoku" HorizontalAlignment="Left" Margin="8,356,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="281" Height="28" Cursor="" Panel.ZIndex="10"/>
 
-        <ComboBox Name="combobox_zatwierdzono" Margin="10,422,1491,0" VerticalAlignment="Top" Height="29" RenderTransformOrigin="0.5,0.5">
+        <ComboBox Name="combobox_zatwierdzono" Margin="10,422,0,0" VerticalAlignment="Top" Width="281" Height="29" RenderTransformOrigin="0.5,0.5" Panel.ZIndex="10" HorizontalAlignment="Left">
             <ComboBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -46,7 +46,7 @@ WindowState="Maximized" Height="1080" Width="1920" ScrollViewer.HorizontalScroll
         </ComboBox>
 
 
-        <DatePicker x:Name="datepicker_dataOperacji" HorizontalAlignment="Left" Margin="8,506,0,0"  VerticalAlignment="Top" Width="282" Height="29"/>
+        <DatePicker x:Name="datepicker_dataOperacji" HorizontalAlignment="Left" Margin="8,506,0,0"  VerticalAlignment="Top" Width="282" Height="29" Panel.ZIndex="10"/>
 
 
 
