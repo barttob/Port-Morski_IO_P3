@@ -7,9 +7,9 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="Port_Morski.Pages.Administracja"
              mc:Ignorable="d" 
              d:DesignHeight="1007" d:DesignWidth="1186">
-    
-    
-    
+
+
+
     <Grid Background="#F5F0F6" Margin="0,0,0,0">
         <materialDesign:Card Margin="75,95,0,0" Width="448" Height="340" UniformCornerRadius="25" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
             <StackPanel VerticalAlignment="Stretch">
@@ -19,8 +19,8 @@
                     </StackPanel>
                 </Border>
 
-                
-               
+
+
                 <DataGrid Name="datagridUzytkownicyFront" AutoGenerateColumns="False" IsReadOnly="True" HorizontalContentAlignment="Stretch" FontSize="18" VerticalContentAlignment="Stretch" Height="246" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" HeadersVisibility="None">
                     <DataGrid.Columns>
                         <DataGridTemplateColumn Width="SizeToCells">
@@ -71,13 +71,13 @@
                         <DataGridTextColumn Width="*" Binding="{Binding Capacity}" />
                     </DataGrid.Columns>
                 </DataGrid>
-                
+
                 <Button x:Name="wiecejStatki" Style="{StaticResource MaterialDesignFlatMidBgButton}"  Height="28" Width="144" materialDesign:ButtonAssist.CornerRadius="10,10,0,0" FontSize="18" Content="Więcej" Background="#FFD7B377" Foreground="Black" BorderBrush="Black" Padding="16,1,16,4" HorizontalAlignment="Right" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" Margin="0,8,20,0" Click="wiecejStatki_Click"/>
 
             </StackPanel>
         </materialDesign:Card>
 
-        <materialDesign:Card Margin="75,0,0,95" Width="448" Height="100" UniformCornerRadius="25" HorizontalAlignment="Left" VerticalAlignment="Bottom" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
+        <materialDesign:Card Margin="75,0,0,95" Width="448" Height="340" UniformCornerRadius="25" HorizontalAlignment="Left" VerticalAlignment="Bottom" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
             <StackPanel VerticalAlignment="Stretch">
                 <Border Background="#E7E7E7" CornerRadius="25,25,0,0" Height="59" VerticalAlignment="Top">
                     <StackPanel>
@@ -98,11 +98,10 @@
                         </DataGridTemplateColumn>
 
                         <DataGridTextColumn Width="*" Binding="{Binding Name}" />
-                        
+
                     </DataGrid.Columns>
                 </DataGrid>
-
-                <Button x:Name="wiecejPorty" Style="{StaticResource MaterialDesignFlatMidBgButton}"  Height="28" Width="144" materialDesign:ButtonAssist.CornerRadius="10,10,0,0" FontSize="18" Content="Więcej" Background="#FFD7B377" Foreground="Black" BorderBrush="Black" Padding="16,1,16,4" HorizontalAlignment="Right" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" Margin="0,8,20,0" Click="wiecejPorty_Click"/>
+                <Button x:Name="wiecejPorty" Style="{StaticResource MaterialDesignFlatMidBgButton}"  Height="28" Width="144" materialDesign:ButtonAssist.CornerRadius="10,10,0,0" FontSize="18" Content="Więcej" Background="#FFD7B377" Foreground="Black" BorderBrush="Black" Padding="16,1,16,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="wiecejPorty_Click"/>
 
             </StackPanel>
         </materialDesign:Card>
@@ -113,5 +112,5 @@
         <local:admStatki x:Name="admStatki" Visibility="Collapsed" />
         <local:admPorty x:Name="admPorty" Visibility="Collapsed" />
     </Grid>
-    
+
 </UserControl>

@@ -120,7 +120,7 @@ namespace Port_Morski.Pages
             }
 
             // Utwórz pełną ścieżkę do pliku eksportowanego
-            string exportFileName = $"ExportedData{exportCounter}.{selectedFormat}";
+            string exportFileName = $"ExportedUserData{exportCounter}.{selectedFormat}";
             string exportFilePath = System.IO.Path.Combine(exportFolderPath, exportFileName);
 
             // Zwiększ licznik dla następnych eksportów
@@ -216,6 +216,9 @@ namespace Port_Morski.Pages
             {
                 // Pobierz dane
                 StringBuilder csvData = new StringBuilder();
+
+                // Dodaj nagłówek "Dane użytkowników systemu"
+                csvData.AppendLine("Dane uzytkownikow systemu");
 
                 // Dodaj nagłówki kolumn do CSV
                 foreach (var column in datagridUsers.Columns)

@@ -74,6 +74,18 @@
             </StackPanel>
         </Button>
 
+        <!-- Dodaj ComboBox dla wyboru formatu eksportu -->
+        <ComboBox x:Name="exportFormatComboBox" Text="Format" Width="94" Background="#FF4F80C8" FontSize="20" Foreground="Black" BorderBrush="Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" UseLayoutRounding="False" Height="46" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,18,301,0" Padding="1,4,1,4" IsEditable="True" IsReadOnly="True">
+            <ComboBoxItem Content="PDF"/>
+            <ComboBoxItem Content="CSV"/>
+            <ComboBoxItem Content="Excel"/>
+        </ComboBox>
+
+        <!-- Dodaj przycisk eksportu -->
+        <Button x:Name="exportButton" Content="Eksportuj" Width="100" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" UseLayoutRounding="False" Height="46" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,18,170,0" Padding="1,4,1,4" Background="#FFDDA322" Click="ExportButton_Click" />
+
+
+
         <local:dodajLadunek x:Name="dodajLadunek" Visibility="Collapsed" />
         <local:modyfikujLadunek x:Name="modyfikujLadunek" Visibility="Collapsed" />
         
