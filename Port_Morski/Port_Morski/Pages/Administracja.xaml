@@ -77,7 +77,7 @@
             </StackPanel>
         </materialDesign:Card>
 
-        <materialDesign:Card Margin="75,0,0,95" Width="448" Height="340" UniformCornerRadius="25" HorizontalAlignment="Left" VerticalAlignment="Bottom" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
+        <materialDesign:Card Margin="75,0,0,95" Width="448" Height="330" UniformCornerRadius="25" HorizontalAlignment="Left" VerticalAlignment="Bottom" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
             <StackPanel VerticalAlignment="Stretch">
                 <Border Background="#E7E7E7" CornerRadius="25,25,0,0" Height="59" VerticalAlignment="Top">
                     <StackPanel>
