@@ -64,8 +64,8 @@
                         </DataGridTemplateColumn>
 
                         <DataGridTextColumn Width="*" Binding="{Binding Operation}" />
-                        <DataGridTextColumn Width="*" Binding="{Binding ShipId}" />
-                        <DataGridTextColumn Width="*" Binding="{Binding DockId}" />
+                        <DataGridTextColumn Width="*" Binding="{Binding Ship.Name}" />
+                        <DataGridTextColumn Width="*" Binding="{Binding Dock.Name}" />
                         <DataGridTextColumn Width="*" Binding="{Binding Approved}" />
                         <DataGridTextColumn Width="*" Binding="{Binding Date}" />
                     </DataGrid.Columns>

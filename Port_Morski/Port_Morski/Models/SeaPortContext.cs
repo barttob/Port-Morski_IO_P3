@@ -25,6 +25,8 @@ public partial class SeaPortContext : DbContext
 
     public virtual DbSet<ShipSchedule> ShipSchedules { get; set; }
 
+    public virtual DbSet<Operacje> Operacje { get; set; }
+
     public virtual DbSet<Operations> Operationss { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
@@ -130,12 +132,44 @@ public partial class SeaPortContext : DbContext
                 .HasConstraintName("FK_ShipSchedule_Ships");
         });
 
+        modelBuilder.Entity<Operacje>(entity =>
+        {
+            entity.ToTable("Operacje");
+
+            entity.Property(e => e.Id)
+                .HasColumnName("id");
+            entity.Property(e => e.Operation)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("operation");
+            entity.Property(e => e.Date)
+                .HasColumnType("datetime")
+                .HasColumnName("date");
+            entity.Property(e => e.Approved)
+                .HasColumnType("bool")
+                .HasColumnName("approved");
+            entity.Property(e => e.DockId).HasColumnName("dock_id");
+            entity.Property(e => e.ShipId).HasColumnName("ship_id");
+
+            entity.HasOne(d => d.Dock).WithMany(p => p.Operacje)
+                .HasForeignKey(d => d.DockId)
+                .HasConstraintName("FK_Operacje_Docks");
+
+            entity.HasOne(d => d.Ship).WithMany(p => p.Operacje)
+                .HasForeignKey(d => d.ShipId)
+                .HasConstraintName("FK_Operacje_Ships");
+        });
+
         modelBuilder.Entity<Operations>(entity =>
         {
             entity.ToTable("Operations");
 
             entity.Property(e => e.Id)
                 .HasColumnName("id");
+            entity.Property(e => e.Operation)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("operation");
             entity.Property(e => e.Date)
                 .HasColumnType("datetime")
                 .HasColumnName("date");

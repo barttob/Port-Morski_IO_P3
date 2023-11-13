@@ -68,15 +68,16 @@ namespace Port_Morski.Pages
             {
                 try
                 {
-                    var newOperation = new Operations
-                    {           
+                    var newOperation = new Operacje
+                    {
                         Operation = Operacja.Text,
                         ShipId = GetSelectedShipId(),
                         DockId = GetSelectedDockId(),
                         Date = date.SelectedDate,
+                        Approved = (approvedComboBox.SelectedValue == "true" ? true : false),
                     };
 
-                    context.Operationss.Add(newOperation);
+                    context.Operacje.Add(newOperation);
                     context.SaveChanges();
 
                     MessageBox.Show("Pomyślnie zarejestrowano operację do bazy danych.");

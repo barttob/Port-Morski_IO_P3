@@ -26,8 +26,8 @@ xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                         <DataGridTextColumn Header="Operacja" Binding="{Binding Operation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
-                        <DataGridTextColumn Header="Nazwa statku" Binding="{Binding ShipId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
-                        <DataGridTextColumn Header="Nazwa doku" Binding="{Binding DockId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                        <DataGridTextColumn Header="Nazwa statku" Binding="{Binding Ship.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                        <DataGridTextColumn Header="Nazwa doku" Binding="{Binding Dock.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
                         <DataGridTextColumn Header="Zatwierdzono" Binding="{Binding Approved, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
 
                         <DataGridTextColumn Header="Data" Width="*" IsReadOnly="True">
@@ -78,7 +78,6 @@ xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         <ComboBox x:Name="exportFormatComboBox" Text="Format" Width="94" Background="#FF4F80C8" FontSize="20" Foreground="Black" BorderBrush="Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" UseLayoutRounding="False" Height="46" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,18,301,0" Padding="1,4,1,4" IsEditable="True" IsReadOnly="True">
             <ComboBoxItem Content="PDF"/>
             <ComboBoxItem Content="CSV"/>
-            <ComboBoxItem Content="Excel"/>
         </ComboBox>
 
         <!-- Dodaj przycisk eksportu -->

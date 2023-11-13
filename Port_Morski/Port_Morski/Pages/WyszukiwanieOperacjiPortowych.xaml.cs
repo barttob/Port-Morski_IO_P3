@@ -45,7 +45,7 @@ namespace Port_Morski.Pages
 
             using (var context = new SeaPortContext())
             {
-                var query = from o in context.Operationss
+                var query = from o in context.Operacje
                             where (string.IsNullOrEmpty(nazwa_operacji_z_textboxa) || o.Operation.StartsWith(nazwa_operacji_z_textboxa)) &&
                                   (string.IsNullOrEmpty(id_statku_z_textboxa) || o.ShipId == int.Parse(id_statku_z_textboxa)) &&
                                   (string.IsNullOrEmpty(id_doku_z_textboxa) || o.DockId == int.Parse(id_doku_z_textboxa)) &&

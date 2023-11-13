@@ -34,7 +34,7 @@ namespace Port_Morski.Pages
 
         internal void LoadData()
         {
-            var operations = context.Operationss
+            var operations = context.Operacje
         .Include(operation => operation.Dock)
         .Include(operation => operation.Ship)        
         .ToList();
@@ -43,12 +43,12 @@ namespace Port_Morski.Pages
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button button && button.DataContext is Models.Operations Operations)
+            if (sender is Button button && button.DataContext is Models.Operacje Operacje)
             {
                 MessageBoxResult result = MessageBox.Show("Czy na pewno chcesz usunąć ten rekord?", "Potwierdź usunięcie", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
-                    context.Operationss.Remove(Operations);
+                    context.Operacje.Remove(Operacje);
                     context.SaveChanges();
                     LoadData();
                 }
@@ -62,15 +62,15 @@ namespace Port_Morski.Pages
             if (modifyButton != null)
             {
                 // Retrieve the user object associated with the clicked button.
-                Operations? Operations = modifyButton.Tag as Operations;
+                Operacje? Operacje = modifyButton.Tag as Operacje;
 
-                if (Operations != null)
+                if (Operacje != null)
                 {
                     // Show the user data in the modifyUser component.
                     planOperacjeModify.Visibility = Visibility.Visible;
 
                     // Set the DataContext of modifyUser to the user object.
-                    planOperacjeModify.DataContext = Operations;
+                    planOperacjeModify.DataContext = Operacje;
                 }
             }
         }

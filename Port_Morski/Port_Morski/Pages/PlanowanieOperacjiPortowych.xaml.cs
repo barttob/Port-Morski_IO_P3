@@ -37,7 +37,7 @@ namespace Port_Morski.Pages
         .ToList();
                 datagridPlanDokowFront.ItemsSource = shipSchedule;
 
-                var operations = context.Operationss
+                var operations = context.Operacje
         .Include(operation => operation.Ship)
         .Include(operation => operation.Dock)
         .ToList();
