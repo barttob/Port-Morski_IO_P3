@@ -41,6 +41,7 @@
     </PackageReference>
     <PackageReference Include="PdfSharp" Version="1.50.5147" />
     <PackageReference Include="PdfSharp.MigraDoc.Standard" Version="1.51.15" />
+    <PackageReference Include="Syncfusion.SfMaps.WPF" Version="23.1.44" />
   </ItemGroup>
 
   <ItemGroup>
