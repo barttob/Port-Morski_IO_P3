@@ -27,10 +27,13 @@ public partial class SeaPortContext : DbContext
 
     public virtual DbSet<Operacje> Operacje { get; set; }
 
+    public virtual DbSet<Operacje_Log> Operacje_Logs { get; set; }
+
     public virtual DbSet<Operations> Operationss { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
     public object Cargo { get; internal set; }
+
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
@@ -209,6 +212,70 @@ public partial class SeaPortContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("user_role");
+        });
+
+
+        modelBuilder.Entity<Operacje_Log>(entity =>
+        {
+            entity.ToTable("Operacje_Log"); // Ustaw nazwę tabeli
+
+            entity.Property(e => e.LogID)
+                .HasColumnName("LogID")
+                .IsRequired()
+                .UseIdentityColumn();
+
+            entity.Property(e => e.OldOperation)
+                .HasColumnName("OldOperation")
+                .HasColumnType("nvarchar(max)");
+
+            entity.Property(e => e.NewOperation)
+                .HasColumnName("NewOperation")
+                .HasColumnType("nvarchar(max)");
+
+            // Dodaj konfiguracje dla pozostałych właściwości
+            entity.Property(e => e.OldShipId)
+                .HasColumnName("OldShipId")
+                .HasColumnType("int");
+
+            entity.Property(e => e.NewShipId)
+                .HasColumnName("NewShipId")
+                .HasColumnType("int");
+
+            entity.Property(e => e.OldDockId)
+                .HasColumnName("OldDockId")
+                .HasColumnType("int");
+
+            entity.Property(e => e.NewDockId)
+                .HasColumnName("NewDockId")
+                .HasColumnType("int");
+
+            entity.Property(e => e.OldApproved)
+                .HasColumnName("OldApproved")
+                .HasColumnType("bit");
+
+            entity.Property(e => e.NewApproved)
+                .HasColumnName("NewApproved")
+                .HasColumnType("bit");
+
+            entity.Property(e => e.OldDate)
+                .HasColumnName("OldDate")
+                .HasColumnType("datetime");
+
+            entity.Property(e => e.NewDate)
+                .HasColumnName("NewDate")
+                .HasColumnType("datetime");
+
+            entity.Property(e => e.OperationTypeOnTable)
+                .HasColumnName("OperationTypeOnTable")
+                .HasColumnType("nvarchar(50)");
+
+            entity.Property(e => e.LogDate)
+                .HasColumnName("LogDate")
+                .HasColumnType("datetime")
+                .HasDefaultValueSql("getdate()");
+
+            entity.HasKey(e => e.LogID);
+
         });
 
         OnModelCreatingPartial(modelBuilder);

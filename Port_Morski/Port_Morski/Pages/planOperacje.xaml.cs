@@ -48,13 +48,23 @@ namespace Port_Morski.Pages
                 MessageBoxResult result = MessageBox.Show("Czy na pewno chcesz usunąć ten rekord?", "Potwierdź usunięcie", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
-                    context.Operacje.Remove(Operacje);
-                    context.SaveChanges();
-                    LoadData();
+                    try
+                    {
+                        // Usunięcie rekordu bezpośrednio z bazy danych, pomijając EF Core
+                        context.Database.ExecuteSqlRaw($"DELETE FROM SeaPort.dbo.Operacje WHERE id = {Operacje.Id}");
+
+                        // Nie używamy context.SaveChanges(), ponieważ już wykonaliśmy operację DELETE
+
+                        LoadData();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Obsługa błędu
+                    }
                 }
             }
-
         }
+
 
         private void Modify_Click(object sender, RoutedEventArgs e)
         {
