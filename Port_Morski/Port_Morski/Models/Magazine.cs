@@ -15,7 +15,7 @@ public partial class Magazine
 
     public string? Specification { get; set; }
 
-    public int? TerminalId { get; set; }
+    public int? DockId { get; set; }
 
-    public virtual Terminal? Terminal { get; set; }
+    public virtual Dock? Dock { get; set; }
 }

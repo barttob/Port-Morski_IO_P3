@@ -240,11 +240,11 @@ public partial class SeaPortContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("specification");
-            entity.Property(e => e.TerminalId).HasColumnName("term_id");
+            entity.Property(e => e.DockId).HasColumnName("dock_id");
 
-            entity.HasOne(d => d.Terminal).WithMany(p => p.Magazines)
-                .HasForeignKey(d => d.TerminalId)
-                .HasConstraintName("FK_Magazines_Terminals");
+            entity.HasOne(d => d.Dock).WithMany(p => p.Magazines)
+                .HasForeignKey(d => d.DockId)
+                .HasConstraintName("FK_Magazines_Docks");
         });
 
         modelBuilder.Entity<User>(entity =>

@@ -20,5 +20,4 @@ public partial class Terminal
     public int? DockId { get; set; }
 
     public virtual Dock? Dock { get; set; }
-    public virtual ICollection<Magazine> Magazines { get; set; } = new List<Magazine>();
 }
