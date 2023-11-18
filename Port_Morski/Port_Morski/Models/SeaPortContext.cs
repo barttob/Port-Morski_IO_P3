@@ -17,6 +17,10 @@ public partial class SeaPortContext : DbContext
 
     public virtual DbSet<Cargo> Cargos { get; set; }
 
+    public virtual DbSet<Terminal> Terminals { get; set; }
+
+    public virtual DbSet<Magazine> Magazines { get; set; }
+
     public virtual DbSet<Dock> Docks { get; set; }
 
     public virtual DbSet<EmpSchedule> EmpSchedules { get; set; }
@@ -187,6 +191,60 @@ public partial class SeaPortContext : DbContext
             entity.HasOne(d => d.Ship).WithMany(p => p.Operationss)
                 .HasForeignKey(d => d.ShipId)
                 .HasConstraintName("FK_Operations_Ships");
+        });
+
+        modelBuilder.Entity<Terminal>(entity =>
+        {
+            entity.ToTable("Terminals");
+
+            entity.Property(e => e.Id)
+                .HasColumnName("id");
+            entity.Property(e => e.Name)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("name");
+            entity.Property(e => e.Type)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("type");
+            entity.Property(e => e.MaxCapacity)
+                .HasColumnName("max_capacity");
+            entity.Property(e => e.Available)
+                .HasColumnType("bool")
+                .HasColumnName("available");
+            entity.Property(e => e.AvailableFromDate)
+                .HasColumnType("datetime")
+                .HasColumnName("available_from_date");
+            entity.Property(e => e.DockId).HasColumnName("dock_id");
+
+            entity.HasOne(d => d.Dock).WithMany(p => p.Terminals)
+                .HasForeignKey(d => d.DockId)
+                .HasConstraintName("FK_Terminals_Docks");
+        });
+
+        modelBuilder.Entity<Magazine>(entity =>
+        {
+            entity.ToTable("Magazines");
+
+            entity.Property(e => e.Id)
+                .HasColumnName("id");
+            entity.Property(e => e.Name)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("name");
+            entity.Property(e => e.Area)
+                .HasColumnName("area");
+            entity.Property(e => e.AvailableCapacity)
+                .HasColumnName("available_capacity");
+            entity.Property(e => e.Specification)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("specification");
+            entity.Property(e => e.TerminalId).HasColumnName("term_id");
+
+            entity.HasOne(d => d.Terminal).WithMany(p => p.Magazines)
+                .HasForeignKey(d => d.TerminalId)
+                .HasConstraintName("FK_Magazines_Terminals");
         });
 
         modelBuilder.Entity<User>(entity =>

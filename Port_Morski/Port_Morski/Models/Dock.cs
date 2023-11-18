@@ -14,4 +14,6 @@ public partial class Dock
     public virtual ICollection<Operacje> Operacje { get; set; } = new List<Operacje>();
 
     public virtual ICollection<Operations> Operationss { get; set; } = new List<Operations>();
+
+    public virtual ICollection<Terminal> Terminals { get; set; } = new List<Terminal>();
 }
