@@ -7,14 +7,14 @@
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
               d:DesignHeight="1007" d:DesignWidth="1186">
-    <Grid Background="#F5F0F6" >
+    <Grid x:Name="mainGrid" Background="#F5F0F6" >
 
 
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal"/>
         <materialDesign:Card Margin="30,85,30,27" UniformCornerRadius="25">
 
             <StackPanel >
-                <DataGrid Name="datagridPorty" FontSize="16" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="True" CanUserResizeRows="True" CanUserResizeColumns="True" IsReadOnly="True" ItemsSource="{Binding Docks}" >
+                <DataGrid  Name="datagridPorty" FontSize="16" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="True" CanUserResizeRows="True" CanUserResizeColumns="True" IsReadOnly="True" ItemsSource="{Binding Docks}" >
                     <DataGrid.Columns>
                         <DataGridTemplateColumn Width="SizeToCells">
                             <DataGridTemplateColumn.CellTemplate>
@@ -25,7 +25,18 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
+                        <!-- Ukryta kolumna Id -->
+                        <DataGridTemplateColumn Visibility="Hidden">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <!-- Binding do właściwości Id w Twoim obiekcie Dock -->
+                                    <TextBlock Text="{Binding Id}" Visibility="Hidden"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                         <DataGridTextColumn Header="Nazwa" Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                        <DataGridTextColumn Header="Ilość Magazynów" Width="*"/>
+                        <DataGridTextColumn Header="Ilość Terminali" Width="*"/>
                         
 
                         <DataGridTemplateColumn Header="Opcje" Width="Auto">

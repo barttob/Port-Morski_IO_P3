@@ -25,6 +25,7 @@ namespace Port_Morski.Pages
         {
             InitializeComponent();
             Btn_Exit.Click += Btn_Exit_Click;
+           // LoadMagazinesData();
         }
 
         private void Btn_Exit_Click(object sender, RoutedEventArgs e)
@@ -32,7 +33,22 @@ namespace Port_Morski.Pages
 
             this.Visibility = Visibility.Collapsed;
         }
+        private void LoadMagazinesData()
+        {
+            using (SeaPortContext context = new SeaPortContext())
+            {
+                // Pobierz Id z TextBoxa
+                var dockId = Id.Text;
+                MessageBox.Show($"Wartość dockId: {dockId}");
+                // Wykonaj zapytanie do bazy danych
+                //List<Magazine> magazines = context.Magazines
+                   // .Where(m => m.DockId == dockId) // Zakładam, że istnieje pole DockId w tabeli Magazines
+                  //  .ToList();
 
+                // Przypisz dane do źródła danych dla DataGrid
+               // datagridMagazyny.ItemsSource = magazines;
+            }
+        }
         private void modify_Click(object sender, RoutedEventArgs e)
         {
             using (var context = new SeaPortContext())
@@ -66,6 +82,26 @@ namespace Port_Morski.Pages
                     MessageBox.Show($"Wystąpił błąd podczas aktualizacji użytkownika w bazie danych: {ex.Message}");
                 }
             }
+        }
+
+        private void add_Row_Magazyny(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void add_Row_Terminal(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Del_Mag_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Del_Term_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

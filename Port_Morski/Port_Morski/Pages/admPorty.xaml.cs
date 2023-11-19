@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+
 using System.Windows.Shapes;
 using Dock = Port_Morski.Models.Dock;
 
@@ -36,7 +37,10 @@ namespace Port_Morski.Pages
         {
             var docks = context.Docks.ToList();
             datagridPorty.ItemsSource = docks;
+
+
         }
+       
 
 
         private void Delete_Click(object sender, RoutedEventArgs e)
@@ -56,22 +60,15 @@ namespace Port_Morski.Pages
        
         private void Modify_Click(object sender, RoutedEventArgs e)
             {
-                Button? modifyButton = sender as Button;
-                if (modifyButton != null)
-                {
-                    // Retrieve the user object associated with the clicked button.
-                    Dock? dock = modifyButton.Tag as Dock;
+            Dock selectedDock = (sender as Button)?.Tag as Dock;
 
-                    if (dock != null)
-                    {
-                        // Show the user data in the modifyUser component.
-                        modyfikujPort.Visibility = Visibility.Visible;
+            
+            modyfikujPort userControl = new modyfikujPort();
+            userControl.Id.Text = selectedDock.Id.ToString();
+            userControl.Nazwa.Text = selectedDock.Name;
 
-                        // Set the DataContext of modifyUser to the user object.
-                        modyfikujPort.DataContext = dock;
-                    }
-                }
-            }
+            mainGrid.Children.Add(userControl);
+        }
 
         private void DODAJ_Click(object sender, RoutedEventArgs e)
         {

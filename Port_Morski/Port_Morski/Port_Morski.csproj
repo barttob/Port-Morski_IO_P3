@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.5.1" />
     <PackageReference Include="iTextSharp" Version="5.5.13.3" />
     <PackageReference Include="BouncyCastle" Version="1.8.9" />
     <PackageReference Include="BouncyCastle.NetCore" Version="2.2.1" />

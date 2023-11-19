@@ -13,7 +13,7 @@ public partial class Terminal
 
     public int? MaxCapacity { get; set; }
 
-    public bool Available { get; set; }
+    public bool? Available { get; set; }
 
     public DateTime? AvailableFromDate { get; set; }
 
