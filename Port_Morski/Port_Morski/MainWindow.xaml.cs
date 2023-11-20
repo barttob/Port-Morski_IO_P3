@@ -23,12 +23,13 @@ namespace Port_Morski
     public partial class MainWindow : Window
     {
         private string? UserRole { get; }
+
         public MainWindow(string userRole)
         {
             InitializeComponent();
             UserRole = userRole;
             this.WindowState = WindowState.Maximized;
-
+            SetButtonColorOnLoad();
 
 
             // Sprawdź, czy Tag nie jest pusty
@@ -58,7 +59,11 @@ namespace Port_Morski
                 MessageBox.Show("Niepoprawnie przesłano Tag roli dla użytkownika"); 
             }
         }
-
+        private void SetButtonColorOnLoad()
+        {
+            StatystykiButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#D7B377"));
+            // Dodaj kolejne przyciski, jeśli są inne, i ustaw im kolor tła
+        }
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             MainGrid.Children.Clear();
@@ -72,12 +77,14 @@ namespace Port_Morski
             Application.Current.Shutdown();
         }
 
-
+        private Button currentButton;
         private void StatystykiButton_Click(object sender, RoutedEventArgs e)
         {
             MainGrid.Children.Clear();
             Statystyki statystyki = new Statystyki();
             MainGrid.Children.Add(statystyki);
+            SwitchContentAndChangeButtonColor<Statystyki>((Button)sender);
+            
         }
 
         private void MonitorowanieStatkow_Click(object sender, RoutedEventArgs e)
@@ -85,6 +92,8 @@ namespace Port_Morski
             MainGrid.Children.Clear();
             MonitorowanieStatkow monitorowanie = new MonitorowanieStatkow();
             MainGrid.Children.Add(monitorowanie);
+            SwitchContentAndChangeButtonColor<MonitorowanieStatkow>((Button)sender);
+            StatystykiButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#8F754F"));
         }
 
         private void ZarzadzanieLadunkami_Click(object sender, RoutedEventArgs e)
@@ -92,6 +101,8 @@ namespace Port_Morski
             MainGrid.Children.Clear();
             ZarzadzanieLadunkami zarzadzanieLadunkami = new ZarzadzanieLadunkami();
             MainGrid.Children.Add(zarzadzanieLadunkami);
+            SwitchContentAndChangeButtonColor<ZarzadzanieLadunkami>((Button)sender);
+            StatystykiButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#8F754F"));
         }
 
         private void PlanowanieOperacjiPortowych_Click(object sender, RoutedEventArgs e)
@@ -99,6 +110,8 @@ namespace Port_Morski
             MainGrid.Children.Clear();
             PlanowanieOperacjiPortowych planowanie = new PlanowanieOperacjiPortowych();
             MainGrid.Children.Add(planowanie);
+            SwitchContentAndChangeButtonColor<PlanowanieOperacjiPortowych>((Button)sender);
+            StatystykiButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#8F754F"));
         }
 
 
@@ -107,6 +120,8 @@ namespace Port_Morski
             MainGrid.Children.Clear();
             GenerowanieRaportow generowanieRaportow = new GenerowanieRaportow();
             MainGrid.Children.Add(generowanieRaportow);
+            SwitchContentAndChangeButtonColor<GenerowanieRaportow>((Button)sender);
+            StatystykiButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#8F754F"));
         }
 
         private void Administracja_Click(object sender, RoutedEventArgs e)
@@ -115,6 +130,27 @@ namespace Port_Morski
             MainGrid.Children.Clear();
             Administracja administracja = new Administracja();
             MainGrid.Children.Add(administracja);
+            SwitchContentAndChangeButtonColor<Administracja>((Button)sender);
+            StatystykiButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#8F754F"));
+        }
+        private void SwitchContentAndChangeButtonColor<T>(Button clickedButton) where T : UserControl, new()
+        {
+            // Przywrócenie koloru pierwotnego poprzedniego przycisku
+            if (currentButton != null)
+            {
+                currentButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#8F754F")); // Ustawienie pierwotnego koloru
+            }
+
+            // Ustawienie koloru tła aktualnie klikniętego przycisku
+            clickedButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#D7B377"));
+
+            // Przechowanie aktualnie klikniętego przycisku
+            currentButton = clickedButton;
+
+            // Zmiana zawartości okna
+            MainGrid.Children.Clear();
+            T content = new T();
+            MainGrid.Children.Add(content);
         }
     }
 }
