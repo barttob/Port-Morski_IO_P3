@@ -52,7 +52,7 @@
                         HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                         HorizontalAlignment="Center" VerticalAlignment="Top" />
 
-                    <TextBox Grid.Row="0" Grid.Column="0" Margin="5" Text="{Binding Id}" x:Name="Id" Visibility="Hidden"/>
+                    <TextBox Grid.Row="0" Grid.Column="2" Margin="5" x:Name="Id" Visibility="Hidden"/>
 
 
 
@@ -60,12 +60,10 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
-                        <!-- Dodano kolumnę dla GridSplitter -->
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <!-- Dodano blok z napisem "Magazyny" nad DataGridMagazyny -->
                     <StackPanel Grid.Column="0" VerticalAlignment="Center">
                         <Grid Grid.Column="0">
                             <Grid.ColumnDefinitions>
@@ -90,15 +88,15 @@
                                             <Setter Property="ItemsSource">
                                                 <Setter.Value>
                                                     <x:Array Type="{x:Type sys:String}">
-                                                        <sys:String>Magazyny ogólne</sys:String>
-                                                        <sys:String>Magazyny kontenerowe</sys:String>
-                                                        <sys:String>Magazyny chłodnicze</sys:String>
-                                                        <sys:String>Magazyny suche-bulk</sys:String>
-                                                        <sys:String>Magazyny ciekłego-cargo</sys:String>
-                                                        <sys:String>Magazyny Ro-Ro (Roll-on/Roll-off)</sys:String>
-                                                        <sys:String>Magazyny ładunków niebezpiecznych</sys:String>
-                                                        <sys:String>Magazyny przeładunkowe</sys:String>
-                                                        <sys:String>Magazyny specjalistyczne</sys:String>
+                                                        <sys:String>Magazyn ogolny</sys:String>
+                                                        <sys:String>Magazyn kontenerowy</sys:String>
+                                                        <sys:String>Magazyn chlodniczy</sys:String>
+                                                        <sys:String>Magazyn suche-bulk</sys:String>
+                                                        <sys:String>Magazyn cieklego-cargo</sys:String>
+                                                        <sys:String>Magazyn Ro-Ro (Roll-on/Roll-off)</sys:String>
+                                                        <sys:String>Magazyn ladunkow niebezpiecznych</sys:String>
+                                                        <sys:String>Magazyn przeladunkowy</sys:String>
+                                                        <sys:String>Magazyn specjalistyczny</sys:String>
                                                     </x:Array>
                                                 </Setter.Value>
                                             </Setter>
@@ -109,15 +107,15 @@
                                             <Setter Property="ItemsSource">
                                                 <Setter.Value>
                                                     <x:Array Type="{x:Type sys:String}">
-                                                        <sys:String>Magazyny ogólne</sys:String>
-                                                        <sys:String>Magazyny kontenerowe</sys:String>
-                                                        <sys:String>Magazyny chłodnicze</sys:String>
-                                                        <sys:String>Magazyny suche-bulk</sys:String>
-                                                        <sys:String>Magazyny ciekłego-cargo</sys:String>
-                                                        <sys:String>Magazyny Ro-Ro (Roll-on/Roll-off)</sys:String>
-                                                        <sys:String>Magazyny ładunków niebezpiecznych</sys:String>
-                                                        <sys:String>Magazyny przeładunkowe</sys:String>
-                                                        <sys:String>Magazyny specjalistyczne</sys:String>
+                                                        <sys:String>Magazyn ogolny</sys:String>
+                                                        <sys:String>Magazyn kontenerowy</sys:String>
+                                                        <sys:String>Magazyn chlodniczy</sys:String>
+                                                        <sys:String>Magazyn suche-bulk</sys:String>
+                                                        <sys:String>Magazyn cieklego-cargo</sys:String>
+                                                        <sys:String>Magazyn Ro-Ro (Roll-on/Roll-off)</sys:String>
+                                                        <sys:String>Magazyn ladunkow niebezpiecznych</sys:String>
+                                                        <sys:String>Magazyn przeladunkowy</sys:String>
+                                                        <sys:String>Magazyn specjalistyczny</sys:String>
                                                     </x:Array>
                                                 </Setter.Value>
                                             </Setter>
@@ -141,11 +139,9 @@
                             </DataGrid.Columns>
                         </DataGrid>
                     </StackPanel>
-
-                    <!-- Dodano GridSplitter między kolumnami 0 i 2 -->
+                    
                     <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ResizeBehavior="PreviousAndNext" />
 
-                    <!-- Dodano blok z napisem "Terminale" nad DataGridTerminale -->
                     <StackPanel Grid.Column="2">
                         <Grid Grid.Column="0">
                             <Grid.ColumnDefinitions>
@@ -168,14 +164,14 @@
                                                 <Setter.Value>
                                                     <x:Array Type="{x:Type sys:String}">
                                                         <sys:String>Terminal kontenerowy</sys:String>
-                                                        <sys:String>Terminal pasażerski</sys:String>
+                                                        <sys:String>Terminal pasazerski</sys:String>
                                                         <sys:String>Terminal promowy</sys:String>
-                                                        <sys:String>Terminal kontenerów wyspecjalizowanych</sys:String>
-                                                        <sys:String>Terminal ładunków suchych-bulk</sys:String>
-                                                        <sys:String>Terminal ciekłego-cargo</sys:String>
+                                                        <sys:String>Terminal kontenerow wyspecjalizowanych</sys:String>
+                                                        <sys:String>Terminal ladunkow suchych-bulk</sys:String>
+                                                        <sys:String>Terminal cieklego-cargo</sys:String>
                                                         <sys:String>Terminal dla jednostek Ro-Ro (Roll-on/Roll-off)</sys:String>
                                                         <sys:String>Terminal dla jednostek off-shore</sys:String>
-                                                        <sys:String>Terminal dla ładunków projektowych</sys:String>
+                                                        <sys:String>Terminal dla ladunkow projektowych</sys:String>
                                                     </x:Array>
                                                 </Setter.Value>
                                             </Setter>
@@ -187,14 +183,14 @@
                                                 <Setter.Value>
                                                     <x:Array Type="{x:Type sys:String}">
                                                         <sys:String>Terminal kontenerowy</sys:String>
-                                                        <sys:String>Terminal pasażerski</sys:String>
+                                                        <sys:String>Terminal pasazerski</sys:String>
                                                         <sys:String>Terminal promowy</sys:String>
-                                                        <sys:String>Terminal kontenerów wyspecjalizowanych</sys:String>
-                                                        <sys:String>Terminal ładunków suchych-bulk</sys:String>
-                                                        <sys:String>Terminal ciekłego-cargo</sys:String>
+                                                        <sys:String>Terminal kontenerow wyspecjalizowanych</sys:String>
+                                                        <sys:String>Terminal ladunkow suchych-bulk</sys:String>
+                                                        <sys:String>Terminal cieklego-cargo</sys:String>
                                                         <sys:String>Terminal dla jednostek Ro-Ro (Roll-on/Roll-off)</sys:String>
                                                         <sys:String>Terminal dla jednostek off-shore</sys:String>
-                                                        <sys:String>Terminal dla ładunków projektowych</sys:String>
+                                                        <sys:String>Terminal dla ladunkow projektowych</sys:String>
                                                     </x:Array>
                                                 </Setter.Value>
                                             </Setter>
@@ -202,7 +198,6 @@
                                     </DataGridComboBoxColumn.EditingElementStyle>
                                 </DataGridComboBoxColumn>
 
-                                <!-- Kolumna 'Max Pojemność' pozostaje bez zmian -->
                                 <DataGridTextColumn Header="Max Pojemność" Binding="{Binding MaxCapacity}" Width="*"/>
 
                                 <DataGridComboBoxColumn Header="Dostępność" SelectedItemBinding="{Binding Available}" Width="*">
@@ -232,18 +227,14 @@
                                     </DataGridComboBoxColumn.EditingElementStyle>
                                 </DataGridComboBoxColumn>
 
-
-                                <!-- Kolumna 'Dostępny od' jako DatePicker -->
                                 <DataGridTemplateColumn Header="Dostępny od" Width="*">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <!-- Przykład kontrolki DateTimePicker z WPF Toolkit -->
                                             <wpfToolkit:DateTimePicker Value="{Binding AvailableFromDate}" Format="Custom" FormatString="yyyy-MM-dd HH:mm:ss" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                     <DataGridTemplateColumn.CellEditingTemplate>
                                         <DataTemplate>
-                                            <!-- Przykład kontrolki DateTimePicker z WPF Toolkit -->
                                             <wpfToolkit:DateTimePicker Value="{Binding AvailableFromDate}" Format="Custom" FormatString="yyyy-MM-dd HH:mm:ss" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellEditingTemplate>

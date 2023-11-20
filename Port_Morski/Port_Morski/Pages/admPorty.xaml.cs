@@ -18,6 +18,7 @@ using System.Windows.Navigation;
 
 using System.Windows.Shapes;
 using Dock = Port_Morski.Models.Dock;
+using Microsoft.EntityFrameworkCore;
 
 namespace Port_Morski.Pages
 {
@@ -26,22 +27,74 @@ namespace Port_Morski.Pages
     /// </summary>
     public partial class admPorty : UserControl
     {
-        private SeaPortContext context = new SeaPortContext();
+        public SeaPortContext context = new SeaPortContext();
         public admPorty()
         {
 
             InitializeComponent();
             LoadData();
+            
         }
-        internal void LoadData()
+        public void LoadData()
         {
             var docks = context.Docks.ToList();
             datagridPorty.ItemsSource = docks;
-
+            datagridPorty.Loaded += DatagridPorty_Loaded; //<<---- obliczanie dopiero po załadowaniu kontrolki datagrid
 
         }
-       
+        private void DatagridPorty_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+            ObliczanieMagazynow();
+            OblicznieTerminali();
+        }
 
+
+        public void ObliczanieMagazynow()
+        {
+            foreach (var item in datagridPorty.Items)
+            {
+                if (item is Dock dock)
+                {
+                    int dockId = dock.Id;
+                    int iloscMagazynow = context.Magazines.Count(m => m.DockId == dockId);
+                    var column = datagridPorty.Columns[3];
+
+                    if (column != null)
+                    {
+                        var cellContent = column.GetCellContent(item) as TextBlock;
+                        if (cellContent != null)
+                        {
+                            cellContent.Text = iloscMagazynow.ToString();
+                        }
+                    }
+                }
+            }
+
+        }
+        
+
+        private void OblicznieTerminali()
+        {
+            foreach (var item in datagridPorty.Items)
+            {
+                if (item is Dock dock)
+                {
+                    int dockId = dock.Id;
+                    int iloscMagazynow = context.Terminals.Count(t => t.DockId == dockId);
+                    var column = datagridPorty.Columns[4];
+
+                    if (column != null)
+                    {
+                        var cellContent = column.GetCellContent(item) as TextBlock;
+                        if (cellContent != null)
+                        {
+                            cellContent.Text = iloscMagazynow.ToString();
+                        }
+                    }
+                }
+            }
+        }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
@@ -66,8 +119,10 @@ namespace Port_Morski.Pages
             modyfikujPort userControl = new modyfikujPort();
             userControl.Id.Text = selectedDock.Id.ToString();
             userControl.Nazwa.Text = selectedDock.Name;
-
+          
             mainGrid.Children.Add(userControl);
+            userControl.LoadMagazinesData();
+            
         }
 
         private void DODAJ_Click(object sender, RoutedEventArgs e)

@@ -1,6 +1,8 @@
-﻿using Port_Morski.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Port_Morski.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,41 +23,68 @@ namespace Port_Morski.Pages
     /// </summary>
     public partial class modyfikujPort : UserControl
     {
+        
         public modyfikujPort()
         {
             InitializeComponent();
             Btn_Exit.Click += Btn_Exit_Click;
-           // LoadMagazinesData();
         }
-
+        private ObservableCollection<Magazine> magazines = new ObservableCollection<Magazine>();
+        private ObservableCollection<Terminal> terminal = new ObservableCollection<Terminal>();
+       
+        
         private void Btn_Exit_Click(object sender, RoutedEventArgs e)
         {
 
             this.Visibility = Visibility.Collapsed;
         }
-        private void LoadMagazinesData()
+        public void LoadMagazinesData()
         {
             using (SeaPortContext context = new SeaPortContext())
             {
-                // Pobierz Id z TextBoxa
-                var dockId = Id.Text;
-                MessageBox.Show($"Wartość dockId: {dockId}");
-                // Wykonaj zapytanie do bazy danych
-                //List<Magazine> magazines = context.Magazines
-                   // .Where(m => m.DockId == dockId) // Zakładam, że istnieje pole DockId w tabeli Magazines
-                  //  .ToList();
+                int dockId = int.Parse(Id.Text);
 
-                // Przypisz dane do źródła danych dla DataGrid
-               // datagridMagazyny.ItemsSource = magazines;
+                
+                magazines = new ObservableCollection<Magazine>(
+                    context.Magazines
+                           .Where(m => m.DockId == dockId)
+                           .ToList()
+                );
+
+                datagridMagazyny.ItemsSource = magazines;
+
+                terminal = new ObservableCollection<Terminal>(
+                    context.Terminals
+                            .Where(terminal => terminal.DockId == dockId)
+                            .ToList()
+                            );
+
+                datagridTerminale.ItemsSource = terminal;
             }
         }
-        private void modify_Click(object sender, RoutedEventArgs e)
+        public void modify_Click(object sender, RoutedEventArgs e)
+        {
+            ModifyDock();
+            ModifyMagazines();
+            ModifyTerminals();
+
+            MessageBox.Show("Pomyślnie zaktualizowano port w bazie danych.");
+            this.Visibility = Visibility.Collapsed;
+
+
+            admPorty adm = new admPorty();
+            adm.LoadData();
+
+        }
+
+
+        private void ModifyDock()
         {
             using (var context = new SeaPortContext())
             {
                 try
                 {
-                    // Find the user by their login
+
                     var dock = context.Docks.SingleOrDefault(s => s.Id == int.Parse(Id.Text));
 
                     if (dock == null)
@@ -65,16 +94,8 @@ namespace Port_Morski.Pages
                     }
 
                     dock.Name = Nazwa.Text;
-                    
-
 
                     context.SaveChanges();
-
-
-                    MessageBox.Show("Pomyślnie zaktualizowano port w bazie danych.");
-                    this.Visibility = Visibility.Collapsed;
-                    admPorty adm = new admPorty();
-                    adm.LoadData();
 
                 }
                 catch (Exception ex)
@@ -82,26 +103,102 @@ namespace Port_Morski.Pages
                     MessageBox.Show($"Wystąpił błąd podczas aktualizacji użytkownika w bazie danych: {ex.Message}");
                 }
             }
+
         }
+
+        private void ModifyMagazines()
+        {
+            using (SeaPortContext context = new SeaPortContext())
+            {
+                int dockId = int.Parse(Id.Text);
+
+                List<Magazine> magazinesToDelete = context.Magazines.Where(m => m.DockId == dockId).ToList();
+                foreach (Magazine deletedMagazine in magazinesToDelete)
+                {
+                    context.Magazines.Remove(deletedMagazine);
+                }
+
+                foreach (Magazine newMagazine in magazines)
+                {
+                    newMagazine.DockId = dockId; 
+                    context.Magazines.Add(newMagazine);
+                }
+                context.SaveChanges();
+            }
+        }
+
+        private void ModifyTerminals()
+        {
+            using (SeaPortContext context = new SeaPortContext())
+            {
+                int dockId = int.Parse(Id.Text);
+
+                List<Terminal> terminalToDelete = context.Terminals.Where(t => t.DockId == dockId).ToList();
+                foreach (Terminal deletedTerminal in terminalToDelete)
+                {
+                    context.Terminals.Remove(deletedTerminal);
+                }
+
+                foreach (Terminal newTerminal in terminal)
+                {
+                    newTerminal.DockId = dockId; 
+                    context.Terminals.Add(newTerminal);
+                }
+
+                context.SaveChanges();
+            }
+        }
+
 
         private void add_Row_Magazyny(object sender, RoutedEventArgs e)
         {
+            magazines.Add(new Magazine
+            {
+                Name = "Nowy magazyn...",
+                Area = 0,
+                AvailableCapacity = 0,
+                Specification = "Magazyn ogolny",
 
+            });
         }
 
         private void add_Row_Terminal(object sender, RoutedEventArgs e)
         {
+            terminal.Add(new Terminal
+            {
+                Name = "Nowy terminal",
+                Type = "Terminal kontenerowy",
+                MaxCapacity = 0,
+                Available = true,
+                AvailableFromDate = DateTime.Now,
 
+            });
         }
 
         private void Del_Mag_Click(object sender, RoutedEventArgs e)
         {
+            if (datagridMagazyny.SelectedItem is Magazine selectedMagazine)
+            {
+                MessageBoxResult result = MessageBox.Show("Czy na pewno chcesz usunąć ten rekord?", "Potwierdź usunięcie", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
+                if (result == MessageBoxResult.Yes)
+                {
+                    magazines.Remove(selectedMagazine);
+                }
+            }
         }
 
         private void Del_Term_Click(object sender, RoutedEventArgs e)
         {
+            if (datagridTerminale.SelectedItem is Terminal selectedTerminal)
+            {
+                MessageBoxResult result = MessageBox.Show("Czy na pewno chcesz usunąć ten rekord?", "Potwierdź usunięcie", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
+                if (result == MessageBoxResult.Yes)
+                {
+                    terminal.Remove(selectedTerminal);
+                }
+            }
         }
     }
 }

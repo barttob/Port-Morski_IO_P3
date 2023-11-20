@@ -58,64 +58,58 @@ namespace Port_Morski.Pages
         {
             using (var context = new SeaPortContext())
             {
-                // Sprawdź czy textBox 'Nazwa' jest wpisany
+                
                 if (string.IsNullOrWhiteSpace(Nazwa.Text))
                 {
                     MessageBox.Show("Wprowadź nazwę portu.");
                     return;
                 }
 
-                // Sprawdź czy wszystkie komórki są wypełnione w datagridMagazyny
+                
                 if (datagridMagazyny.Items.Cast<Magazine>().Any(m => string.IsNullOrWhiteSpace(m.Name) || m.Area == 0 || m.AvailableCapacity == 0 || string.IsNullOrWhiteSpace(m.Specification)))
                 {
                     MessageBox.Show("Wypełnij wszystkie komórki w datagridMagazyny.");
                     return;
                 }
 
-                // Sprawdź czy wszystkie komórki są wypełnione w datagridTerminale
+                
                 if (datagridTerminale.Items.Cast<Terminal>().Any(t => string.IsNullOrWhiteSpace(t.Name) || string.IsNullOrWhiteSpace(t.Type) || t.MaxCapacity == 0 || t.AvailableFromDate == null))
                 {
                     MessageBox.Show("Wypełnij wszystkie komórki w datagridTerminale.");
                     return;
                 }
 
-                // Twórz nowy port
+                
                 var newDock = new Dock
                 {
                     Name = Nazwa.Text,
                 };
 
-                // Dodaj nowy port do bazy danych
+                
                 context.Docks.Add(newDock);
                 context.SaveChanges();
 
-                // Pobierz id nowo zapisanego doku
                 int dockId = newDock.Id;
 
-                // Zapisz dane z kolekcji 'magazynyCollection' do tabeli 'Magazines'
                 foreach (var magazine in magazynyCollection)
                 {
                     magazine.DockId = dockId;
                     context.Magazines.Add(magazine);
                 }
 
-                // Zapisz dane z kolekcji 'terminaleCollection' do tabeli 'Terminals'
                 foreach (var terminal in terminaleCollection)
                 {
                     terminal.DockId = dockId;
                     context.Terminals.Add(terminal);
                 }
 
-                // Zapisz zmiany w bazie danych
                 context.SaveChanges();
 
                 MessageBox.Show("Pomyślnie dodano nowego użytkownika do bazy danych.");
 
-                // Załaduj dane
                 admPorty adm = new admPorty();
                 adm.LoadData();
 
-                // Schowaj kontrolkę
                 this.Visibility = Visibility.Collapsed;
             }
         }
@@ -125,10 +119,10 @@ namespace Port_Morski.Pages
             
             magazynyCollection.Add(new Magazine
             {
-                Name = "Nowy magazyn...",
+                Name = "Nowy magazyn",
                 Area = 0,
                 AvailableCapacity = 0,
-                Specification = "Magazyny ogólne",
+                Specification = "Magazyn ogolny",
                 
             });
         }
@@ -142,7 +136,6 @@ namespace Port_Morski.Pages
 
                 if (result == MessageBoxResult.Yes)
                 {
-                    // Usuń zaznaczony magazyn z kolekcji
                     magazynyCollection.Remove(selectedMagazine);
                 }
             }
@@ -151,15 +144,13 @@ namespace Port_Morski.Pages
 
         private void add_Terminal(object sender, RoutedEventArgs e)
         {
-            // Dodaj nowy obiekt do kolekcji
             terminaleCollection.Add(new Terminal
             {
-                Name = "Nowy terminal...",
+                Name = "Nowy terminal",
                 Type = "Terminal kontenerowy",
                 MaxCapacity = 0,
                 Available = true,
                 AvailableFromDate = DateTime.Now,
-
             });
         }
 
@@ -171,7 +162,6 @@ namespace Port_Morski.Pages
 
                 if (result == MessageBoxResult.Yes)
                 {
-                    // Usuń zaznaczony magazyn z kolekcji
                     terminaleCollection.Remove(selectedTerminal);
                 }
             }

@@ -25,18 +25,17 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <!-- Ukryta kolumna Id -->
+                       
                         <DataGridTemplateColumn Visibility="Hidden">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <!-- Binding do właściwości Id w Twoim obiekcie Dock -->
                                     <TextBlock Text="{Binding Id}" Visibility="Hidden"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                         <DataGridTextColumn Header="Nazwa" Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
-                        <DataGridTextColumn Header="Ilość Magazynów" Width="*"/>
-                        <DataGridTextColumn Header="Ilość Terminali" Width="*"/>
+                        <DataGridTextColumn x:Name="Magazyny" Header="Ilosc Magazynow" Width="*"/>
+                        <DataGridTextColumn x:Name="Terminale" Header="Ilość Terminali" Width="*"/>
                         
 
                         <DataGridTemplateColumn Header="Opcje" Width="Auto">
@@ -73,14 +72,14 @@
             </StackPanel>
         </Button>
 
-        <!-- Dodaj ComboBox dla wyboru formatu eksportu -->
+        
         <ComboBox x:Name="exportFormatComboBox" Text="Format" Width="94" Background="#FF4F80C8" FontSize="20" Foreground="Black" BorderBrush="Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" UseLayoutRounding="False" Height="46" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,18,301,0" Padding="1,4,1,4" IsEditable="True" IsReadOnly="True">
             <ComboBoxItem Content="PDF"/>
             <ComboBoxItem Content="CSV"/>
             <ComboBoxItem Content="Excel"/>
         </ComboBox>
 
-        <!-- Dodaj przycisk eksportu -->
+        
         <Button x:Name="exportButton" Content="Eksportuj" Width="100" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" UseLayoutRounding="False" Height="46" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,18,170,0" Padding="1,4,1,4" Background="#FFDDA322" Click="ExportButton_Click" />
 
         <local:dodajPort x:Name="dodajPort" Visibility="Collapsed" />

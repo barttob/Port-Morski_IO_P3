@@ -54,6 +54,7 @@ namespace Port_Morski.Pages
         private void wiecejPorty_Click(object sender, RoutedEventArgs e)
         {
             admPorty.Visibility = Visibility.Visible;
+           
         }
     }
 }

@@ -10,7 +10,7 @@
 
 
 
-    <Grid Background="#F5F0F6" Margin="0,0,0,0">
+    <Grid Background="#F5F0F6" Margin="0,0,0,0" x:Name="mainGrid">
         <materialDesign:Card Margin="75,95,0,0" Width="448" Height="340" UniformCornerRadius="25" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
             <StackPanel VerticalAlignment="Stretch">
                 <Border Background="#E7E7E7" CornerRadius="25,25,0,0" Height="59" VerticalAlignment="Top">
