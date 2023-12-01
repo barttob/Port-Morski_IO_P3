@@ -13,11 +13,14 @@
     <None Remove="Images\close.png" />
     <None Remove="Images\del.png" />
     <None Remove="Images\edit.png" />
+    <None Remove="Images\infoButton.png" />
     <None Remove="Images\logo.png" />
     <None Remove="Images\logout.png" />
+    <None Remove="Images\magazyn.png" />
     <None Remove="Images\port.png" />
     <None Remove="Images\search_icon.png" />
     <None Remove="Images\statek.png" />
+    <None Remove="Images\terminal.png" />
     <None Remove="Images\user.png" />
     <None Remove="Images\wyjscie.png" />
   </ItemGroup>
@@ -63,7 +66,13 @@
     <Content Include="Images\edit.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\infoButton.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\magazyn.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\port.png">
@@ -73,6 +82,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\statek.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\terminal.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Resource Include="Images\logout.png">

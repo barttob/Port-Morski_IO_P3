@@ -8,12 +8,22 @@
              xmlns:wpfToolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
          mc:Ignorable="d" 
-         d:DesignHeight="1007" d:DesignWidth="1186">
-    <Grid Background="#80FFFFFF" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Hidden">
 
-        <materialDesign:Card Margin="10,108,10,83" Background="#F5F0F6" UniformCornerRadius="45">
-            <StackPanel>
-                <Grid Background="#E7E7E7">
+         d:DesignHeight="1007" d:DesignWidth="1186">
+    <Grid Background="#80FFFFFF" >
+
+        <materialDesign:Card Margin="-196,108,36,33" Background="#F5F0F6" UniformCornerRadius="25">
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+
+
+                <Grid x:Name="Naglowek" Background="#E7E7E7" Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
@@ -35,233 +45,237 @@
 
 
 
-                <Grid Margin="0,15,0,15">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-
-                    </Grid.ColumnDefinitions>
-
-                    <TextBox Grid.Row="0" Grid.Column="0" Margin="5" Text="" x:Name="Nazwa" Width="300" FontSize="25" 
-                        materialDesign:HintAssist.Hint="Nazwa portu" BorderThickness="2" 
-                        BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{DynamicResource MaterialDesignOutlinedTextBox}" 
-                        SelectionBrush="White" CaretBrush="Black" 
-                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                        HorizontalAlignment="Center" VerticalAlignment="Top" />
-
+                <DockPanel Margin="0,1,0,25" Grid.Row="1" HorizontalAlignment="Center">
+                    <TextBox  Margin="0,6,0,0" Text="" x:Name="Nazwa" Width="226" FontSize="25" 
+                              materialDesign:HintAssist.Hint="Nazwa portu" BorderThickness="0,0,0,2" 
+                              BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{DynamicResource MaterialDesignOutlinedTextBox}" 
+                              SelectionBrush="White" CaretBrush="Black" 
+                              HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                              HorizontalAlignment="Center" VerticalAlignment="Center" Height="42"
+                              Padding="0,0,0,0"/>   
                     <TextBox Grid.Row="0" Grid.Column="2" Margin="5" x:Name="Id" Visibility="Hidden"/>
+                </DockPanel>
 
 
 
-                </Grid>
-                <Grid>
+                <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                        <Grid Grid.Column="0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
+                    <!-- Lewa Strona -->
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
 
+                        <!-- Nagłówek -->
+                        <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <TextBlock Text="Magazyny:" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,5,0" FontSize="25" FontWeight="Bold"/>
-                            <Button x:Name="addMagazyny" Width="30" Height="30" BorderBrush="#2B4162" BorderThickness="1" Padding="0" Background="#2B4162" Click="add_Row_Magazyny" HorizontalAlignment="Right" Margin="0,0,5,0">
-                                <Image Source="/Images/add.png" Stretch="Uniform" Height="27" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Button>
-                        </Grid>
-                        <DataGrid Margin="0,15,0,0" Name="datagridMagazyny" CanUserResizeColumns="True" AutoGenerateColumns="False" 
-                    ItemsSource="{Binding Magazines}" CanUserAddRows="False">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="*"/>
-                                <DataGridTextColumn Header="Powierzchnia" Binding="{Binding Area}" Width="*"/>
-                                <DataGridTextColumn Header="Pojemność" Binding="{Binding AvailableCapacity}" Width="*"/>
-                                <DataGridComboBoxColumn Header="Rodzaj" SelectedItemBinding="{Binding Specification}" Width="*">
-                                    <DataGridComboBoxColumn.ElementStyle>
-                                        <Style TargetType="ComboBox">
-                                            <Setter Property="ItemsSource">
-                                                <Setter.Value>
-                                                    <x:Array Type="{x:Type sys:String}">
-                                                        <sys:String>Magazyn ogolny</sys:String>
-                                                        <sys:String>Magazyn kontenerowy</sys:String>
-                                                        <sys:String>Magazyn chlodniczy</sys:String>
-                                                        <sys:String>Magazyn suche-bulk</sys:String>
-                                                        <sys:String>Magazyn cieklego-cargo</sys:String>
-                                                        <sys:String>Magazyn Ro-Ro (Roll-on/Roll-off)</sys:String>
-                                                        <sys:String>Magazyn ladunkow niebezpiecznych</sys:String>
-                                                        <sys:String>Magazyn przeladunkowy</sys:String>
-                                                        <sys:String>Magazyn specjalistyczny</sys:String>
-                                                    </x:Array>
-                                                </Setter.Value>
-                                            </Setter>
-                                        </Style>
-                                    </DataGridComboBoxColumn.ElementStyle>
-                                    <DataGridComboBoxColumn.EditingElementStyle>
-                                        <Style TargetType="ComboBox">
-                                            <Setter Property="ItemsSource">
-                                                <Setter.Value>
-                                                    <x:Array Type="{x:Type sys:String}">
-                                                        <sys:String>Magazyn ogolny</sys:String>
-                                                        <sys:String>Magazyn kontenerowy</sys:String>
-                                                        <sys:String>Magazyn chlodniczy</sys:String>
-                                                        <sys:String>Magazyn suche-bulk</sys:String>
-                                                        <sys:String>Magazyn cieklego-cargo</sys:String>
-                                                        <sys:String>Magazyn Ro-Ro (Roll-on/Roll-off)</sys:String>
-                                                        <sys:String>Magazyn ladunkow niebezpiecznych</sys:String>
-                                                        <sys:String>Magazyn przeladunkowy</sys:String>
-                                                        <sys:String>Magazyn specjalistyczny</sys:String>
-                                                    </x:Array>
-                                                </Setter.Value>
-                                            </Setter>
-                                        </Style>
-                                    </DataGridComboBoxColumn.EditingElementStyle>
-                                </DataGridComboBoxColumn>
+                        </StackPanel>
 
-                                <DataGridTemplateColumn Header="Opcje" Width="Auto">
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal">
-                                                <Button  Margin="5" BorderThickness="0" Click="Del_Mag_Click" >
-                                                    <Button.Background>
-                                                        <ImageBrush ImageSource="/Images/del.png"/>
-                                                    </Button.Background>
-                                                </Button>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </StackPanel>
+                        <!-- DataGrid -->
+                        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Disabled">
+                            <DataGrid Margin="0,10,0,30" Name="datagridMagazyny" CanUserResizeColumns="True" AutoGenerateColumns="False" ItemsSource="{Binding Magazines}" CanUserAddRows="False" ScrollViewer.CanContentScroll="True" HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="*"/>
+                                    <DataGridTextColumn Header="Powierzchnia" Binding="{Binding Area}" Width="*"/>
+                                    <DataGridTextColumn Header="Pojemność" Binding="{Binding AvailableCapacity}" Width="*"/>
+                                    <DataGridComboBoxColumn Header="Rodzaj" SelectedItemBinding="{Binding Specification}" Width="*">
+                                        <DataGridComboBoxColumn.ElementStyle>
+                                            <Style TargetType="ComboBox">
+                                                <Setter Property="ItemsSource">
+                                                    <Setter.Value>
+                                                        <x:Array Type="{x:Type sys:String}">
+                                                            <sys:String>Magazyn ogolny</sys:String>
+                                                            <sys:String>Magazyn kontenerowy</sys:String>
+                                                            <sys:String>Magazyn chlodniczy</sys:String>
+                                                            <sys:String>Magazyn suche-bulk</sys:String>
+                                                            <sys:String>Magazyn cieklego-cargo</sys:String>
+                                                            <sys:String>Magazyn Ro-Ro (Roll-on/Roll-off)</sys:String>
+                                                            <sys:String>Magazyn ladunkow niebezpiecznych</sys:String>
+                                                            <sys:String>Magazyn przeladunkowy</sys:String>
+                                                            <sys:String>Magazyn specjalistyczny</sys:String>
+                                                        </x:Array>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </DataGridComboBoxColumn.ElementStyle>
+                                        <DataGridComboBoxColumn.EditingElementStyle>
+                                            <Style TargetType="ComboBox">
+                                                <Setter Property="ItemsSource">
+                                                    <Setter.Value>
+                                                        <x:Array Type="{x:Type sys:String}">
+                                                            <sys:String>Magazyn ogolny</sys:String>
+                                                            <sys:String>Magazyn kontenerowy</sys:String>
+                                                            <sys:String>Magazyn chlodniczy</sys:String>
+                                                            <sys:String>Magazyn suche-bulk</sys:String>
+                                                            <sys:String>Magazyn cieklego-cargo</sys:String>
+                                                            <sys:String>Magazyn Ro-Ro (Roll-on/Roll-off)</sys:String>
+                                                            <sys:String>Magazyn ladunkow niebezpiecznych</sys:String>
+                                                            <sys:String>Magazyn przeladunkowy</sys:String>
+                                                            <sys:String>Magazyn specjalistyczny</sys:String>
+                                                        </x:Array>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </DataGridComboBoxColumn.EditingElementStyle>
+                                    </DataGridComboBoxColumn>
+
+                                    <DataGridTemplateColumn Header="Opcje" Width="Auto">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button  Margin="5" BorderThickness="0" Click="Del_Mag_Click" >
+                                                        <Button.Background>
+                                                            <ImageBrush ImageSource="/Images/del.png"/>
+                                                        </Button.Background>
+                                                    </Button>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </ScrollViewer>
+
+                        <!-- Przycisk przyciągany do prawej strony -->
+                        <Button x:Name="addMagazyny" Width="30" Height="30" BorderBrush="#2B4162" BorderThickness="1" Padding="0" Background="#2B4162" Click="add_Row_Magazyny" HorizontalAlignment="Right" Margin="0,0,5,0">
+                            <Image Source="/Images/add.png" Stretch="Uniform" Height="27" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Button>
+                    </Grid>
+                    
                     
                     <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ResizeBehavior="PreviousAndNext" />
+                    <!-- Prawa Strona -->
+                    <Grid Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
 
-                    <StackPanel Grid.Column="2">
-                        <Grid Grid.Column="0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-
+                        <!-- Nagłówek -->
+                        <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <TextBlock Text="Terminale:" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,5,0" FontSize="25" FontWeight="Bold"/>
-                            <Button x:Name="addTerminale" Width="30" Height="30" BorderBrush="#2B4162" BorderThickness="1" Padding="0" Background="#2B4162" Click="add_Row_Terminal" HorizontalAlignment="Right" Margin="0,0,5,0">
-                                <Image Source="/Images/add.png" Stretch="Uniform" Height="27" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Button>
-                        </Grid>
-                        <DataGrid Margin="0,15,0,0" Name="datagridTerminale"  AutoGenerateColumns="False" CanUserAddRows="False">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="*"/>
-                                <DataGridComboBoxColumn Header="Typ" SelectedItemBinding="{Binding Type}" Width="*">
-                                    <DataGridComboBoxColumn.ElementStyle>
-                                        <Style TargetType="ComboBox">
-                                            <Setter Property="ItemsSource">
-                                                <Setter.Value>
-                                                    <x:Array Type="{x:Type sys:String}">
-                                                        <sys:String>Terminal kontenerowy</sys:String>
-                                                        <sys:String>Terminal pasazerski</sys:String>
-                                                        <sys:String>Terminal promowy</sys:String>
-                                                        <sys:String>Terminal kontenerow wyspecjalizowanych</sys:String>
-                                                        <sys:String>Terminal ladunkow suchych-bulk</sys:String>
-                                                        <sys:String>Terminal cieklego-cargo</sys:String>
-                                                        <sys:String>Terminal dla jednostek Ro-Ro (Roll-on/Roll-off)</sys:String>
-                                                        <sys:String>Terminal dla jednostek off-shore</sys:String>
-                                                        <sys:String>Terminal dla ladunkow projektowych</sys:String>
-                                                    </x:Array>
-                                                </Setter.Value>
-                                            </Setter>
-                                        </Style>
-                                    </DataGridComboBoxColumn.ElementStyle>
-                                    <DataGridComboBoxColumn.EditingElementStyle>
-                                        <Style TargetType="ComboBox">
-                                            <Setter Property="ItemsSource">
-                                                <Setter.Value>
-                                                    <x:Array Type="{x:Type sys:String}">
-                                                        <sys:String>Terminal kontenerowy</sys:String>
-                                                        <sys:String>Terminal pasazerski</sys:String>
-                                                        <sys:String>Terminal promowy</sys:String>
-                                                        <sys:String>Terminal kontenerow wyspecjalizowanych</sys:String>
-                                                        <sys:String>Terminal ladunkow suchych-bulk</sys:String>
-                                                        <sys:String>Terminal cieklego-cargo</sys:String>
-                                                        <sys:String>Terminal dla jednostek Ro-Ro (Roll-on/Roll-off)</sys:String>
-                                                        <sys:String>Terminal dla jednostek off-shore</sys:String>
-                                                        <sys:String>Terminal dla ladunkow projektowych</sys:String>
-                                                    </x:Array>
-                                                </Setter.Value>
-                                            </Setter>
-                                        </Style>
-                                    </DataGridComboBoxColumn.EditingElementStyle>
-                                </DataGridComboBoxColumn>
+                        </StackPanel>
 
-                                <DataGridTextColumn Header="Max Pojemność" Binding="{Binding MaxCapacity}" Width="*"/>
+                        <!-- DataGrid -->
+                        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Disabled">
+                            <DataGrid Margin="0,10,0,30" Name="datagridTerminale"  AutoGenerateColumns="False" CanUserAddRows="False" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="*"/>
+                                    <DataGridComboBoxColumn Header="Typ" SelectedItemBinding="{Binding Type}" Width="*">
+                                        <DataGridComboBoxColumn.ElementStyle>
+                                            <Style TargetType="ComboBox">
+                                                <Setter Property="ItemsSource">
+                                                    <Setter.Value>
+                                                        <x:Array Type="{x:Type sys:String}">
+                                                            <sys:String>Terminal kontenerowy</sys:String>
+                                                            <sys:String>Terminal pasazerski</sys:String>
+                                                            <sys:String>Terminal promowy</sys:String>
+                                                            <sys:String>Terminal kontenerow wyspecjalizowanych</sys:String>
+                                                            <sys:String>Terminal ladunkow suchych-bulk</sys:String>
+                                                            <sys:String>Terminal cieklego-cargo</sys:String>
+                                                            <sys:String>Terminal dla jednostek Ro-Ro (Roll-on/Roll-off)</sys:String>
+                                                            <sys:String>Terminal dla jednostek off-shore</sys:String>
+                                                            <sys:String>Terminal dla ladunkow projektowych</sys:String>
+                                                        </x:Array>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </DataGridComboBoxColumn.ElementStyle>
+                                        <DataGridComboBoxColumn.EditingElementStyle>
+                                            <Style TargetType="ComboBox">
+                                                <Setter Property="ItemsSource">
+                                                    <Setter.Value>
+                                                        <x:Array Type="{x:Type sys:String}">
+                                                            <sys:String>Terminal kontenerowy</sys:String>
+                                                            <sys:String>Terminal pasazerski</sys:String>
+                                                            <sys:String>Terminal promowy</sys:String>
+                                                            <sys:String>Terminal kontenerow wyspecjalizowanych</sys:String>
+                                                            <sys:String>Terminal ladunkow suchych-bulk</sys:String>
+                                                            <sys:String>Terminal cieklego-cargo</sys:String>
+                                                            <sys:String>Terminal dla jednostek Ro-Ro (Roll-on/Roll-off)</sys:String>
+                                                            <sys:String>Terminal dla jednostek off-shore</sys:String>
+                                                            <sys:String>Terminal dla ladunkow projektowych</sys:String>
+                                                        </x:Array>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </DataGridComboBoxColumn.EditingElementStyle>
+                                    </DataGridComboBoxColumn>
 
-                                <DataGridComboBoxColumn Header="Dostępność" SelectedItemBinding="{Binding Available}" Width="*">
-                                    <DataGridComboBoxColumn.ElementStyle>
-                                        <Style TargetType="ComboBox">
-                                            <Setter Property="ItemsSource">
-                                                <Setter.Value>
-                                                    <x:Array Type="{x:Type sys:Boolean}">
-                                                        <sys:Boolean>True</sys:Boolean>
-                                                        <sys:Boolean>False</sys:Boolean>
-                                                    </x:Array>
-                                                </Setter.Value>
-                                            </Setter>
-                                        </Style>
-                                    </DataGridComboBoxColumn.ElementStyle>
-                                    <DataGridComboBoxColumn.EditingElementStyle>
-                                        <Style TargetType="ComboBox">
-                                            <Setter Property="ItemsSource">
-                                                <Setter.Value>
-                                                    <x:Array Type="{x:Type sys:Boolean}">
-                                                        <sys:Boolean>True</sys:Boolean>
-                                                        <sys:Boolean>False</sys:Boolean>
-                                                    </x:Array>
-                                                </Setter.Value>
-                                            </Setter>
-                                        </Style>
-                                    </DataGridComboBoxColumn.EditingElementStyle>
-                                </DataGridComboBoxColumn>
+                                    <DataGridTextColumn Header="Max Pojemność" Binding="{Binding MaxCapacity}" Width="*"/>
 
-                                <DataGridTemplateColumn Header="Dostępny od" Width="*">
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <wpfToolkit:DateTimePicker Value="{Binding AvailableFromDate}" Format="Custom" FormatString="yyyy-MM-dd HH:mm:ss" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                    <DataGridTemplateColumn.CellEditingTemplate>
-                                        <DataTemplate>
-                                            <wpfToolkit:DateTimePicker Value="{Binding AvailableFromDate}" Format="Custom" FormatString="yyyy-MM-dd HH:mm:ss" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellEditingTemplate>
-                                </DataGridTemplateColumn>
+                                    <DataGridComboBoxColumn Header="Dostępność" SelectedItemBinding="{Binding Available}" Width="*">
+                                        <DataGridComboBoxColumn.ElementStyle>
+                                            <Style TargetType="ComboBox">
+                                                <Setter Property="ItemsSource">
+                                                    <Setter.Value>
+                                                        <x:Array Type="{x:Type sys:Boolean}">
+                                                            <sys:Boolean>True</sys:Boolean>
+                                                            <sys:Boolean>False</sys:Boolean>
+                                                        </x:Array>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </DataGridComboBoxColumn.ElementStyle>
+                                        <DataGridComboBoxColumn.EditingElementStyle>
+                                            <Style TargetType="ComboBox">
+                                                <Setter Property="ItemsSource">
+                                                    <Setter.Value>
+                                                        <x:Array Type="{x:Type sys:Boolean}">
+                                                            <sys:Boolean>True</sys:Boolean>
+                                                            <sys:Boolean>False</sys:Boolean>
+                                                        </x:Array>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </DataGridComboBoxColumn.EditingElementStyle>
+                                    </DataGridComboBoxColumn>
 
-                                <DataGridTemplateColumn Header="Opcje" Width="Auto">
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal">
+                                    <DataGridTemplateColumn Header="Dostępny od" Width="*">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <wpfToolkit:DateTimePicker Value="{Binding AvailableFromDate}" Format="Custom" FormatString="yyyy-MM-dd HH:mm:ss" />
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                        <DataGridTemplateColumn.CellEditingTemplate>
+                                            <DataTemplate>
+                                                <wpfToolkit:DateTimePicker Value="{Binding AvailableFromDate}" Format="Custom" FormatString="yyyy-MM-dd HH:mm:ss" />
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellEditingTemplate>
+                                    </DataGridTemplateColumn>
+
+                                    <DataGridTemplateColumn Header="Opcje" Width="Auto">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
 
 
-                                                <Button  Margin="5" BorderThickness="0" Click="Del_Term_Click" >
-                                                    <Button.Background>
-                                                        <ImageBrush ImageSource="/Images/del.png"/>
-                                                    </Button.Background>
-                                                </Button>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </StackPanel>
+                                                    <Button  Margin="5" BorderThickness="0" Click="Del_Term_Click" >
+                                                        <Button.Background>
+                                                            <ImageBrush ImageSource="/Images/del.png"/>
+                                                        </Button.Background>
+                                                    </Button>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </ScrollViewer>
+
+                        <!-- Przycisk przyciągany do prawej strony -->
+                        <Button x:Name="addTerminale" Width="30" Height="30" BorderBrush="#2B4162" BorderThickness="1" Padding="0" Background="#2B4162" Click="add_Row_Terminal" HorizontalAlignment="Right" Margin="0,0,5,0">
+                            <Image Source="/Images/add.png" Stretch="Uniform" Height="27" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Button>
+                    </Grid>
                 </Grid>
-
-
-            </StackPanel>
+            </Grid>
 
         </materialDesign:Card>
 

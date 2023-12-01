@@ -1,0 +1,121 @@
+﻿<UserControl x:Class="Port_Morski.Pages.infoDok"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                xmlns:local="clr-namespace:Port_Morski.Pages"
+                        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                xmlns:wpfToolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
+                xmlns:sys="clr-namespace:System;assembly=mscorlib"
+            mc:Ignorable="d" 
+            d:DesignHeight="1007" d:DesignWidth="1186">
+
+    
+
+
+    <Grid x:Name="MainGrid" Background="#80FFFFFF" >
+        <Border BorderBrush="DarkGray" BorderThickness="2" Margin="-206,51,68,47" CornerRadius="18">
+            <materialDesign:Card  Background="#F5F0F6" UniformCornerRadius="18">
+                <Grid x:Name="MainStackPanel">
+                    <Grid x:Name="Header" Background="#E7E7E7" VerticalAlignment="Top" Panel.ZIndex="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock x:Name="Nazwa" Grid.Column="0" FontSize="28" FontWeight="Bold" Foreground="Black" Text="Port: Zatoka Koralowa" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="37,0,0,0" />
+
+                        <StackPanel Grid.Column="1" HorizontalAlignment="Left" Margin="20 10 0 10" Orientation="Horizontal">
+                            <TextBlock x:Name="ID" Text="1" Visibility="Hidden"/>
+                            <Button x:Name="Btn_Exit" BorderBrush="Transparent" IsCancel="True" Click="Btn_Exit_Click" Margin="0,0,15,0">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="/Images/close.png" Stretch="Fill"/>
+                                </Button.Background>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+
+
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" PanningMode="Both">
+                        <StackPanel x:Name="Zawartosc" Margin="0,50,0,0">
+
+                            <Border Background="#FF2B4162" Margin="30,10,0,-35" CornerRadius="5" HorizontalAlignment="Left" Padding="30,10,30,10" Panel.ZIndex="1" Width="200">
+                                <Grid>
+                                    <Image Source="/Images/magazyn.png" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                    <TextBlock Text="Magazyny" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Margin="20,0,0,0"/>
+                                </Grid>
+                            </Border>
+                            <Border BorderBrush="DarkGray" BorderThickness="1" CornerRadius="5" Margin="10,10,10,50" Background="#F5F0F6">
+                                <Border.Effect>
+                                    <DropShadowEffect Color="Black" Direction="320" ShadowDepth="5" Opacity="0.5"/>
+                                </Border.Effect>
+                                <DataGrid FontSize="16" Name="dataGridMagazyny"  AutoGenerateColumns="False" IsReadOnly="True" Margin="0,25,0,0" Background="#F5F0F6" IsEnabled="False">
+                                    <DataGrid.CellStyle>
+                                        <Style TargetType="DataGridCell">
+                                            <Setter Property="Foreground" Value="Black" />
+                                            <Setter Property="Padding" Value="3" />
+                                            <Setter Property="BorderThickness" Value="7" />
+
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="DataGridCell">
+                                                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+                                                            <ContentPresenter />
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </DataGrid.CellStyle>
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="*" />
+                                        <DataGridTextColumn Header="Powierzchnia" Binding="{Binding Area}" Width="*" />
+                                        <DataGridTextColumn Header="Pojemność" Binding="{Binding AvailableCapacity}" Width="*" />
+                                        <DataGridTextColumn Header="Rodzaj" Binding="{Binding Specification}" Width="*" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Border>
+                            <Border Background="#FF2B4162" Margin="30,10,0,-35" CornerRadius="5" HorizontalAlignment="Left" Padding="30,10,30,10" Panel.ZIndex="1" Width="200">
+                                <Grid>
+                                    <Image Source="/Images/terminal.png" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                    <TextBlock Text="Terminale" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Margin="20,0,0,0"/>
+                                </Grid>
+                            </Border>
+                            <Border BorderBrush="DarkGray" BorderThickness="1" CornerRadius="5" Margin="10,0,10,40" Background="#F5F0F6">
+                                <Border.Effect>
+                                    <DropShadowEffect Color="Black" Direction="320" ShadowDepth="5" Opacity="0.5"/>
+                                </Border.Effect>
+                                <DataGrid FontSize="16" Name="dataGridTerminale" AutoGenerateColumns="False" IsReadOnly="True" Margin="0,25,0,0" Background="#F5F0F6" IsEnabled="False">
+                                    <DataGrid.CellStyle>
+                                        <Style TargetType="DataGridCell">
+                                            <Setter Property="Foreground" Value="Black" />
+                                            <Setter Property="Padding" Value="3" />
+                                            <Setter Property="BorderThickness" Value="7" />
+
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="DataGridCell">
+                                                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+                                                            <ContentPresenter />
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </DataGrid.CellStyle>
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="*" />
+                                        <DataGridTextColumn Header="Typ" Binding="{Binding Type}" Width="*" />
+                                        <DataGridTextColumn Header="Max Pojemność" Binding="{Binding MaxCapacity}" Width="*" />
+                                        <DataGridTextColumn Header="Dostępność" Binding="{Binding Available}" Width="*" />
+                                        <DataGridTextColumn Header="Dostępny od" Binding="{Binding AvailableFromDate}" Width="*" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Border>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </materialDesign:Card>
+        </Border>
+    </Grid>
+</UserControl>

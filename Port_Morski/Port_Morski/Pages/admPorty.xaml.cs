@@ -33,7 +33,7 @@ namespace Port_Morski.Pages
 
             InitializeComponent();
             LoadData();
-            
+
         }
         public void LoadData()
         {
@@ -44,7 +44,7 @@ namespace Port_Morski.Pages
         }
         private void DatagridPorty_Loaded(object sender, RoutedEventArgs e)
         {
-            
+
             ObliczanieMagazynow();
             OblicznieTerminali();
         }
@@ -71,8 +71,11 @@ namespace Port_Morski.Pages
                 }
             }
 
+
+
+
         }
-        
+
 
         private void OblicznieTerminali()
         {
@@ -81,7 +84,15 @@ namespace Port_Morski.Pages
                 if (item is Dock dock)
                 {
                     int dockId = dock.Id;
+
+                    // Pobierz ilość wszystkich terminali
                     int iloscMagazynow = context.Terminals.Count(t => t.DockId == dockId);
+
+                    // Pobierz ilość zajętych terminali
+                    int iloscZajetychTerminali = context.Terminals.AsEnumerable().Count(t => t.DockId == dockId && Convert.ToInt32(t.Available) == 0);
+
+
+
                     var column = datagridPorty.Columns[4];
 
                     if (column != null)
@@ -89,11 +100,14 @@ namespace Port_Morski.Pages
                         var cellContent = column.GetCellContent(item) as TextBlock;
                         if (cellContent != null)
                         {
-                            cellContent.Text = iloscMagazynow.ToString();
+                            // Ustaw tekst w formie "iloscMagazynow/iloscZajetychTerminali"
+                            cellContent.Text = $"{iloscMagazynow}/{iloscZajetychTerminali}";
                         }
                     }
                 }
             }
+
+
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
@@ -110,19 +124,19 @@ namespace Port_Morski.Pages
             }
         }
 
-       
+
         private void Modify_Click(object sender, RoutedEventArgs e)
-            {
+        {
             Dock selectedDock = (sender as Button)?.Tag as Dock;
 
-            
+
             modyfikujPort userControl = new modyfikujPort();
             userControl.Id.Text = selectedDock.Id.ToString();
             userControl.Nazwa.Text = selectedDock.Name;
-          
+
             mainGrid.Children.Add(userControl);
             userControl.LoadMagazinesData();
-            
+
         }
 
         private void DODAJ_Click(object sender, RoutedEventArgs e)
@@ -292,6 +306,21 @@ namespace Port_Morski.Pages
             catch (Exception ex)
             {
                 MessageBox.Show($"Wystąpił błąd podczas eksportu do CSV: {ex.Message}", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void Info_Click(object sender, RoutedEventArgs e)
+        {
+            {
+                Dock? selectedDock = (sender as Button)?.Tag as Dock;
+
+
+                infoDok infoControl = new infoDok();
+                infoControl.ID.Text = selectedDock.Id.ToString();
+                infoControl.Nazwa.Text = "Port: " + selectedDock.Name;
+
+                mainGrid.Children.Add(infoControl);
+                infoControl.LoadMagazinesData();
             }
         }
     }

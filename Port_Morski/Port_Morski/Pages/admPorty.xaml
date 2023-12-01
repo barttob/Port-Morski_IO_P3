@@ -35,24 +35,49 @@
                         </DataGridTemplateColumn>
                         <DataGridTextColumn Header="Nazwa" Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
                         <DataGridTextColumn x:Name="Magazyny" Header="Ilosc Magazynow" Width="*"/>
-                        <DataGridTextColumn x:Name="Terminale" Header="Ilość Terminali" Width="*"/>
+                        <DataGridTextColumn x:Name="Terminale" Header="Ilość Terminali/Zajęte" Width="*"/>
                         
 
-                        <DataGridTemplateColumn Header="Opcje" Width="Auto">
+                        <DataGridTemplateColumn Header="Opcje" Width="Auto" >
+                            
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
 
-                                        <Button x:Name="Modify" Margin="5" BorderThickness="0" Click="Modify_Click" Tag="{Binding}">
+                                        <Button  Margin="3" BorderThickness="0" Click="Info_Click"  Tag="{Binding}">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Images/infoButton.png"/>
+                                            </Button.Background>
+                                            <Button.ToolTip>
+                                                <ToolTip>
+                                                    Informacje
+                                                </ToolTip>
+                                            </Button.ToolTip>
+                                        </Button>
+
+                                        <Button x:Name="Modify" Margin="3" BorderThickness="0" Click="Modify_Click" Tag="{Binding}">
                                             <Button.Background>
                                                 <ImageBrush ImageSource="/Images/edit.png"/>
                                             </Button.Background>
+                                            <Button.ToolTip>
+                                                <ToolTip>
+                                                    Modyfikuj
+                                                </ToolTip>
+                                            </Button.ToolTip>
                                         </Button>
-                                        <Button  Margin="5" BorderThickness="0" Click="Delete_Click">
+
+                                        <Button  Margin="3" BorderThickness="0" Click="Delete_Click">
                                             <Button.Background>
                                                 <ImageBrush ImageSource="/Images/del.png"/>
                                             </Button.Background>
+                                            <Button.ToolTip>
+                                                <ToolTip>
+                                                    Usuń dok.
+                                                </ToolTip>
+                                            </Button.ToolTip>
                                         </Button>
+
+
                                     </StackPanel>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
