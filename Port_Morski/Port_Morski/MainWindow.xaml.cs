@@ -1,4 +1,6 @@
-﻿using Port_Morski.Pages;
+﻿using Microsoft.EntityFrameworkCore;
+using Port_Morski.Models;
+using Port_Morski.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +25,11 @@ namespace Port_Morski
     public partial class MainWindow : Window
     {
         private string? UserRole { get; }
+        int userId = Login.LoggedInUser.UserId;
+
+        
+
+
 
         public MainWindow(string userRole)
         {
@@ -30,6 +37,12 @@ namespace Port_Morski
             UserRole = userRole;
             this.WindowState = WindowState.Maximized;
             SetButtonColorOnLoad();
+
+
+            
+            
+
+
 
 
             // Sprawdź, czy Tag nie jest pusty
@@ -58,19 +71,47 @@ namespace Port_Morski
             {
                 MessageBox.Show("Niepoprawnie przesłano Tag roli dla użytkownika"); 
             }
+            
+
+            using (var context = new SeaPortContext(new DbContextOptions<SeaPortContext>()))
+            {
+                var user = context.Users.FirstOrDefault(u => u.Id == userId);
+
+                if (user != null)
+                {
+                   
+
+
+                   
+                    // Aktualizacja TextBlock 'User'
+                    User.Text = $"{user.Name} {user.LastName}";
+
+                    // Przekształcenie roli na czytelny dla użytkownika format
+                    string roleDisplay = user.UserRole == "Admin" ? "Administrator" : "Użytkownik";
+                    
+                    // Aktualizacja TextBlock 'Rola'
+                    Rola.Text = $"({roleDisplay})";
+                   
+
+                }
+                else
+                {
+                    // Obsługa sytuacji, gdy użytkownik nie istnieje w bazie danych
+                    MessageBox.Show("Błąd: Użytkownik nie znaleziony w bazie danych.");
+                }
+            }
+
         }
+        
+        
+
+       
         private void SetButtonColorOnLoad()
         {
             StatystykiButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#D7B377"));
             // Dodaj kolejne przyciski, jeśli są inne, i ustaw im kolor tła
         }
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
-        {
-            MainGrid.Children.Clear();
-            Login login = new Login();
-            login.Show();
-            this.Close();
-        }
+       
 
         private void exitApp(object sender, RoutedEventArgs e)
         {
@@ -152,5 +193,42 @@ namespace Port_Morski
             T content = new T();
             MainGrid.Children.Add(content);
         }
+        private void MenuButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (MenuPopup.IsOpen)
+            {
+                MenuPopup.IsOpen = false;
+            }
+            else
+            {
+                MenuPopup.IsOpen = true;
+            }
+        }
+        private void Info_Click(object sender, MouseButtonEventArgs e)
+        {
+            MainGrid.Children.Clear();
+            O_Programie oProgramie = new O_Programie();
+            MainGrid.Children.Add(oProgramie);
+        }
+
+        private void Settings_Click(object sender, MouseButtonEventArgs e)
+        {
+            MainGrid.Children.Clear();
+            Ustawienia ustawienia = new ();
+            MainGrid.Children.Add(ustawienia);
+        }
+
+        private void Logout_Click(object sender, MouseButtonEventArgs e)
+        {
+            MainGrid.Children.Clear();
+            Login login = new Login();
+            login.Show();
+            this.Close();
+        }
+
+
+
+
+
     }
 }

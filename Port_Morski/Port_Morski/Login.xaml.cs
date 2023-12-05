@@ -56,7 +56,8 @@ namespace Port_Morski
 
                 if (user != null && user.Password == password)
                 {
-                        MainWindow mainWindow = new MainWindow(user.UserRole);
+                    LoggedInUser.SetLoggedInUserId(user.Id);
+                    MainWindow mainWindow = new MainWindow(user.UserRole);
                         mainWindow.Show();
                         this.Close();
                 }
@@ -66,6 +67,16 @@ namespace Port_Morski
                 }
             }
         }
+        public static class LoggedInUser
+        {
+            public static int UserId { get; private set; }
+
+            public static void SetLoggedInUserId(int userId)
+            {
+                UserId = userId;
+            }
+        }
+
         private string ConvertToUnsecureString(SecureString securePassword)
         {
             if (securePassword == null)

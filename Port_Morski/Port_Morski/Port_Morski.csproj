@@ -12,13 +12,22 @@
     <None Remove="Images\cargo_ship.png" />
     <None Remove="Images\close.png" />
     <None Remove="Images\del.png" />
+    <None Remove="Images\dropDown.png" />
     <None Remove="Images\edit.png" />
     <None Remove="Images\infoButton.png" />
+    <None Remove="Images\information.png" />
+    <None Remove="Images\lock.png" />
+    <None Remove="Images\log-in.png" />
     <None Remove="Images\logo.png" />
     <None Remove="Images\logout.png" />
+    <None Remove="Images\logoutUser.png" />
     <None Remove="Images\magazyn.png" />
     <None Remove="Images\port.png" />
+    <None Remove="Images\role.png" />
     <None Remove="Images\search_icon.png" />
+    <None Remove="Images\settingUser.png" />
+    <None Remove="Images\set_apps.png" />
+    <None Remove="Images\size.png" />
     <None Remove="Images\statek.png" />
     <None Remove="Images\terminal.png" />
     <None Remove="Images\user.png" />
@@ -32,6 +41,7 @@
     <PackageReference Include="BouncyCastle.NetCore" Version="2.2.1" />
     <PackageReference Include="itext7" Version="8.0.2" />
     <PackageReference Include="itext7.pdfhtml" Version="5.0.2" />
+    <PackageReference Include="MaterialDesignInXamlToolkitAddOns" Version="0.0.6" />
     <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.12" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.12">
@@ -63,13 +73,28 @@
     <Content Include="Images\del.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\dropDown.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\edit.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\infoButton.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\information.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\lock.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\log-in.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\logoutUser.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\magazyn.png">
@@ -78,7 +103,19 @@
     <Content Include="Images\port.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\role.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\search_icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\settingUser.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\set_apps.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\size.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\statek.png">

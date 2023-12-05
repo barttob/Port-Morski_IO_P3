@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:Port_Morski"
         xmlns:Pages="clr-namespace:Port_Morski.Pages" x:Class="Port_Morski.MainWindow"
         mc:Ignorable="d"
+       
+
         Title="Port Morski" Height="981" Width="1429"  WindowState="Maximized">
 
 
@@ -40,13 +42,60 @@
                 </EventTrigger>
             </Style.Triggers>
         </Style>
-        
+
+        <Style x:Key="CustomButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#CCCCCC"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <!-- Obramowanie tylko u dołu -->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5,5,0,0">
+                            <!-- Zaokrąglenie górnych rogów -->
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#F0F0F0"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True">
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="#E0E0E0" Duration="0:0:0.2"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.EnterActions>
+                    <DataTrigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="White" Duration="0:0:0.2"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.ExitActions>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+
+
+
+
+
     </Window.Resources>
 
 
     <Grid>
         <!-- Panel menu po lewej stronie -->
-        <Grid Background="#2B4162" RenderTransformOrigin="0.588,0.507" HorizontalAlignment="Left" Width="246">
+
+
+        <Grid x:Name="Menu" Background="#FF2B4162"  RenderTransformOrigin="0.588,0.507" HorizontalAlignment="Left" Width="246">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
@@ -64,7 +113,7 @@
                         <Setter Property="Background" Value="Transparent"/>
                     </Style>
                 </ScrollViewer.Resources>
-                <StackPanel Grid.Row="1" Background="#FF2B4162" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <StackPanel Grid.Row="1" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Top">
                     <Button x:Name="StatystykiButton" Width="239" Height="68" Margin="0,0,0,9" Background="#8F754F" HorizontalAlignment="Center" FontFamily="Anek Tamil" FontSize="21  " Content="Statystyki" Click="StatystykiButton_Click" Foreground="#FF050505">
                         <Button.Template>
                             <ControlTemplate TargetType="{x:Type Button}">
@@ -155,18 +204,147 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <!-- Przyciągane przyciski po prawej stronie -->
-                <StackPanel Grid.Column="1" Width="auto" VerticalAlignment="Center" Orientation="Horizontal" Margin="0,0,26,0">
-                    <Button x:Name="LoginButton" Width="54" Height="56"  BorderThickness="0,0,0,0" Style="{StaticResource EnlargeButton}" Click="LoginButton_Click">
-                        <Button.Background>
-                            <ImageBrush ImageSource="\Images\user.png" Stretch="Fill"/>
-                        </Button.Background>
-                        <Button.LayoutTransform>
-                            <ScaleTransform ScaleX="1" ScaleY="1"/>
-                        </Button.LayoutTransform>
+
+                <StackPanel Height="53" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,0">
+                    <Button x:Name="SettingUser" Width="auto" Height="auto" Style="{StaticResource CustomButtonStyle}" Click="MenuButtonClick">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="/Images/user.png" Width="40" Height="40" Margin="8,0,0,0"/>
+                            <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" Margin="5,0,0,0" HorizontalAlignment="Center">
+                                <TextBlock x:Name="User" Text="Karol Rembiasz" Foreground="#333333" FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,7,0,0"/>
+                                <TextBlock x:Name="Rola" Text="(Administrator)" Foreground="#666666" FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                            <Image Grid.Column="2" Source="/Images/dropDown.png" Width="20" Height="20" Margin="8,0,8,0"/>
+                        </Grid>
                     </Button>
-                    <Button x:Name="ExitButton" Width="54" Height="56" Margin="26,0,0,0" BorderThickness="0,0,0,0" Style="{StaticResource EnlargeButton}" Click="exitApp">
+
+                    <!-- Popup z menu -->
+                    <Popup x:Name="MenuPopup" PlacementTarget="{Binding ElementName=SettingUser}" Placement="Bottom" StaysOpen="False">
+                        <Border Background="White" Width="{Binding ActualWidth, ElementName=SettingUser}">
+                            <ListBox>
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                                        <Setter Property="Padding" Value="0"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#E0E0E0"/>
+                                            </Trigger>
+                                            <Trigger Property="IsMouseOver" Value="False">
+                                                <Setter Property="Background" Value="Transparent"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+
+                                <ListBoxItem x:Name="Info" PreviewMouseLeftButtonUp="Info_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border x:Name="InfoBorder" Background="#2B4162" Height="Auto" Margin="0" Padding="0" Visibility="Hidden">
+                                            <Rectangle Width="5" Height="Auto"/>
+                                        </Border>
+                                        <Image Source="/Images/information.png" Width="25" Height="25" Margin="0,0,0,0"/>
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="O Programie" Margin="10"/>
+                                    </StackPanel>
+                                    <ListBoxItem.Triggers>
+                                        <EventTrigger RoutedEvent="MouseEnter">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="InfoBorder" Storyboard.TargetProperty="Visibility">
+                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                        <EventTrigger RoutedEvent="MouseLeave">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="InfoBorder" Storyboard.TargetProperty="Visibility">
+                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </ListBoxItem.Triggers>
+                                </ListBoxItem>
+
+                                <ListBoxItem x:Name="Settings" PreviewMouseLeftButtonUp="Settings_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border x:Name="SettingsBorder" Background="#2B4162" Height="Auto" Margin="0" Padding="0" Visibility="Hidden">
+                                            <Rectangle Width="5" Height="Auto"/>
+                                        </Border>
+                                        <Image Source="/Images/settingUser.png" Width="25" Height="25" Margin="0,0,0,0"/>
+                                        <TextBlock Text="Ustawienia" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+                                    </StackPanel>
+                                    <ListBoxItem.Triggers>
+                                        <EventTrigger RoutedEvent="MouseEnter">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="SettingsBorder" Storyboard.TargetProperty="Visibility">
+                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                        <EventTrigger RoutedEvent="MouseLeave">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="SettingsBorder" Storyboard.TargetProperty="Visibility">
+                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </ListBoxItem.Triggers>
+                                </ListBoxItem>
+                                <ListBoxItem x:Name="Logout" PreviewMouseLeftButtonUp="Logout_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border x:Name="LogoutBorder" Background="#2B4162" Height="Auto" Margin="0" Padding="0" Visibility="Hidden">
+                                            <Rectangle Width="5" Height="Auto"/>
+                                        </Border>
+                                        <Image Source="/Images/logoutUser.png" Width="25" Height="25" Margin="0,0,0,0"/>
+                                        <TextBlock Text="Wyloguj" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+                                    </StackPanel>
+                                    <ListBoxItem.Triggers>
+                                        <EventTrigger RoutedEvent="MouseEnter">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="LogoutBorder" Storyboard.TargetProperty="Visibility">
+                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                        <EventTrigger RoutedEvent="MouseLeave">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="LogoutBorder" Storyboard.TargetProperty="Visibility">
+                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </ListBoxItem.Triggers>
+                                </ListBoxItem>
+                            </ListBox>
+                        </Border>
+                    </Popup>
+
+                </StackPanel>
+
+
+
+                <!-- Przyciągane przyciski po prawej stronie -->
+                <StackPanel Grid.Column="2" Width="auto" VerticalAlignment="Center" Orientation="Horizontal" Margin="0,0,26,0">
+                    
+
+                    
+                    <Button x:Name="ExitButton" Width="45" Height="45" Margin="26,0,0,0" BorderThickness="0,0,0,0" Style="{StaticResource EnlargeButton}" Click="exitApp">
                         <Button.Background>
 
                             <ImageBrush ImageSource="/Images/wyjscie.png"/>

@@ -1,0 +1,137 @@
+﻿<UserControl x:Class="Port_Morski.Pages.O_Programie"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Port_Morski.Pages"
+             mc:Ignorable="d" Height="1232">
+
+    <Grid Background="#F5F0F6">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    
+                </Grid.RowDefinitions>
+
+                <Border Background="#FF2B4162"  Width="150" Height="150">
+                    <Image Source="/Images/logo.png" Width="150" Height="150" HorizontalAlignment="Center" />
+                </Border>
+                <TextBlock Text="Aplikacja do Zarządzania Portem Morskim" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Grid.Row="1" Margin="0,0,0,10"/>
+
+                <TextBlock Text="Wersja: 1.0.0" FontSize="16" HorizontalAlignment="Center" Grid.Row="2"/>
+
+                <TextBlock Text="© 2023 Port Morski. Wszelkie prawa zastrzeżone." FontSize="14" FontStyle="Italic" HorizontalAlignment="Center" Grid.Row="3" Margin="0,0,0,20"/>
+
+                <Separator HorizontalAlignment="Stretch" Grid.Row="4" Margin="10"/>
+
+                <TextBlock Text="Informacje o Aplikacji:" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="5" Margin="10,10,0,10"/>
+
+                <TextBlock TextWrapping="Wrap" Text="Aplikacja do zarządzania portem morskim umożliwia efektywne śledzenie statków, zarządzanie ładunkiem, planowanie operacji portowych i wiele innych. Jest to narzędzie stworzone z myślą o ułatwieniu pracy w branży morskiej." 
+                       FontSize="16" HorizontalAlignment="Left" Grid.Row="6" Margin="10,0,10,20"/>
+
+                <Separator HorizontalAlignment="Stretch" Grid.Row="7" Margin="10"/>
+
+                <TextBlock Text="Historia Zmian:" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="8" Margin="10,10,0,10"/>
+
+                <TextBlock TextWrapping="Wrap" Text="1.0.0 (04.12.2023): Pierwsza wersja aplikacji. Dodane funkcje śledzenia statków, zarządzania ładunkiem i planowania operacji portowych." 
+                       FontSize="16" HorizontalAlignment="Left" Grid.Row="9" Margin="10,0,10,20"/>
+
+                <Separator HorizontalAlignment="Stretch" Grid.Row="10" Margin="10"/>
+
+                <TextBlock Text="Licencja:" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="11" Margin="10,10,0,10"/>
+
+                <TextBlock TextWrapping="Wrap" Text="Aplikacja do zarządzania portem morskim jest chroniona prawem autorskim. Użytkownicy są zobowiązani do przestrzegania warunków licencji zawartych w umowie licencyjnej." 
+                       FontSize="16" HorizontalAlignment="Left" Grid.Row="12" Margin="10,0,10,20"/>
+
+                <Separator HorizontalAlignment="Stretch" Grid.Row="13" Margin="10"/>
+
+                <TextBlock Text="Zespół Twórców:" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="14" Margin="10,10,0,10"/>
+
+                <TextBlock TextWrapping="Wrap" Text="Nasz zespół składa się z pasjonatów branży morskiej oraz doświadczonych programistów." 
+                       FontSize="16" HorizontalAlignment="Left" Grid.Row="15" Margin="10,0,10,20"/>
+
+                <Separator HorizontalAlignment="Stretch" Grid.Row="16" Margin="10"/>
+
+                <TextBlock Text="Kontakt do Wsparcia Technicznego:" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="17" Margin="10,10,0,10"/>
+
+                <TextBlock TextWrapping="Wrap" Text="W razie problemów technicznych skontaktuj się z naszym działem wsparcia technicznego: support@twojafirma.com" 
+                       FontSize="16" HorizontalAlignment="Left" Grid.Row="18" Margin="10,0,10,20"/>
+
+                <Separator HorizontalAlignment="Stretch" Grid.Row="19" Margin="10"/>
+
+                <TextBlock Text="Warunki Użytkowania:" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="20" Margin="10,10,0,10"/>
+
+                <TextBlock TextWrapping="Wrap" Text="Korzystając z tej aplikacji, akceptujesz warunki użytkowania. Prosimy o uważne zapoznanie się z nimi przed rozpoczęciem użytkowania." 
+                       FontSize="16" HorizontalAlignment="Left" Grid.Row="21" Margin="10,0,10,20"/>
+
+                <Separator HorizontalAlignment="Stretch" Grid.Row="22" Margin="10"/>
+
+                <TextBlock Text="Polityka Prywatności:" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="23" Margin="10,10,0,10"/>
+
+                <TextBlock TextWrapping="Wrap" Text="Zapoznaj się z naszą polityką prywatności, aby dowiedzieć się, jakie informacje zbieramy i w jaki sposób są przetwarzane." 
+                       FontSize="16" HorizontalAlignment="Left" Grid.Row="24" Margin="10,0,10,20"/>
+
+                <Separator HorizontalAlignment="Stretch" Grid.Row="25" Margin="10"/>
+
+                
+                <TextBlock Text="Społeczność:" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="29" Margin="10,10,0,10"/>
+
+                <TextBlock TextWrapping="Wrap" Text="Dołącz do naszej społeczności na mediach społecznościowych i bądź na bieżąco z najnowszymi aktualizacjami i dyskusjami:" 
+            FontSize="16" HorizontalAlignment="Left" Grid.Row="30" Margin="10,0,10,10"/>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="31" Margin="10,0,10,20">
+                    <TextBlock>
+        <Hyperlink NavigateUri="https://facebook.com/twojafirma">
+            <Run Text="Facebook" TextDecorations="Underline" Foreground="Blue"/>
+        </Hyperlink>
+                    </TextBlock>
+                    <TextBlock>
+        <Hyperlink NavigateUri="https://twitter.com/twojafirma">
+            <Run Text="Twitter" TextDecorations="Underline" Foreground="Blue"/>
+        </Hyperlink>
+                    </TextBlock>
+                    <!-- Dodaj inne linki do mediów społecznościowych, jeśli są używane -->
+                </StackPanel>
+
+                <!-- Dodatkowe informacje i sekcje mogą być dodane poniżej -->
+
+
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+
+</UserControl>
