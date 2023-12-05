@@ -25,8 +25,8 @@ namespace Port_Morski.Pages
     {
         int userId = Port_Morski.Login.LoggedInUser.UserId;
 
+        public event EventHandler<string> WyborZmieniony;
 
-        
 
 
         public Ustawienia()
@@ -192,7 +192,18 @@ namespace Port_Morski.Pages
 
         private void MotywComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            // Sprawdź, czy coś jest wybrane
+            if (MotywComboBox.SelectedItem != null)
+            {
+                // Pobierz obiekt ComboBoxItem
+                ComboBoxItem selectedItem = (ComboBoxItem)MotywComboBox.SelectedItem;
 
+                // Pobierz tekst z Content
+                string wybranaOpcja = selectedItem.Content.ToString();
+
+                // Zgłoś zdarzenie do okna głównego
+                WyborZmieniony?.Invoke(this, wybranaOpcja);
+            }
         }
 
 

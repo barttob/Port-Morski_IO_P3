@@ -44,7 +44,7 @@
         </Style>
 
         <Style x:Key="CustomButtonStyle" TargetType="{x:Type Button}">
-            <Setter Property="Background" Value="White"/>
+            <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderBrush" Value="#CCCCCC"/>
             <Setter Property="BorderThickness" Value="0,0,0,1"/>
             <!-- Obramowanie tylko u dołu -->
@@ -75,7 +75,7 @@
                     <DataTrigger.ExitActions>
                         <BeginStoryboard>
                             <Storyboard>
-                                <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="White" Duration="0:0:0.2"/>
+                                <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="Transparent" Duration="0:0:0.2"/>
                             </Storyboard>
                         </BeginStoryboard>
                     </DataTrigger.ExitActions>
@@ -83,9 +83,9 @@
             </Style.Triggers>
         </Style>
 
+        <SolidColorBrush x:Key="ButtonBackgroundColor">#8F754F</SolidColorBrush>
 
-
-
+        
 
 
     </Window.Resources>
@@ -193,7 +193,7 @@
 
         </Grid>
         <!-- Panel górny -->
-        <Grid Background="White" Width="auto" Height="90" VerticalAlignment="Top" Margin="246,0,0,0">
+        <Grid x:Name="PanelGorny" Background="White" Width="auto" Height="90" VerticalAlignment="Top" Margin="246,0,0,0">
             <Grid.Effect>
                 <DropShadowEffect Color="Black" Direction="270" ShadowDepth="5" Opacity="0.5"/>
             </Grid.Effect>
@@ -359,7 +359,7 @@
 
 
 
-                <TextBlock Grid.Column="0" Text="Centrum Zarządzania Portem" Foreground="#333333" FontSize="36" Margin="52,0,0,0" VerticalAlignment="Center" FontWeight="Bold"/>
+                <TextBlock x:Name="Napis_glowny" Grid.Column="0" Text="Centrum Zarządzania Portem" Foreground="#333333" FontSize="36" Margin="52,0,0,0" VerticalAlignment="Center" FontWeight="Bold"/>
 
             </Grid>
         </Grid>

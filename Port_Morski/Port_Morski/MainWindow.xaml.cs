@@ -27,7 +27,7 @@ namespace Port_Morski
         private string? UserRole { get; }
         int userId = Login.LoggedInUser.UserId;
 
-        
+        Ustawienia ustawieniaControl;
 
 
 
@@ -37,13 +37,6 @@ namespace Port_Morski
             UserRole = userRole;
             this.WindowState = WindowState.Maximized;
             SetButtonColorOnLoad();
-
-
-            
-            
-
-
-
 
             // Sprawdź, czy Tag nie jest pusty
             if (!string.IsNullOrEmpty(UserRole))
@@ -102,10 +95,134 @@ namespace Port_Morski
             }
 
         }
-        
-        
+        private void UstawieniaControl_WyborZmieniony(object sender, string wybranaOpcja)
+        {
 
-       
+            switch (wybranaOpcja)
+            {
+                case "Domyślny":
+                    Menu.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF2B4162"));
+                    PanelGorny.Background = Brushes.White;
+                    StatystykiButton.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#8F754F"));
+                    MonitorowanieStatkow.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#8F754F"));
+                    ZarzadzanieLadunkami.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#8F754F"));
+                    PlanowanieOperacjiPortowych.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#8F754F"));
+                    GenerowanieRaportow.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#8F754F"));
+                    Administracja.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#8F754F"));
+                    StatystykiButton.Foreground = Brushes.Black;
+                    MonitorowanieStatkow.Foreground = Brushes.Black;
+                    ZarzadzanieLadunkami.Foreground = Brushes.Black;
+                    PlanowanieOperacjiPortowych.Foreground = Brushes.Black;
+                    GenerowanieRaportow.Foreground = Brushes.Black;
+                    Administracja.Foreground = Brushes.Black;
+
+                    //Panel górny
+                    PanelGorny.Background = Brushes.White;
+                    Napis_glowny.Foreground = Brushes.Black;
+                    User.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#333333"));
+                    Rola.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#666666"));
+                    break;
+                case "Neptun's Dream":
+                    Menu.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#BFBBAF"));
+
+                    StatystykiButton.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#555A54"));
+                    MonitorowanieStatkow.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#555A54"));
+                    ZarzadzanieLadunkami.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#555A54"));
+                    PlanowanieOperacjiPortowych.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#555A54"));
+                    GenerowanieRaportow.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#555A54"));
+                    Administracja.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#555A54"));
+                    StatystykiButton.Foreground = Brushes.White;
+                    MonitorowanieStatkow.Foreground = Brushes.White;
+                    ZarzadzanieLadunkami.Foreground = Brushes.White;
+                    PlanowanieOperacjiPortowych.Foreground = Brushes.White;
+                    GenerowanieRaportow.Foreground = Brushes.White;
+                    Administracja.Foreground = Brushes.White;
+
+                    //Panel górny
+                    PanelGorny.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#E1DDD2"));
+                    Napis_glowny.Foreground = Brushes.Black;
+                    User.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#333333"));
+                    Rola.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#666666"));
+                    break;
+                case "Galaktyczny Pirs":
+                    Menu.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2F2F2F"));
+
+                    StatystykiButton.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFCB74"));
+                    MonitorowanieStatkow.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFCB74"));
+                    ZarzadzanieLadunkami.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFCB74"));
+                    PlanowanieOperacjiPortowych.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFCB74"));
+                    GenerowanieRaportow.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFCB74"));
+                    Administracja.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFCB74"));
+                    StatystykiButton.Foreground = Brushes.Black;
+                    MonitorowanieStatkow.Foreground = Brushes.Black;
+                    ZarzadzanieLadunkami.Foreground = Brushes.Black;
+                    PlanowanieOperacjiPortowych.Foreground = Brushes.Black;
+                    GenerowanieRaportow.Foreground = Brushes.Black;
+                    Administracja.Foreground = Brushes.Black;
+
+                    //Panel górny
+                    PanelGorny.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#F6F6F6"));
+                    Napis_glowny.Foreground = Brushes.Black;
+                    User.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#333333"));
+                    Rola.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#666666"));
+                    break;
+                case "Mistyczna Morska Mgła":
+
+                    //Menu po prawej stronie
+                    Menu.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#C3ff00"));
+
+                    StatystykiButton.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0E0E0E"));
+                    MonitorowanieStatkow.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0E0E0E"));
+                    ZarzadzanieLadunkami.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0E0E0E"));
+                    PlanowanieOperacjiPortowych.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0E0E0E"));
+                    GenerowanieRaportow.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0E0E0E"));
+                    Administracja.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0E0E0E"));
+                    StatystykiButton.Foreground = Brushes.White;
+                    MonitorowanieStatkow.Foreground = Brushes.White;
+                    ZarzadzanieLadunkami.Foreground = Brushes.White;
+                    PlanowanieOperacjiPortowych.Foreground = Brushes.White;
+                    GenerowanieRaportow.Foreground = Brushes.White;
+                    Administracja.Foreground = Brushes.White;
+
+                    //Panel górny
+                    PanelGorny.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4638FF"));
+                    Napis_glowny.Foreground = Brushes.White;
+                    User.Foreground = Brushes.White;
+                    Rola.Foreground = Brushes.LightGray;
+
+
+                    
+                    break;
+                default:
+                    Menu.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF2B4162"));
+                    PanelGorny.Background = Brushes.White;
+                    StatystykiButton.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#8F754F"));
+                    MonitorowanieStatkow.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#8F754F"));
+                    ZarzadzanieLadunkami.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#8F754F"));
+                    PlanowanieOperacjiPortowych.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#8F754F"));
+                    GenerowanieRaportow.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#8F754F"));
+                    Administracja.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#8F754F"));
+                    StatystykiButton.Foreground = Brushes.Black;
+                    MonitorowanieStatkow.Foreground = Brushes.Black;
+                    ZarzadzanieLadunkami.Foreground = Brushes.Black;
+                    PlanowanieOperacjiPortowych.Foreground = Brushes.Black;
+                    GenerowanieRaportow.Foreground = Brushes.Black;
+                    Administracja.Foreground = Brushes.Black;
+
+                    //Panel górny
+                    PanelGorny.Background = Brushes.White;
+                    Napis_glowny.Foreground = Brushes.Black;
+                    User.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#333333"));
+                    Rola.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#666666"));
+                    break;
+            }
+
+
+
+        }
+
+
+
         private void SetButtonColorOnLoad()
         {
             StatystykiButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#D7B377"));
@@ -213,9 +330,14 @@ namespace Port_Morski
 
         private void Settings_Click(object sender, MouseButtonEventArgs e)
         {
-            MainGrid.Children.Clear();
-            Ustawienia ustawienia = new ();
-            MainGrid.Children.Add(ustawienia);
+            // Inicjalizacja kontrolki użytkownika
+            ustawieniaControl = new Ustawienia();
+            ustawieniaControl.WyborZmieniony += UstawieniaControl_WyborZmieniony;
+
+            
+
+            // Dodaj kontrolkę do okna głównego (zakładam, że masz Grid o nazwie 'MainGrid' w oknie głównym)
+            MainGrid.Children.Add(ustawieniaControl);
         }
 
         private void Logout_Click(object sender, MouseButtonEventArgs e)
