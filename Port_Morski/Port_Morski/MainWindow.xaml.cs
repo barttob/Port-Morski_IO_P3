@@ -28,7 +28,7 @@ namespace Port_Morski
         int userId = Login.LoggedInUser.UserId;
 
         Ustawienia ustawieniaControl;
-
+        private UserPreferences userPreferences;
 
 
         public MainWindow(string userRole)
@@ -37,6 +37,13 @@ namespace Port_Morski
             UserRole = userRole;
             this.WindowState = WindowState.Maximized;
             SetButtonColorOnLoad();
+
+            // Pobierz preferencje użytkownika
+            userPreferences = UserPreferencesManager.LoadPreferences(userId);
+
+            // Ustaw motyw zgodnie z preferencjami użytkownika
+            SetTheme(userPreferences.SelectedTheme);
+
 
             // Sprawdź, czy Tag nie jest pusty
             if (!string.IsNullOrEmpty(UserRole))
@@ -97,8 +104,16 @@ namespace Port_Morski
         }
         private void UstawieniaControl_WyborZmieniony(object sender, string wybranaOpcja)
         {
+            // Zapisz wybrany motyw do preferencji użytkownika
+            userPreferences.SelectedTheme = wybranaOpcja;
+            UserPreferencesManager.SavePreferences(userPreferences);
 
-            switch (wybranaOpcja)
+            // Ustaw motyw interfejsu użytkownika
+            SetTheme(wybranaOpcja);
+        }
+        private void SetTheme(string selectedTheme)
+        {
+            switch (selectedTheme)
             {
                 case "Domyślny":
                     Menu.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF2B4162"));
@@ -191,7 +206,7 @@ namespace Port_Morski
                     Rola.Foreground = Brushes.LightGray;
 
 
-                    
+
                     break;
                 default:
                     Menu.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF2B4162"));
@@ -216,10 +231,8 @@ namespace Port_Morski
                     Rola.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#666666"));
                     break;
             }
-
-
-
         }
+        
 
 
 
