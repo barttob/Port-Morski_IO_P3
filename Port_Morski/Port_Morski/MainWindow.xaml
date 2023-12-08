@@ -193,13 +193,13 @@
 
         </Grid>
         <!-- Panel górny -->
-        <Grid x:Name="PanelGorny" Background="White" Width="auto" Height="90" VerticalAlignment="Top" Margin="246,0,0,0">
+        <Grid x:Name="PanelGorny" Background="White" Width="auto" Height="75" VerticalAlignment="Top" Margin="246,0,0,0" HorizontalAlignment="Stretch">
             <Grid.Effect>
                 <DropShadowEffect Color="Black" Direction="270" ShadowDepth="5" Opacity="0.5"/>
             </Grid.Effect>
 
 
-            <Grid Width="auto" Height="85" VerticalAlignment="Top">
+            <Grid Width="auto" Height="auto" VerticalAlignment="Center" HorizontalAlignment="Stretch">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -226,6 +226,8 @@
                     </Button>
 
                     <!-- Popup z menu -->
+
+                    
                     <Popup x:Name="MenuPopup" PlacementTarget="{Binding ElementName=SettingUser}" Placement="Bottom" StaysOpen="False">
                         <Border Background="White" Width="{Binding ActualWidth, ElementName=SettingUser}">
                             <ListBox>
@@ -334,7 +336,7 @@
                             </ListBox>
                         </Border>
                     </Popup>
-
+                   
                 </StackPanel>
 
 
@@ -359,16 +361,16 @@
 
 
 
-                <TextBlock x:Name="Napis_glowny" Grid.Column="0" Text="Centrum Zarządzania Portem" Foreground="#333333" FontSize="36" Margin="52,0,0,0" VerticalAlignment="Center" FontWeight="Bold"/>
+                <TextBlock x:Name="Napis_glowny" Grid.Column="0" Text="{Binding NazwaKontroli}" Foreground="#333333" FontSize="36" Margin="52,0,0,0" VerticalAlignment="Center" FontWeight="Bold"/>
 
             </Grid>
         </Grid>
 
 
-        <Grid x:Name="MainGrid" Margin="246,95,0,0" Background="#F5F0F6">
+        <Grid x:Name="MainGrid" Margin="246,81,0,0" Background="#F5F0F6">
 
 
-            <Pages:Statystyki  />
+            <Pages:Statystyki />
 
         </Grid>
 

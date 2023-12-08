@@ -26,6 +26,7 @@ namespace Port_Morski.Pages
         int userId = Port_Morski.Login.LoggedInUser.UserId;
 
         public event EventHandler<string> WyborZmieniony;
+        public event EventHandler<string> WyborRozmiaruZmieniony;
 
 
 
@@ -33,7 +34,8 @@ namespace Port_Morski.Pages
         {
             InitializeComponent();
             Dane();
-            
+            UstawMotywComboBox();
+            UstawRozmiarComboBox();
         }
         private bool AreFieldsNotEmpty()
 {
@@ -206,6 +208,50 @@ namespace Port_Morski.Pages
             }
         }
 
+        private void UstawMotywComboBox()      //metoda do ustawiania motywu użytkownika dla combobox po uruchomieniu, tak aby w combobox wyświetlał sie wybrany przez uzytkownika motyw
+        {
+            // Odczytaj ustawienia dla zalogowanego użytkownika
+            var userId = LoggedInUser.UserId;
+            var userPreferences = UserPreferencesManager.LoadPreferences(userId);
 
+            if (userPreferences != null)
+            {
+                // Ustaw nazwę motywu w ComboBox
+                MotywComboBox.SelectedItem = MotywComboBox.Items.OfType<ComboBoxItem>()
+                    .FirstOrDefault(item => item.Content.ToString() == userPreferences.SelectedTheme);
+            }
+            else
+            {
+                // Jeśli nie ma preferencji użytkownika, ustaw pierwszą opcję jako domyślną
+                MotywComboBox.SelectedIndex = 0;
+            }
+        }
+        private void UstawRozmiarComboBox()
+        {
+            // Odczytaj ustawienia dla zalogowanego użytkownika
+            var userId = LoggedInUser.UserId;
+            var userPreferences = UserPreferencesManager.LoadPreferences(userId);
+
+            if (userPreferences != null)
+            {
+                RozmiarComboBox.SelectedItem = RozmiarComboBox.Items.OfType<ComboBoxItem>()
+                .FirstOrDefault(item => item.Content.ToString() == userPreferences.SelectedSize);
+            }
+            else
+            {
+                RozmiarComboBox.SelectedIndex = 0;
+            }
+        }
+
+        private void RozmiarComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (RozmiarComboBox.SelectedItem != null)
+            {
+                ComboBoxItem selectedSizeItem = (ComboBoxItem)RozmiarComboBox.SelectedItem;
+                string selectedSize = selectedSizeItem.Content.ToString();
+                WyborRozmiaruZmieniony?.Invoke(this, selectedSize);
+
+            }
+        }
     }
 }

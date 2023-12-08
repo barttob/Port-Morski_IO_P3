@@ -13,5 +13,6 @@ namespace Port_Morski
     {
         public int UserId { get; set; }
         public string SelectedTheme { get; set; }
+        public string SelectedSize { get; set; }
     }
 }

@@ -24,6 +24,7 @@
     <None Remove="Images\magazyn.png" />
     <None Remove="Images\port.png" />
     <None Remove="Images\role.png" />
+    <None Remove="Images\search.png" />
     <None Remove="Images\search_icon.png" />
     <None Remove="Images\settingUser.png" />
     <None Remove="Images\set_apps.png" />
@@ -41,6 +42,7 @@
     <PackageReference Include="BouncyCastle.NetCore" Version="2.2.1" />
     <PackageReference Include="itext7" Version="8.0.2" />
     <PackageReference Include="itext7.pdfhtml" Version="5.0.2" />
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
     <PackageReference Include="MaterialDesignInXamlToolkitAddOns" Version="0.0.6" />
     <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.12" />
@@ -104,6 +106,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\role.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\search.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\search_icon.png">

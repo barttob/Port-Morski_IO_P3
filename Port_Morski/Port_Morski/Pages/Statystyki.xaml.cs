@@ -16,6 +16,7 @@ namespace Port_Morski.Pages
             InitializeComponent();
             context = new SeaPortContext();
             wyswietl();
+            DataContext = new IloscOperacji();
         }
 
       

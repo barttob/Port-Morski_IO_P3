@@ -3,11 +3,13 @@ using Port_Morski.Models;
 using Port_Morski.Pages;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -15,7 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.Windows.Threading;
 
 namespace Port_Morski
 {
@@ -26,7 +28,7 @@ namespace Port_Morski
     {
         private string? UserRole { get; }
         int userId = Login.LoggedInUser.UserId;
-
+        private MainViewModel _viewModel;
         Ustawienia ustawieniaControl;
         private UserPreferences userPreferences;
 
@@ -35,17 +37,12 @@ namespace Port_Morski
         {
             InitializeComponent();
             UserRole = userRole;
-            this.WindowState = WindowState.Maximized;
             SetButtonColorOnLoad();
-
-            // Pobierz preferencje użytkownika
             userPreferences = UserPreferencesManager.LoadPreferences(userId);
-
-            // Ustaw motyw zgodnie z preferencjami użytkownika
             SetTheme(userPreferences.SelectedTheme);
-
-
-            // Sprawdź, czy Tag nie jest pusty
+            SetSize(userPreferences.SelectedSize);
+            _viewModel = new MainViewModel();
+            DataContext = _viewModel;
             if (!string.IsNullOrEmpty(UserRole))
             {
                 
@@ -71,8 +68,7 @@ namespace Port_Morski
             {
                 MessageBox.Show("Niepoprawnie przesłano Tag roli dla użytkownika"); 
             }
-            
-
+            _viewModel.NazwaKontroli = "Statystyki dla Port Morski";
             using (var context = new SeaPortContext(new DbContextOptions<SeaPortContext>()))
             {
                 var user = context.Users.FirstOrDefault(u => u.Id == userId);
@@ -232,9 +228,36 @@ namespace Port_Morski
                     break;
             }
         }
-        
+        private void UstawieniaControl_WyborRozmiaruZmieniony(object sender, string wybranyRozmiar)
+        {
+            // Zapisz wybrany rozmiar do preferencji użytkownika
+            userPreferences.SelectedSize = wybranyRozmiar;
+            UserPreferencesManager.SavePreferences(userPreferences);
 
-
+            // Ustaw rozmiar okna aplikacji
+            SetSize(wybranyRozmiar);
+        }
+        private void SetSize(string selectedSize)
+        {
+            
+            switch (selectedSize)
+            {
+                case "Zmaksymalizowany":
+                    this.WindowState = WindowState.Maximized;
+                    break;
+                case "Zminimalizowany":
+                    this.WindowState = WindowState.Minimized;
+                    break;
+                case "Pełny ekran":
+                   this.WindowStyle = WindowStyle.None;
+                   this.WindowState = WindowState.Maximized;
+                    break;
+                default:
+                    this.WindowStyle = WindowStyle.None;
+                    this.WindowState = WindowState.Maximized;
+                    break;
+            }
+        }
 
         private void SetButtonColorOnLoad()
         {
@@ -242,7 +265,6 @@ namespace Port_Morski
             // Dodaj kolejne przyciski, jeśli są inne, i ustaw im kolor tła
         }
        
-
         private void exitApp(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
@@ -255,7 +277,7 @@ namespace Port_Morski
             Statystyki statystyki = new Statystyki();
             MainGrid.Children.Add(statystyki);
             SwitchContentAndChangeButtonColor<Statystyki>((Button)sender);
-            
+            _viewModel.NazwaKontroli = "Statystyki dla Port Morski";
         }
 
         private void MonitorowanieStatkow_Click(object sender, RoutedEventArgs e)
@@ -265,6 +287,7 @@ namespace Port_Morski
             MainGrid.Children.Add(monitorowanie);
             SwitchContentAndChangeButtonColor<MonitorowanieStatkow>((Button)sender);
             StatystykiButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#8F754F"));
+            _viewModel.NazwaKontroli = "Monitorowanie Statków";
         }
 
         private void ZarzadzanieLadunkami_Click(object sender, RoutedEventArgs e)
@@ -274,6 +297,7 @@ namespace Port_Morski
             MainGrid.Children.Add(zarzadzanieLadunkami);
             SwitchContentAndChangeButtonColor<ZarzadzanieLadunkami>((Button)sender);
             StatystykiButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#8F754F"));
+            _viewModel.NazwaKontroli = "Zarządzanie Ładunkami";
         }
 
         private void PlanowanieOperacjiPortowych_Click(object sender, RoutedEventArgs e)
@@ -283,8 +307,8 @@ namespace Port_Morski
             MainGrid.Children.Add(planowanie);
             SwitchContentAndChangeButtonColor<PlanowanieOperacjiPortowych>((Button)sender);
             StatystykiButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#8F754F"));
+            _viewModel.NazwaKontroli = "Planowanie Opreracji Portowych";
         }
-
 
         private void GenerowanieRaportow_Click(object sender, RoutedEventArgs e)
         {
@@ -293,6 +317,7 @@ namespace Port_Morski
             MainGrid.Children.Add(generowanieRaportow);
             SwitchContentAndChangeButtonColor<GenerowanieRaportow>((Button)sender);
             StatystykiButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#8F754F"));
+            _viewModel.NazwaKontroli = "Generowanie Raportów";
         }
 
         private void Administracja_Click(object sender, RoutedEventArgs e)
@@ -303,6 +328,7 @@ namespace Port_Morski
             MainGrid.Children.Add(administracja);
             SwitchContentAndChangeButtonColor<Administracja>((Button)sender);
             StatystykiButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#8F754F"));
+            _viewModel.NazwaKontroli = "Administracja";
         }
         private void SwitchContentAndChangeButtonColor<T>(Button clickedButton) where T : UserControl, new()
         {
@@ -323,22 +349,46 @@ namespace Port_Morski
             T content = new T();
             MainGrid.Children.Add(content);
         }
+
+        private DispatcherTimer timer;
         private void MenuButtonClick(object sender, RoutedEventArgs e)
         {
             if (MenuPopup.IsOpen)
             {
                 MenuPopup.IsOpen = false;
+                StopTimer();
             }
             else
             {
                 MenuPopup.IsOpen = true;
+                StartTimer();
             }
+        }
+        private void StartTimer()
+        {
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(5);
+            timer.Tick += Timer_Tick;
+            timer.Start();
+        }
+        private void StopTimer()
+        {
+            if (timer != null)
+            {
+                timer.Stop();
+            }
+        }
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            MenuPopup.IsOpen = false;
+            StopTimer();
         }
         private void Info_Click(object sender, MouseButtonEventArgs e)
         {
             MainGrid.Children.Clear();
             O_Programie oProgramie = new O_Programie();
             MainGrid.Children.Add(oProgramie);
+            _viewModel.NazwaKontroli = "Informacje o Programie";
         }
 
         private void Settings_Click(object sender, MouseButtonEventArgs e)
@@ -346,10 +396,8 @@ namespace Port_Morski
             // Inicjalizacja kontrolki użytkownika
             ustawieniaControl = new Ustawienia();
             ustawieniaControl.WyborZmieniony += UstawieniaControl_WyborZmieniony;
-
-            
-
-            // Dodaj kontrolkę do okna głównego (zakładam, że masz Grid o nazwie 'MainGrid' w oknie głównym)
+            ustawieniaControl.WyborRozmiaruZmieniony += UstawieniaControl_WyborRozmiaruZmieniony;
+            _viewModel.NazwaKontroli = "Ustawienia";
             MainGrid.Children.Add(ustawieniaControl);
         }
 
@@ -361,9 +409,7 @@ namespace Port_Morski
             this.Close();
         }
 
-
-
-
-
+          
+        
     }
 }

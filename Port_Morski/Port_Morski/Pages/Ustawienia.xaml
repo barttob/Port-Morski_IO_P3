@@ -18,7 +18,7 @@
                     </Grid.RowDefinitions>
 
                     <!-- Nagłówek Ustawienia -->
-                    <TextBlock Text="Ustawienia" FontWeight="Bold" FontSize="35" Margin="16,16,16,0" HorizontalAlignment="Center"/>
+                    <!--<TextBlock Text="Ustawienia" FontWeight="Bold" FontSize="35" Margin="16,16,16,0" HorizontalAlignment="Center"/>-->
                     <Button x:Name="ZMODYFIKUJ" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ButtonAssist.CornerRadius="10,10,10,10" FontSize="24" Background="#FF2B4162" Foreground="Black" BorderBrush="Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" UseLayoutRounding="False" Width="156" Height="46" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,18,15,0" Padding="1,4,1,4" Click="ZMODYFIKUJ_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Images/add.png" Width="20" Height="20" Margin="0,0,10,0" RenderTransformOrigin="0.456,0.422"/>
@@ -31,7 +31,7 @@
 
 
             <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" PanningMode="Both">
-                <StackPanel x:Name="Zawartosc" Margin="0,10,0,0">
+                <StackPanel x:Name="Zawartosc" Margin="0,0,0,0">
 
                     <Border Background="#FF2B4162" Margin="50,10,0,-35" CornerRadius="5" HorizontalAlignment="Left" Padding="30,10,30,10" Panel.ZIndex="1" Width="200">
                         <Grid>
@@ -204,7 +204,7 @@
                                 <Image Source="/Images/size.png" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"/>
 
                                 <!-- ComboBox z opcjami -->
-                                <ComboBox x:Name="RozmiarComboBox" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" SelectedIndex="0" FontSize="16" Margin="5,0,0,0">
+                                <ComboBox x:Name="RozmiarComboBox" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" SelectedIndex="0" FontSize="16" Margin="5,0,0,0" SelectionChanged="RozmiarComboBox_SelectionChanged">
                                     <ComboBoxItem Content="Zmaksymalizowany"/>
                                     <ComboBoxItem Content="Zminimalizowany"/>
                                     <ComboBoxItem Content="Pełny ekran"/>

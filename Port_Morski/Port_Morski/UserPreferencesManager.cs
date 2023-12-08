@@ -27,6 +27,7 @@ namespace Port_Morski
             if (existingPreferences != null)
             {
                 existingPreferences.SelectedTheme = preferences.SelectedTheme;
+                existingPreferences.SelectedSize = preferences.SelectedSize; // Update size preference
             }
             else
             {
