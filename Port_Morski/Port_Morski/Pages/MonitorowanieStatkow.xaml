@@ -8,27 +8,30 @@
              mc:Ignorable="d" 
              xmlns:syncfusion="clr-namespace:Syncfusion.UI.Xaml.Maps;assembly=Syncfusion.SfMaps.WPF"
              d:DesignHeight="1007" d:DesignWidth="1186">
-    <Grid Background="#F5F0F6" Margin="0,0,0,0">
-        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="MONITOROWANIE STATKÓW" VerticalAlignment="Top" FontSize="48" Margin="0,38,0,0"/>
+    <Grid Background="#F5F0F6" >
 
-        <materialDesign:Card HorizontalAlignment="Center"  VerticalAlignment="Top" Height="700" Width="Auto" Margin="80,107,80,0" UniformCornerRadius="25">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+
+        <materialDesign:Card  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="30" UniformCornerRadius="25">
             <syncfusion:SfMap x:Name="mapa"  >
                 <syncfusion:SfMap.Layers>
-                    <local:ImageryLayerExt Markers="{Binding Models}" Center="55.5, 18" Radius="25" DistanceType="KiloMeter">
+                    <local:ImageryLayerExt Markers="{Binding Models}" Center="55.5, 21" Radius="25" DistanceType="KiloMeter">
                     </local:ImageryLayerExt>
                 </syncfusion:SfMap.Layers>
             </syncfusion:SfMap>
         </materialDesign:Card>
 
-        <materialDesign:Card Margin="75,0,75,95" Width="Auto" Height="330" UniformCornerRadius="25" HorizontalAlignment="Center" VerticalAlignment="Bottom" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
+        <materialDesign:Card Grid.Row="1" Margin="30,0,30,30" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" UniformCornerRadius="25"  VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
             <StackPanel VerticalAlignment="Stretch">
                 <Border Background="#E7E7E7" CornerRadius="25,25,0,0" Height="59" VerticalAlignment="Top">
                     <StackPanel>
                         <TextBlock Text="Statki" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,15,0,0" FontSize="24" FontWeight="Bold"/>
                     </StackPanel>
                 </Border>
-
-
 
                 <DataGrid Name="datagridStatkiFront" AutoGenerateColumns="False" IsReadOnly="True" HorizontalContentAlignment="Stretch" FontSize="18" VerticalContentAlignment="Stretch" Height="246" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled" HeadersVisibility="None">
                     <DataGrid.Columns>
@@ -49,11 +52,7 @@
                         <DataGridTextColumn Width="*" Binding="{Binding Longitude}" />
                     </DataGrid.Columns>
                 </DataGrid>
-
-
             </StackPanel>
         </materialDesign:Card>
-
-
     </Grid>
 </UserControl>

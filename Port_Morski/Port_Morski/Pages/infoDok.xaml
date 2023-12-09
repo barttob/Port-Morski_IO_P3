@@ -10,10 +10,10 @@
             mc:Ignorable="d" 
             d:DesignHeight="1007" d:DesignWidth="1186">
 
-    
 
 
-    <Grid x:Name="MainGrid" Background="#80FFFFFF" >
+
+    <Grid x:Name="MainGrid"  Background="#90111111">
         <Border BorderBrush="DarkGray" BorderThickness="2" Margin="-206,51,68,47" CornerRadius="18">
             <materialDesign:Card  Background="#F5F0F6" UniformCornerRadius="18">
                 <Grid x:Name="MainStackPanel">

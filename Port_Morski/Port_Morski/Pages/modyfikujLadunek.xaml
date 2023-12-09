@@ -7,10 +7,16 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="1007" d:DesignWidth="1186">
-    <Grid>
+    <Grid  Background="#90111111">
 
-        <materialDesign:Card Margin="262,266,262,267" Background="#F5F0F6" UniformCornerRadius="45">
-            <StackPanel>
+        <materialDesign:Card MinWidth="700" MaxWidth="700" MinHeight="450" MaxHeight="450" Background="#F5F0F6" UniformCornerRadius="30">
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
                 <Grid Background="#E7E7E7">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -33,7 +39,7 @@
 
 
 
-                <Grid Margin="0,15,0,0">
+                <Grid Grid.Row="1" Margin="0,15,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -41,21 +47,19 @@
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <!-- Pierwsza kolumna -->
                         <ColumnDefinition Width="*"/>
-                        <!-- Druga kolumna -->
                     </Grid.ColumnDefinitions>
 
-                    <TextBox Grid.Row="0" Grid.Column="0" Margin="5" Text="{Binding Name}" x:Name="Nazwa_Ladunku" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Nazwa Ładunku" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"  Style="{DynamicResource MaterialDesignOutlinedTextBox}" SelectionBrush="White" CaretBrush="Black" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                    <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Text="{Binding Weight}" x:Name="Waga_Ladunku" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Waga Ładunku" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"  Style="{DynamicResource MaterialDesignOutlinedTextBox}" SelectionBrush="White" CaretBrush="Black" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                    <Border Grid.Row="2" Grid.Column="0" CornerRadius="5" BorderBrush="#FFB3B4B4" BorderThickness="1" Width="300" Height="60" Margin="5,5,0,0" HorizontalAlignment="Left">
-                        <ComboBox x:Name="Nazwa_Statku" Text="" materialDesign:HintAssist.Hint="Nazwa i rodzaj Statku"  Width="298" Height="58" VerticalAlignment="Top" FontSize="20" Padding="17,4,0,4" HorizontalAlignment="Left">
+                    <TextBox Margin="5" Text="{Binding Name}" x:Name="Nazwa_Ladunku" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Nazwa Ładunku" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"  Style="{DynamicResource MaterialDesignOutlinedTextBox}" SelectionBrush="White" CaretBrush="Black" HorizontalContentAlignment="Stretch" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                    <TextBox  Grid.Column="1" Margin="5" Text="{Binding Weight}" x:Name="Waga_Ladunku" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Waga Ładunku" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"  Style="{DynamicResource MaterialDesignOutlinedTextBox}" SelectionBrush="White" CaretBrush="Black" HorizontalContentAlignment="Stretch" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                    <Border Grid.Row="2" CornerRadius="5" BorderBrush="#FFB3B4B4" BorderThickness="1" Width="300" Height="60" Margin="5,5,0,0" HorizontalAlignment="Center">
+                        <ComboBox x:Name="Nazwa_Statku" Text="" materialDesign:HintAssist.Hint="Nazwa i rodzaj Statku"  Width="298" Height="58" VerticalAlignment="Top" FontSize="20" Padding="17,4,0,4" HorizontalAlignment="Center">
 
 
                         </ComboBox>
                     </Border>
-                    <Border Grid.Row="2" Grid.Column="1" CornerRadius="5" BorderBrush="#FFB3B4B4" BorderThickness="1" Width="300" Height="60" Margin="5,5,0,0" HorizontalAlignment="Left">
-                        <ComboBox x:Name="Status" Text="" materialDesign:HintAssist.Hint="Status"  Width="298" Height="58" VerticalAlignment="Top" FontSize="20" Padding="17,4,0,4" HorizontalAlignment="Left">
+                    <Border Grid.Row="2" Grid.Column="1" CornerRadius="5" BorderBrush="#FFB3B4B4" BorderThickness="1" Width="300" Height="60" Margin="5,5,0,0" HorizontalAlignment="Center">
+                        <ComboBox x:Name="Status" Text="" materialDesign:HintAssist.Hint="Status"  Width="298" Height="58" VerticalAlignment="Top" FontSize="20" Padding="17,4,0,4" HorizontalAlignment="Center">
                             <ComboBoxItem Foreground="#FF938E8E"  FontSize="20">Przyjęty</ComboBoxItem>
                             <ComboBoxItem Foreground="#FF938E8E" FontSize="20">Załadowany</ComboBoxItem>
                             <ComboBoxItem Foreground="#FF938E8E" FontSize="20">W Transporcie</ComboBoxItem>
@@ -77,20 +81,10 @@
                         </ComboBox>
                     </Border>
 
-
                     <TextBox Grid.Row="0" Grid.Column="0" Margin="5" Text="{Binding Id}" x:Name="Id" Visibility="Hidden"/>
 
-
                 </Grid>
-                
-
-
-                
-
-
-            </StackPanel>
-
+            </Grid>
         </materialDesign:Card>
-
     </Grid>
 </UserControl>

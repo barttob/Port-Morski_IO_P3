@@ -21,7 +21,7 @@
         </Grid.ColumnDefinitions>
 
 
-        <materialDesign:Card UniformCornerRadius="15" Margin="30">
+        <materialDesign:Card UniformCornerRadius="20" Margin="30">
             <Grid Margin="15">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -43,7 +43,7 @@
                 </lvc:CartesianChart>
             </Grid>
         </materialDesign:Card>
-        <materialDesign:Card UniformCornerRadius="15" Margin="30" Grid.Column="1">
+        <materialDesign:Card UniformCornerRadius="20" Margin="30" Grid.Column="1">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -55,13 +55,13 @@
                 <lvc:PieChart Grid.Row="1" Series="{Binding SeriesCollections}" LegendLocation="Right"/>
             </Grid>
         </materialDesign:Card>
-        <materialDesign:Card UniformCornerRadius="15" Margin="30" Grid.Row="1" Grid.Column="0" >
+        <materialDesign:Card UniformCornerRadius="20" Margin="30" Grid.Row="1" Grid.Column="0" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <DataGrid x:Name="DataGridHistory" AutoGenerateColumns="False" >
+                <DataGrid x:Name="DataGridHistory" AutoGenerateColumns="False" Background="White" FontSize="14"  >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Numer" Binding="{Binding LogID}" />
                         <DataGridTextColumn Header="Operacja" Binding="{Binding OldOperation}" />
@@ -77,11 +77,11 @@
         </materialDesign:Card>
 
 
-        <materialDesign:Card UniformCornerRadius="15" Margin="30" Grid.Row="1" Grid.Column="1" >
+        <materialDesign:Card UniformCornerRadius="20" Margin="30" Grid.Row="1" Grid.Column="1" >
             
             <ScrollViewer Grid.Column="1" >
                 
-                <Grid Margin="30">
+                <Grid Margin="30,20,0,30">
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto" />
@@ -102,7 +102,7 @@
                             materialDesign:ButtonAssist.CornerRadius="10,10,10,10" FontSize="18" Background="#FF2B4162" Foreground="White" 
                             BorderBrush="Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  
                             UseLayoutRounding="False" Width="Auto" Height="46" HorizontalAlignment="Right" VerticalAlignment="Top" 
-                            Margin="0,0,-29,0" Padding="10,4,20,4" Click="ButtonWyszukaj_Click"  Grid.ColumnSpan="5"  >
+                            Margin="0" Padding="10,4,20,4" Click="ButtonWyszukaj_Click"  Grid.ColumnSpan="5"  >
 
                         <Grid>
                             <Grid.ColumnDefinitions>

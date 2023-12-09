@@ -4,9 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Port_Morski.Pages"
-             mc:Ignorable="d" Height="1232">
+             Background="#F5F0F6"
+             mc:Ignorable="d"> 
 
-    <Grid Background="#F5F0F6">
+    
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <Grid>
                 <Grid.RowDefinitions>
@@ -115,23 +116,23 @@
 
                 <StackPanel Orientation="Horizontal" Grid.Row="31" Margin="10,0,10,20">
                     <TextBlock>
-        <Hyperlink NavigateUri="https://facebook.com/twojafirma">
-            <Run Text="Facebook" TextDecorations="Underline" Foreground="Blue"/>
-        </Hyperlink>
-                    </TextBlock>
-                    <TextBlock>
-        <Hyperlink NavigateUri="https://twitter.com/twojafirma">
-            <Run Text="Twitter" TextDecorations="Underline" Foreground="Blue"/>
-        </Hyperlink>
-                    </TextBlock>
-                    <!-- Dodaj inne linki do mediów społecznościowych, jeśli są używane -->
-                </StackPanel>
+                <Hyperlink NavigateUri="https://facebook.com/twojafirma">
+                    <Run Text="Facebook" TextDecorations="Underline" Foreground="Blue"/>
+                </Hyperlink>
+                            </TextBlock>
+                            <TextBlock>
+                <Hyperlink NavigateUri="https://twitter.com/twojafirma">
+                    <Run Text="Twitter" TextDecorations="Underline" Foreground="Blue"/>
+                </Hyperlink>
+                            </TextBlock>
+                            <!-- Dodaj inne linki do mediów społecznościowych, jeśli są używane -->
+                        </StackPanel>
 
-                <!-- Dodatkowe informacje i sekcje mogą być dodane poniżej -->
+                        <!-- Dodatkowe informacje i sekcje mogą być dodane poniżej -->
 
 
             </Grid>
         </ScrollViewer>
-    </Grid>
+   
 
 </UserControl>

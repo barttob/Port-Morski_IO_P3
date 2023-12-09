@@ -10,9 +10,20 @@
 
 
 
-    <Grid Background="#F5F0F6" Margin="0,0,0,0" x:Name="mainGrid">
-        <materialDesign:Card Margin="75,95,0,0" Width="448" Height="340" UniformCornerRadius="25" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
-            <StackPanel VerticalAlignment="Stretch">
+    <Grid Background="#F5F0F6" x:Name="mainGrid">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <materialDesign:Card Margin="40" MaxWidth="600" UniformCornerRadius="25" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  >
+            <Grid VerticalAlignment="Stretch">
                 <Border Background="#E7E7E7" CornerRadius="25,25,0,0" Height="59" VerticalAlignment="Top">
                     <StackPanel>
                         <TextBlock Text="Użytkownicy" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,15,0,0" FontSize="24" FontWeight="Bold"/>
@@ -21,7 +32,7 @@
 
 
 
-                <DataGrid Name="datagridUzytkownicyFront" AutoGenerateColumns="False" IsReadOnly="True" HorizontalContentAlignment="Stretch" FontSize="18" VerticalContentAlignment="Stretch" Height="246" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" HeadersVisibility="None">
+                <DataGrid Name="datagridUzytkownicyFront" AutoGenerateColumns="False" IsReadOnly="True" Margin="0,59,0,35" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" FontSize="18" VerticalContentAlignment="Stretch"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" HeadersVisibility="None">
                     <DataGrid.Columns>
                         <DataGridTemplateColumn Width="SizeToCells">
                             <DataGridTemplateColumn.CellTemplate>
@@ -41,11 +52,11 @@
 
                 <Button x:Name="wiecejUzytkownicy" Style="{StaticResource MaterialDesignFlatMidBgButton}"  Height="28" Width="144" materialDesign:ButtonAssist.CornerRadius="10,10,0,0" FontSize="18" Content="Więcej" Background="#FFD7B377" Foreground="Black" BorderBrush="Black" Padding="16,1,16,4" HorizontalAlignment="Right" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" Click="wiecejUzytkownicy_Click" Margin="0,8,20,0"/>
 
-            </StackPanel>
+            </Grid>
         </materialDesign:Card>
 
-        <materialDesign:Card Margin="0,95,75,0" Width="448" Height="340" UniformCornerRadius="25" HorizontalAlignment="Right" VerticalAlignment="Top" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
-            <StackPanel VerticalAlignment="Stretch">
+        <materialDesign:Card Grid.Column="1" Margin="40" MaxWidth="600" UniformCornerRadius="25" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
+            <Grid VerticalAlignment="Stretch">
                 <Border Background="#E7E7E7" CornerRadius="25,25,0,0" Height="59" VerticalAlignment="Top">
                     <StackPanel>
                         <TextBlock Text="Statki" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,15,0,0" FontSize="24" FontWeight="Bold"/>
@@ -54,14 +65,14 @@
 
 
 
-                <DataGrid Name="datagridStatkiFront" AutoGenerateColumns="False" IsReadOnly="True" HorizontalContentAlignment="Stretch" FontSize="18" VerticalContentAlignment="Stretch" Height="246" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" HeadersVisibility="None">
+                <DataGrid Name="datagridStatkiFront" AutoGenerateColumns="False" Margin="0,59,0,35" IsReadOnly="True" HorizontalContentAlignment="Stretch" FontSize="18" VerticalContentAlignment="Stretch"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" HeadersVisibility="None">
                     <DataGrid.Columns>
                         <DataGridTemplateColumn Width="SizeToCells">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
+                                    <DockPanel >
                                         <Image Source="/Images/statek.png" Width="36" Height="36" Margin="5"/>
-                                    </StackPanel>
+                                    </DockPanel>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
@@ -74,18 +85,18 @@
 
                 <Button x:Name="wiecejStatki" Style="{StaticResource MaterialDesignFlatMidBgButton}"  Height="28" Width="144" materialDesign:ButtonAssist.CornerRadius="10,10,0,0" FontSize="18" Content="Więcej" Background="#FFD7B377" Foreground="Black" BorderBrush="Black" Padding="16,1,16,4" HorizontalAlignment="Right" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" Margin="0,8,20,0" Click="wiecejStatki_Click"/>
 
-            </StackPanel>
+            </Grid>
         </materialDesign:Card>
 
-        <materialDesign:Card Margin="75,0,0,95" Width="448" Height="330" UniformCornerRadius="25" HorizontalAlignment="Left" VerticalAlignment="Bottom" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
-            <StackPanel VerticalAlignment="Stretch">
+        <materialDesign:Card Grid.Row="1" Margin="40" UniformCornerRadius="25" MaxWidth="600" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
+            <Grid VerticalAlignment="Stretch">
                 <Border Background="#E7E7E7" CornerRadius="25,25,0,0" Height="59" VerticalAlignment="Top">
                     <StackPanel>
-                        <TextBlock Text="Doki" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,15,0,0" FontSize="24" FontWeight="Bold"/>
+                        <TextBlock Text="Porty" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,15,0,0" FontSize="24" FontWeight="Bold"/>
                     </StackPanel>
                 </Border>
 
-                <DataGrid Name="datagridPortyFront" AutoGenerateColumns="False" IsReadOnly="True" HorizontalContentAlignment="Stretch" FontSize="18" VerticalContentAlignment="Stretch" Height="246" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" HeadersVisibility="None">
+                <DataGrid Name="datagridPortyFront" Margin="0,59,0,35" AutoGenerateColumns="False" IsReadOnly="True" HorizontalContentAlignment="Stretch" FontSize="18" VerticalContentAlignment="Stretch"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" HeadersVisibility="None">
                     <DataGrid.Columns>
                         <DataGridTemplateColumn Width="SizeToCells">
                             <DataGridTemplateColumn.CellTemplate>
@@ -101,16 +112,18 @@
 
                     </DataGrid.Columns>
                 </DataGrid>
-                <Button x:Name="wiecejPorty" Style="{StaticResource MaterialDesignFlatMidBgButton}"  Height="28" Width="144" materialDesign:ButtonAssist.CornerRadius="10,10,0,0" FontSize="18" Content="Więcej" Background="#FFD7B377" Foreground="Black" BorderBrush="Black" Padding="16,1,16,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="wiecejPorty_Click"/>
+                <Button x:Name="wiecejPorty" Style="{StaticResource MaterialDesignFlatMidBgButton}"  Height="28" Width="144" materialDesign:ButtonAssist.CornerRadius="10,10,0,0" FontSize="18" Content="Więcej" Background="#FFD7B377" Foreground="Black" BorderBrush="Black" Padding="16,1,16,4" VerticalContentAlignment="Center" VerticalAlignment="Bottom" HorizontalAlignment="Right" HorizontalContentAlignment="Center" Margin="0,8,20,0" Click="wiecejPorty_Click"/>
 
-            </StackPanel>
+            </Grid>
         </materialDesign:Card>
 
 
 
-        <local:admUzytkownicy x:Name="admUzytkownicy" Visibility="Collapsed" />
-        <local:admStatki x:Name="admStatki" Visibility="Collapsed" />
-        <local:admPorty x:Name="admPorty" Visibility="Collapsed" />
+        <local:admUzytkownicy x:Name="admUzytkownicy" Visibility="Collapsed" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <local:admStatki x:Name="admStatki" Visibility="Collapsed"  Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <local:admPorty x:Name="admPorty" Visibility="Collapsed"  Grid.ColumnSpan="2" Grid.RowSpan="2"/>
     </Grid>
 
+        
+    
 </UserControl>

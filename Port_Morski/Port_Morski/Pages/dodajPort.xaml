@@ -13,7 +13,7 @@
 
 
 
-    <Grid Background="#80FFFFFF">
+    <Grid Background="#90111111">
 
         <materialDesign:Card Margin="-216,75,36,31" Background="#F5F0F6" UniformCornerRadius="25">
             <Grid>
