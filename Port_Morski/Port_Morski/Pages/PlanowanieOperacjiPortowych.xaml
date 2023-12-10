@@ -7,9 +7,20 @@
              xmlns:local="clr-namespace:Port_Morski.Pages"
              mc:Ignorable="d" 
              d:DesignHeight="1007" d:DesignWidth="1186">
-    <Grid Background="#F5F0F6" Margin="0,0,0,44">
-        <materialDesign:Card Margin="75,95,0,0" Width="448" Height="340" UniformCornerRadius="25" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
-            <StackPanel VerticalAlignment="Stretch">
+    <Grid Background="#F5F0F6">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <materialDesign:Card  Margin="40" MaxWidth="600" UniformCornerRadius="25" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+            <Grid VerticalAlignment="Stretch">
                 <Border Background="#E7E7E7" CornerRadius="25,25,0,0" Height="59" VerticalAlignment="Top">
                     <StackPanel>
                         <TextBlock Text="Plan Doków" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,15,0,0" FontSize="24" FontWeight="Bold"/>
@@ -18,7 +29,7 @@
 
 
 
-                <DataGrid Name="datagridPlanDokowFront" AutoGenerateColumns="False" IsReadOnly="True" HorizontalContentAlignment="Stretch" FontSize="18" VerticalContentAlignment="Stretch" Height="246" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" HeadersVisibility="None">
+                <DataGrid Name="datagridPlanDokowFront" AutoGenerateColumns="False" IsReadOnly="True" Margin="0,59,0,35" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" FontSize="18" VerticalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" HeadersVisibility="None">
                     <DataGrid.Columns>
                         <DataGridTemplateColumn Width="SizeToCells">
                             <DataGridTemplateColumn.CellTemplate>
@@ -38,11 +49,11 @@
 
                 <Button x:Name="wiecejPlanDokow" Style="{StaticResource MaterialDesignFlatMidBgButton}"  Height="28" Width="144" materialDesign:ButtonAssist.CornerRadius="10,10,0,0" FontSize="18" Content="Więcej" Background="#FFD7B377" Foreground="Black" BorderBrush="Black" Padding="16,1,16,4" HorizontalAlignment="Right" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" Click="wiecejPlanDokow_Click" Margin="0,8,20,0"/>
 
-            </StackPanel>
+            </Grid>
         </materialDesign:Card>
 
-        <materialDesign:Card Margin="0,95,75,0" Width="448" Height="340" UniformCornerRadius="25" HorizontalAlignment="Right" VerticalAlignment="Top" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
-            <StackPanel VerticalAlignment="Stretch">
+        <materialDesign:Card Grid.Column="1" Margin="40" MaxWidth="600" UniformCornerRadius="25" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+            <Grid VerticalAlignment="Stretch">
                 <Border Background="#E7E7E7" CornerRadius="25,25,0,0" Height="59" VerticalAlignment="Top">
                     <StackPanel>
                         <TextBlock Text="Plan Operacji" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,15,0,0" FontSize="24" FontWeight="Bold"/>
@@ -51,7 +62,7 @@
 
 
 
-                <DataGrid Name="datagridOperacjeFront" AutoGenerateColumns="False" IsReadOnly="True" HorizontalContentAlignment="Stretch" FontSize="18" VerticalContentAlignment="Stretch" Height="246" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" HeadersVisibility="None">
+                <DataGrid Name="datagridOperacjeFront" AutoGenerateColumns="False" IsReadOnly="True" Margin="0,59,0,35" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" FontSize="18" VerticalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" HeadersVisibility="None">
                     <DataGrid.Columns>
                         <DataGridTemplateColumn Width="SizeToCells">
                             <DataGridTemplateColumn.CellTemplate>
@@ -63,7 +74,7 @@
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
 
-                        <DataGridTextColumn Width="*" Binding="{Binding Operation}" />
+                        <DataGridTextColumn Width="auto" Binding="{Binding Operation}" />
                         <DataGridTextColumn Width="*" Binding="{Binding Ship.Name}" />
                         <DataGridTextColumn Width="*" Binding="{Binding Dock.Name}" />
                         <DataGridTextColumn Width="*" Binding="{Binding Approved}" />
@@ -73,13 +84,13 @@
 
                 <Button x:Name="wiecejOperacje" Style="{StaticResource MaterialDesignFlatMidBgButton}"  Height="28" Width="144" materialDesign:ButtonAssist.CornerRadius="10,10,0,0" FontSize="18" Content="Więcej" Background="#FFD7B377" Foreground="Black" BorderBrush="Black" Padding="16,1,16,4" HorizontalAlignment="Right" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" Click="wiecejPlanOperacji_Click" Margin="0,8,20,0"/>
 
-            </StackPanel>
+            </Grid>
         </materialDesign:Card>
 
 
-        <local:planDoki x:Name="planDoki" Visibility="Collapsed" />
-        <local:planOperacje x:Name="planOperacje" Visibility="Collapsed" />
-        <Button Content="Wyszukaj operację portową" HorizontalAlignment="Left" Margin="36,805,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.588,0.981" Height="45" Width="210" Background="#FFD7B377" Click="Button_Click"/>
+        <local:planDoki x:Name="planDoki" Visibility="Collapsed" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <local:planOperacje x:Name="planOperacje" Visibility="Collapsed" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <Button Grid.Row="1" Grid.ColumnSpan="2" Content="Wyszukaj operację portową" HorizontalAlignment="Center"  VerticalAlignment="Bottom" RenderTransformOrigin="-0.588,0.981" Height="45" Width="210" Background="#FFD7B377" Click="Button_Click"/>
 
 
     </Grid>

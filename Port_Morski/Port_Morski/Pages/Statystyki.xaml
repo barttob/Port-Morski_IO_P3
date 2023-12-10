@@ -21,14 +21,36 @@
         </Grid.ColumnDefinitions>
 
 
-        <materialDesign:Card UniformCornerRadius="20" Margin="30">
+        <materialDesign:Card x:Name="MyCard" UniformCornerRadius="20" Margin="30" >
             <Grid Margin="15">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0" Text="OPERACJE" FontFamily="ARIAL" FontSize="22" Margin="40,0,0,0" FontWeight="Bold"/>
+                
+                <Grid x:Name="CardGrid" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <TextBlock Text="OPERACJE" FontFamily="Arial" FontSize="22" FontWeight="Bold"/>
+                    <ToggleButton Grid.Column="1" x:Name="Powieksz" Background="Transparent" BorderBrush="Transparent" Margin="0,-13,-5,0" Click="Powieksz_Click_1" Cursor="Hand">
+                        <ToggleButton.Style>
+                            <Style TargetType="ToggleButton">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ToggleButton">
+                                            <Image Source="/Images/size.png" Width="20" Height="20"/>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ToggleButton.Style>
+                    </ToggleButton>
+                </Grid>
 
                 <lvc:CartesianChart Grid.Row="1">
                     <lvc:CartesianChart.Series>
@@ -42,7 +64,24 @@
                     </lvc:CartesianChart.AxisY>
                 </lvc:CartesianChart>
             </Grid>
+
+            <materialDesign:Card.Style>
+                <Style TargetType="materialDesign:Card">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=Powieksz}" Value="True">
+                            <Setter Property="Grid.RowSpan" Value="2"/>
+                            <Setter Property="Grid.ColumnSpan" Value="2"/>
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </materialDesign:Card.Style>
         </materialDesign:Card>
+
+
+
+
+
         <materialDesign:Card UniformCornerRadius="20" Margin="30" Grid.Column="1">
             <Grid>
                 <Grid.RowDefinitions>
@@ -50,30 +89,107 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0" Text="STATUSY ŁADUNKÓW" FontFamily="ARIAL" FontSize="22" Margin="40,15,0,0" FontWeight="Bold"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="STATUSY ŁADUNKÓW" FontFamily="ARIAL" FontSize="22" Margin="40,15,0,0" FontWeight="Bold"/>
+                    <ToggleButton Grid.Column="1" x:Name="PowiekszStatusy" Background="Transparent" BorderBrush="Transparent" Margin="0,-5,10,0" Click="Powieksz_Click_1" Cursor="Hand">
+                        <ToggleButton.Style>
+                            <Style TargetType="ToggleButton">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ToggleButton">
+                                            <Image Source="/Images/size.png" Width="20" Height="20"/>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ToggleButton.Style>
+                    </ToggleButton>
+                </Grid>
+
+
+                <lvc:PieChart Grid.Row="1" Series="{Binding SeriesCollections}" >
+                    <lvc:PieChart.Style>
+                        <Style TargetType="lvc:PieChart">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsChecked, ElementName=PowiekszStatusy}" Value="True">
+                                    <Setter Property="LegendLocation" Value="Top"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsChecked, ElementName=PowiekszStatusy}" Value="False">
+                                    <Setter Property="LegendLocation" Value="Right"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </lvc:PieChart.Style>
+                </lvc:PieChart>
                 
-                <lvc:PieChart Grid.Row="1" Series="{Binding SeriesCollections}" LegendLocation="Right"/>
             </Grid>
+            <materialDesign:Card.Style>
+                <Style TargetType="materialDesign:Card">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=PowiekszStatusy}" Value="True">
+                            <Setter Property="Grid.RowSpan" Value="2"/>
+                            <Setter Property="Grid.ColumnSpan" Value="2"/>
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </materialDesign:Card.Style>
         </materialDesign:Card>
+        
+        
         <materialDesign:Card UniformCornerRadius="20" Margin="30" Grid.Row="1" Grid.Column="0" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-                <DataGrid x:Name="DataGridHistory" AutoGenerateColumns="False" Background="White" FontSize="14"  >
+                <ToggleButton x:Name="PowiekszDataGrid" Background="Transparent" BorderBrush="Transparent" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,8,10,0" Click="Powieksz_Click_1" Cursor="Hand">
+                    <ToggleButton.Style>
+                        <Style TargetType="ToggleButton">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ToggleButton">
+                                        <Image Source="/Images/size.png" Width="20" Height="20"/>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ToggleButton.Style>
+                </ToggleButton>
+
+                <DataGrid Grid.Row="1" x:Name="DataGridHistory" FontSize="16" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="True" CanUserResizeRows="True" CanUserResizeColumns="True" IsReadOnly="True" Background="White">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Numer" Binding="{Binding LogID}" />
-                        <DataGridTextColumn Header="Operacja" Binding="{Binding OldOperation}" />
-                        <DataGridTextColumn Header="ID Statku" Binding="{Binding OldShipId}" />
-                        <DataGridTextColumn Header="ID Doku" Binding="{Binding OldDockId}" />
-                        <DataGridTextColumn Header="Czy zatwierdzony" Binding="{Binding OldApproved}" />
-                        <DataGridTextColumn Header="Data" Binding="{Binding OldDate}" />
-                        <DataGridTextColumn Header="Typ" Binding="{Binding OperationTypeOnTable}" />
-                        <DataGridTextColumn Header="Data Logu" Binding="{Binding LogDate}" />
+                        <DataGridTextColumn Header="Nr" Binding="{Binding LogID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Width="70"/>
+                        <DataGridTextColumn Header="Operacja" Binding="{Binding OldOperation, UpdateSourceTrigger=PropertyChanged}"  Width="auto"/>
+                        <DataGridTextColumn Header="ID Statku" Binding="{Binding OldShipId, UpdateSourceTrigger=PropertyChanged}"  Width="*"/>
+                        <DataGridTextColumn Header="ID Doku" Binding="{Binding OldDockId, UpdateSourceTrigger=PropertyChanged}"  Width="*"/>
+                        <DataGridTextColumn Header="Czy zatwierdzony" Binding="{Binding OldApproved, UpdateSourceTrigger=PropertyChanged}"  Width="*"/>
+                        <DataGridTextColumn Header="Data" Binding="{Binding OldDate, UpdateSourceTrigger=PropertyChanged}"  Width="*"/>
+                        <DataGridTextColumn Header="Typ" Binding="{Binding OperationTypeOnTable, UpdateSourceTrigger=PropertyChanged}"  Width="*"/>
+                        <DataGridTextColumn Header="Data Logu" Binding="{Binding LogDate, UpdateSourceTrigger=PropertyChanged}"  Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
+            <materialDesign:Card.Style>
+                <Style TargetType="materialDesign:Card">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=PowiekszDataGrid}" Value="True">
+                            <Setter Property="Grid.RowSpan" Value="2"/>
+                            <Setter Property="Grid.ColumnSpan" Value="2"/>
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </materialDesign:Card.Style>
         </materialDesign:Card>
 
 

@@ -9,10 +9,11 @@ using System.Windows;
 using Port_Morski.Models;
 using System.Globalization;
 using LiveCharts.Defaults;
+using System.ComponentModel;
 
 namespace Port_Morski
 {
-    class IloscOperacji
+    class IloscOperacji : INotifyPropertyChanged
     {
         public SeriesCollection SeriesCollection { get; set; }
         public Func<double, string> YFormatter { get; set; }
@@ -21,6 +22,30 @@ namespace Port_Morski
         public SeriesCollection SeriesCollections { get; set; }
         public List<string> Statusy { get; set; }
 
+        private bool _isCardExpanded;
+
+        public bool IsCardExpanded
+        {
+            get { return _isCardExpanded; }
+            set
+            {
+                if (_isCardExpanded != value)
+                {
+                    _isCardExpanded = value;
+                    OnPropertyChanged(nameof(IsCardExpanded));
+                }
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+            // Dodatkowo, sprawdź czy to zdarzenie jest wywoływane i odśwież DataContext
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("DataContext"));
+        }
 
         public IloscOperacji() 
         {

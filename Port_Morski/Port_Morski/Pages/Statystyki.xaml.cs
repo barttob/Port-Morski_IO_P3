@@ -1,22 +1,27 @@
-﻿using Port_Morski.Models;
+﻿using MaterialDesignThemes.Wpf;
+using Port_Morski.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
+using System.Windows.Media;
 
 namespace Port_Morski.Pages
 {
     public partial class Statystyki : UserControl
     {
-        private SeaPortContext context; 
-
+        private SeaPortContext context;
+        
         public Statystyki()
         {
             InitializeComponent();
             context = new SeaPortContext();
             wyswietl();
             DataContext = new IloscOperacji();
+            Powieksz.Click += Powieksz_Click_1;
+
         }
 
       
@@ -63,5 +68,10 @@ namespace Port_Morski.Pages
         }
 
         
+
+        private void Powieksz_Click_1(object sender, RoutedEventArgs e)
+        {
+            ((IloscOperacji)DataContext).IsCardExpanded = Powieksz.IsChecked ?? false;
+        }
     }
 }

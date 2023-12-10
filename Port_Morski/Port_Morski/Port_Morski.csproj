@@ -55,6 +55,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="MicrosoftExpressionInteractions" Version="3.0.40218" />
     <PackageReference Include="PdfSharp" Version="1.50.5147" />
     <PackageReference Include="PdfSharp.MigraDoc.Standard" Version="1.51.15" />
     <PackageReference Include="Syncfusion.SfMaps.WPF" Version="23.1.44" />
