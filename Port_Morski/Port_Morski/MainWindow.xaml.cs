@@ -31,13 +31,14 @@ namespace Port_Morski
         private MainViewModel _viewModel;
         Ustawienia ustawieniaControl;
         private UserPreferences userPreferences;
-
+        private Button currentButton;
 
         public MainWindow(string userRole)
         {
             InitializeComponent();
+            Loaded += TwojeOkno_Loaded;
             UserRole = userRole;
-            SetButtonColorOnLoad();
+            
             userPreferences = UserPreferencesManager.LoadPreferences(userId);
             SetTheme(userPreferences.SelectedTheme);
             SetSize(userPreferences.SelectedSize);
@@ -98,6 +99,10 @@ namespace Port_Morski
             }
 
         }
+        private void TwojeOkno_Loaded(object sender, RoutedEventArgs e)
+        {
+            StatystykiButton_Click(StatystykiButton, new RoutedEventArgs(Button.ClickEvent, StatystykiButton));
+        }
         private void UstawieniaControl_WyborZmieniony(object sender, string wybranaOpcja)
         {
             // Zapisz wybrany motyw do preferencji użytkownika
@@ -107,6 +112,10 @@ namespace Port_Morski
             // Ustaw motyw interfejsu użytkownika
             SetTheme(wybranaOpcja);
         }
+
+        private string DefaultColorButton = "";
+        private string CurrentColorButtonClick = "";
+
         private void SetTheme(string selectedTheme)
         {
             switch (selectedTheme)
@@ -132,6 +141,10 @@ namespace Port_Morski
                     Napis_glowny.Foreground = Brushes.Black;
                     User.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#333333"));
                     Rola.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#666666"));
+
+                    DefaultColorButton = "#8F754F";
+                    CurrentColorButtonClick = "#D7B377";
+
                     break;
                 case "Neptun's Dream":
                     Menu.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#BFBBAF"));
@@ -154,16 +167,19 @@ namespace Port_Morski
                     Napis_glowny.Foreground = Brushes.Black;
                     User.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#333333"));
                     Rola.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#666666"));
+
+                    DefaultColorButton = "#555A54";
+                    CurrentColorButtonClick = "#95908c";
                     break;
                 case "Galaktyczny Pirs":
                     Menu.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2F2F2F"));
 
-                    StatystykiButton.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFCB74"));
-                    MonitorowanieStatkow.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFCB74"));
-                    ZarzadzanieLadunkami.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFCB74"));
-                    PlanowanieOperacjiPortowych.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFCB74"));
-                    GenerowanieRaportow.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFCB74"));
-                    Administracja.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFCB74"));
+                    StatystykiButton.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#c5c5c5"));
+                    MonitorowanieStatkow.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#c5c5c5"));
+                    ZarzadzanieLadunkami.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#c5c5c5"));
+                    PlanowanieOperacjiPortowych.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#c5c5c5"));
+                    GenerowanieRaportow.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#c5c5c5"));
+                    Administracja.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#c5c5c5"));
                     StatystykiButton.Foreground = Brushes.Black;
                     MonitorowanieStatkow.Foreground = Brushes.Black;
                     ZarzadzanieLadunkami.Foreground = Brushes.Black;
@@ -176,18 +192,21 @@ namespace Port_Morski
                     Napis_glowny.Foreground = Brushes.Black;
                     User.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#333333"));
                     Rola.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#666666"));
+
+                    DefaultColorButton = "#c5c5c5";
+                    CurrentColorButtonClick = "#939393";
                     break;
                 case "Mistyczna Morska Mgła":
 
                     //Menu po prawej stronie
-                    Menu.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#C3ff00"));
+                    Menu.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#6ce636"));
 
-                    StatystykiButton.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0E0E0E"));
-                    MonitorowanieStatkow.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0E0E0E"));
-                    ZarzadzanieLadunkami.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0E0E0E"));
-                    PlanowanieOperacjiPortowych.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0E0E0E"));
-                    GenerowanieRaportow.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0E0E0E"));
-                    Administracja.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0E0E0E"));
+                    StatystykiButton.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#393939"));
+                    MonitorowanieStatkow.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#393939"));
+                    ZarzadzanieLadunkami.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#393939"));
+                    PlanowanieOperacjiPortowych.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#393939"));
+                    GenerowanieRaportow.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#393939"));
+                    Administracja.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#393939"));
                     StatystykiButton.Foreground = Brushes.White;
                     MonitorowanieStatkow.Foreground = Brushes.White;
                     ZarzadzanieLadunkami.Foreground = Brushes.White;
@@ -202,7 +221,8 @@ namespace Port_Morski
                     Rola.Foreground = Brushes.LightGray;
 
 
-
+                    DefaultColorButton = "#393939";
+                    CurrentColorButtonClick = "#4638FF";
                     break;
                 default:
                     Menu.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF2B4162"));
@@ -225,6 +245,9 @@ namespace Port_Morski
                     Napis_glowny.Foreground = Brushes.Black;
                     User.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#333333"));
                     Rola.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#666666"));
+
+                    DefaultColorButton = "#555A54";
+                    CurrentColorButtonClick = "#D7B377";
                     break;
             }
         }
@@ -259,18 +282,14 @@ namespace Port_Morski
             }
         }
 
-        private void SetButtonColorOnLoad()
-        {
-            StatystykiButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#D7B377"));
-            // Dodaj kolejne przyciski, jeśli są inne, i ustaw im kolor tła
-        }
+        
        
         private void exitApp(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
 
-        private Button currentButton;
+        
         private void StatystykiButton_Click(object sender, RoutedEventArgs e)
         {
             MainGrid.Children.Clear();
@@ -279,6 +298,7 @@ namespace Port_Morski
             SwitchContentAndChangeButtonColor<Statystyki>((Button)sender);
             _viewModel.NazwaKontroli = "Statystyki dla Port Morski";
         }
+        
 
         private void MonitorowanieStatkow_Click(object sender, RoutedEventArgs e)
         {
@@ -286,7 +306,7 @@ namespace Port_Morski
             MonitorowanieStatkow monitorowanie = new MonitorowanieStatkow();
             MainGrid.Children.Add(monitorowanie);
             SwitchContentAndChangeButtonColor<MonitorowanieStatkow>((Button)sender);
-            StatystykiButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#8F754F"));
+            //StatystykiButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#8F754F"));
             _viewModel.NazwaKontroli = "Monitorowanie Statków";
         }
 
@@ -296,7 +316,7 @@ namespace Port_Morski
             ZarzadzanieLadunkami zarzadzanieLadunkami = new ZarzadzanieLadunkami();
             MainGrid.Children.Add(zarzadzanieLadunkami);
             SwitchContentAndChangeButtonColor<ZarzadzanieLadunkami>((Button)sender);
-            StatystykiButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#8F754F"));
+            //StatystykiButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#8F754F"));
             _viewModel.NazwaKontroli = "Zarządzanie Ładunkami";
         }
 
@@ -306,7 +326,7 @@ namespace Port_Morski
             PlanowanieOperacjiPortowych planowanie = new PlanowanieOperacjiPortowych();
             MainGrid.Children.Add(planowanie);
             SwitchContentAndChangeButtonColor<PlanowanieOperacjiPortowych>((Button)sender);
-            StatystykiButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#8F754F"));
+           // StatystykiButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#8F754F"));
             _viewModel.NazwaKontroli = "Planowanie Opreracji Portowych";
         }
 
@@ -316,7 +336,7 @@ namespace Port_Morski
             GenerowanieRaportow generowanieRaportow = new GenerowanieRaportow();
             MainGrid.Children.Add(generowanieRaportow);
             SwitchContentAndChangeButtonColor<GenerowanieRaportow>((Button)sender);
-            StatystykiButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#8F754F"));
+           // StatystykiButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#8F754F"));
             _viewModel.NazwaKontroli = "Generowanie Raportów";
         }
 
@@ -327,28 +347,34 @@ namespace Port_Morski
             Administracja administracja = new Administracja();
             MainGrid.Children.Add(administracja);
             SwitchContentAndChangeButtonColor<Administracja>((Button)sender);
-            StatystykiButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#8F754F"));
+           // StatystykiButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#8F754F"));
             _viewModel.NazwaKontroli = "Administracja";
         }
-        private void SwitchContentAndChangeButtonColor<T>(Button clickedButton) where T : UserControl, new()
+        private void SwitchContentAndChangeButtonColor<T>(Button clickedButton, bool setAsCurrentButton = true) where T : UserControl, new()
         {
             // Przywrócenie koloru pierwotnego poprzedniego przycisku
-            if (currentButton != null)
+            if (currentButton != null && setAsCurrentButton)
             {
-                currentButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#8F754F")); // Ustawienie pierwotnego koloru
+                Color defaultButtonColor = (Color)ColorConverter.ConvertFromString(DefaultColorButton);
+                currentButton.Background = new SolidColorBrush(defaultButtonColor); // Ustawienie pierwotnego koloru
             }
 
+            Color currentButtonColor = (Color)ColorConverter.ConvertFromString(CurrentColorButtonClick);
             // Ustawienie koloru tła aktualnie klikniętego przycisku
-            clickedButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#D7B377"));
+            clickedButton.Background = new SolidColorBrush(currentButtonColor);
 
             // Przechowanie aktualnie klikniętego przycisku
-            currentButton = clickedButton;
+            if (setAsCurrentButton)
+            {
+                currentButton = clickedButton;
+            }
 
             // Zmiana zawartości okna
             MainGrid.Children.Clear();
             T content = new T();
             MainGrid.Children.Add(content);
         }
+
 
         private DispatcherTimer timer;
         private void MenuButtonClick(object sender, RoutedEventArgs e)
@@ -385,15 +411,32 @@ namespace Port_Morski
         }
         private void Info_Click(object sender, MouseButtonEventArgs e)
         {
+            
+            if (currentButton != null)
+            {
+                Color defaultButtonColor = (Color)ColorConverter.ConvertFromString(DefaultColorButton);
+                currentButton.Background = new SolidColorBrush(defaultButtonColor);
+                currentButton = null;
+            }
+
             MainGrid.Children.Clear();
             O_Programie oProgramie = new O_Programie();
             MainGrid.Children.Add(oProgramie);
             _viewModel.NazwaKontroli = "Informacje o Programie";
+           
         }
 
         private void Settings_Click(object sender, MouseButtonEventArgs e)
         {
-            // Inicjalizacja kontrolki użytkownika
+           
+            if (currentButton != null)
+            {
+                Color defaultButtonColor = (Color)ColorConverter.ConvertFromString(DefaultColorButton);
+                currentButton.Background = new SolidColorBrush(defaultButtonColor);
+                currentButton = null;
+            }
+
+            
             ustawieniaControl = new Ustawienia();
             ustawieniaControl.WyborZmieniony += UstawieniaControl_WyborZmieniony;
             ustawieniaControl.WyborRozmiaruZmieniony += UstawieniaControl_WyborRozmiaruZmieniony;
